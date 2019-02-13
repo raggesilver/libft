@@ -12,14 +12,14 @@
 
 #include "libft.h"
 #include <stdio.h>
-#include <string.h>
+
+char *msg = "This is the string: not copied";
 
 int	main()
 {
-	char *a = ft_strdup("batata");
-	char *b = malloc(13);
-	b = ft_strcpy(b, "BatatA");
-	b = ft_strncat(b, a, 5);
-	printf("String: %s\n", b);
+	char buffer[80];
+	ft_memset(buffer, '\0', 80);
+	ft_memccpy(buffer, msg, ':', 80);
+	printf("%s\n", buffer);
 	return (0);
 }
