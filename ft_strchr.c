@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:25:00 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/14 12:30:49 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/14 12:47:58 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char	*ft_strchr(const char *s, int c)
 	while (*s)
 	{
 		if (*s == (char)c)
-			return (s);
+			return ((char *)s);
 		s++;
 	}
 	if (c == 0)
-		return (s);
+		return ((char *)s);
 	return (NULL);
 }
