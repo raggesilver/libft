@@ -3,8 +3,14 @@ all:
 	clear
 	gcc $(FLAGS) -o out *.c
 
+check:
+	norminette ft_*.c libft.h
+
 clean:
-	rm -f *.o *.a out
+	rm -f *.o *.a
+
+fclean:
+	rm -f out
 
 run:
 	./out
