@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 16:46:42 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/14 15:07:06 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/02/14 14:45:33 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/02/14 14:52:20 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int	main(void)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	const char *largestring = "Foo Bar Baz";
-	const char *smallstring = "Bar";
-	char *ptr;
-	ptr = ft_strnstr(largestring, smallstring, 5);
+	char *tok;
+	char *ned;
 
-	printf("The substring is: %s\n", ptr ?: "Not found");
-	return (0);
+	ned = (char *)needle;
+	while (*haystack && len > 0) {
+		if (*haystack == *needle) {
+			tok = (char *)haystack;
+			while (*tok == *ned && *tok && *ned)
+			{
+				tok++;
+				ned++;
+			}
+			if (!*ned)
+				return ((char *)haystack);
+			ned = (char *)needle;
+		}
+		haystack++;
+		len--;
+	}
+	return (NULL);
 }
