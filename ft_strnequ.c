@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test.c                                          :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 16:46:42 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/15 17:06:03 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/02/15 23:10:04 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/02/15 23:19:37 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <ctype.h>
 
-int	main(void)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int i;
-
-	i = 0;
-	while (i < 128)
-	{
-		printf("'%d' isalnum? %s\n", i, (isprint(i) ? "yes" : "no"));
-		i++;
-	}
-	return (0);
+	if (!s1 && !s2)
+		return (1);
+	if ((!s1 && s2) || (s1 && !s2))
+		return (0);
+	return (ft_strncmp(s1, s2, n) ? 0 : 1);
 }
