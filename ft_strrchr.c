@@ -6,18 +6,19 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 14:06:31 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/14 18:20:54 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:02:07 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	char *tmp;
 
 	tmp = NULL;
-	while (*s) {
+	while (*s)
+	{
 		if (*s == (char)c)
 			tmp = (char *)s;
 		s++;

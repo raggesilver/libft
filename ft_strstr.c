@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 14:24:33 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/14 15:00:29 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:02:59 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	char *ned;
 
 	ned = (char *)needle;
-	while (*haystack) {
-		if (*haystack == *needle) {
+	while (*haystack)
+	{
+		if (*haystack == *needle)
+		{
 			tok = (char *)haystack;
 			while (*tok == *ned && *tok && *ned)
 			{

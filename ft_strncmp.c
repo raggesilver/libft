@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 15:15:30 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/14 21:37:59 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:01:09 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		s2++;
 		n--;
 	}
-	return n ? (*(const unsigned char *)s1 - *(const unsigned char *)s2) : 0;
+	return (n ? (*(const unsigned char *)s1 - *(const unsigned char *)s2) : 0);
 }
