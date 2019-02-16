@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 16:46:42 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/15 15:03:51 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/02/15 10:20:41 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/02/15 10:22:15 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <ctype.h>
 
-int	main(void)
+int	ft_isdigit(int c)
 {
-	for (int i = 0; i < 128; i++)
-		printf("'%d' isalnum? %s\n", i, (isprint(i) ? "yes" : "no"));
-	return (0);
+	return ((unsigned char)c >= '0' && (unsigned char)c <= '9');
 }
