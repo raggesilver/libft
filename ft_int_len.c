@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 16:33:51 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 16:34:50 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:21:26 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_int_len(int n)
 {
-	return (ft_int_len_base (n, 10));
+	return (ft_int_len_base(n, 10));
 }

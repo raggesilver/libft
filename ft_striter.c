@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 21:35:41 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/15 21:46:01 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:23:08 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ void	ft_striter(char *s, void (*f)(char *))
 	while (*(s + i))
 		f(s + i++);
 }
-

@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 16:31:13 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 16:44:33 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:21:42 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char	*ft_itoa(int n)
 {
-	return ft_itoa_base(n, 10);
+	return (ft_itoa_base(n, 10));
 }

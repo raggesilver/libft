@@ -6,13 +6,13 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:10:34 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 17:33:16 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:22:32 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr(char const *s)
+void	ft_putstr(char const *s)
 {
 	ft_putstr_fd(s, 1);
 }

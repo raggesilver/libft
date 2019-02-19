@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:52:46 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 16:13:51 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:23:00 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	*ft_realloc(void *ptr, size_t len)
 {
 	void *res;
 
-	if (!len) {
+	if (!len)
+	{
 		if (ptr)
 			ft_memdel(&ptr);
 		return (NULL);
