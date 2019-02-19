@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 14:06:43 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/15 14:08:15 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:45:38 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 int	ft_isalpha(int c)
 {
-	unsigned char cc;
-
-	cc = (unsigned char)c;
-	return ((cc >= 'a' && cc <= 'z') || (cc >= 'A' && cc <= 'Z'));
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }

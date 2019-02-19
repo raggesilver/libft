@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 10:25:26 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/15 14:11:17 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 19:05:29 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_isascii(int c)
 {
-	return ((unsigned char)c <= 127);
+	return (c >= 0 && c <= 127);
 }

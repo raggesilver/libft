@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 16:20:43 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 16:23:06 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 20:39:20 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strndup(const char *s, size_t len)
 	char	*res;
 	size_t	i;
 
-	res = ft_memalloc(len + 1);
+	RETURN_X_IF_NOT_Y(NULL, (res = ft_memalloc(len + 1)));
 	i = 0;
 	while (s[i] && i < len)
 	{

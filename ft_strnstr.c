@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 14:45:33 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/15 17:02:28 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 19:45:31 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char *tok;
-	char *ned;
+	char	*tok;
+	char	*ned;
+	size_t	l;
 
+	RETURN_X_IF_NOT_Y(((char *)haystack), ft_strcmp(needle, ""));
 	ned = (char *)needle;
 	while (*haystack && len > 0)
 	{
 		if (*haystack == *needle)
 		{
 			tok = (char *)haystack;
-			while (*tok == *ned && *tok && *ned)
+			l = len;
+			while (*tok == *ned && *tok && *ned && l > 0)
 			{
 				tok++;
 				ned++;
+				l--;
 			}
-			if (!*ned)
-				return ((char *)haystack);
+			RETURN_X_IF_NOT_Y(((char *)haystack), *ned);
 			ned = (char *)needle;
 		}
 		haystack++;

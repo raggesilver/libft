@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 18:15:19 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:51:02 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 
 # define RETURN_IF_NOT(x) ({ if (!x) return ;})
 # define RETURN_X_IF_NOT_Y(x, y) ({ if (!y) return (x);})
+
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
 
 void	ft_bzero(void *s, size_t n);
 int		ft_atoi(const char *str);

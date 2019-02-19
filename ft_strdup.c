@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strdup.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 21:11:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/12 11:17:13 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:34:09 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ char	*ft_strdup(const char *s)
 	size_t	l;
 
 	l = ft_strlen(s);
-	res = (char *)malloc(l + 1);
+	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(l + 1)));
 	p = res;
 	while ((*p++ = *s++))
 		;
-	*p = 0;
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:32:46 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 16:24:49 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 21:10:51 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ char	**ft_strsplit(char const *s, char c)
 		tok = i;
 		while (s[i] && s[i] != c)
 			i++;
-		res = ft_realloc(res, (cnt + 2) * sizeof(*res));
-		tmp = ft_strndup(s + tok, i - tok);
+		RETURN_X_IF_NOT_Y(NULL, (res = ft_realloc(res,
+			(cnt + 2) * sizeof(*res))));
+		RETURN_X_IF_NOT_Y(NULL, (tmp = ft_strndup(s + tok, i - tok)));
 		res[cnt] = tmp;
 		res[++cnt] = NULL;
 		i++;

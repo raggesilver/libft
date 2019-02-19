@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 14:06:43 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/15 14:32:22 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:52:59 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 int	ft_isalnum(int c)
 {
-	unsigned char cc;
-
-	cc = (unsigned char)c;
-	return (ft_isalpha(c) || (cc >= '0' && cc <= '9'));
+	return (ft_isalpha(c) || (c >= '0' && c <= '9'));
 }

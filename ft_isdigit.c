@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 10:20:41 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/15 10:22:15 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:53:31 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_isdigit(int c)
 {
-	return ((unsigned char)c >= '0' && (unsigned char)c <= '9');
+	return (c >= '0' && c <= '9');
 }
