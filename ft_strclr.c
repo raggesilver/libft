@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 19:26:56 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 18:23:47 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/20 12:52:49 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_strclr(char *s)
 {
-	RETURN_IF_NOT(s);
+	RETURN_IF_NOT((s));
 	while (*s)
 		*s++ = 0;
 }

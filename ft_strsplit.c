@@ -6,42 +6,36 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:32:46 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 23:01:07 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/20 15:28:54 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(const char *s, char c)
 {
 	char	**res;
 	char	*tmp;
 	size_t	cnt;
-	size_t	tok;
-	size_t	i;
 
-	tok = 0;
-	cnt = 0;
-	i = 0;
-	res = NULL;
-	while (*s == c)
-		s++;
-	while (s[i])
+	cnt = 1;
+	res = (char **)malloc(sizeof(*res));
+	res[0] = NULL;
+	while (s && *s)
 	{
-		while (s[i] == c)
-			i++;
-		tok = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (tok == i)
+		tmp = ft_strchr(s, c);
+		if (tmp && tmp == s)
+		{
+			s++;
 			continue ;
-		RETURN_X_IF_NOT_Y(NULL, (res = ft_realloc(res,
-			(cnt + 2) * sizeof(*res))));
-		RETURN_X_IF_NOT_Y(NULL, (tmp = ft_strndup(s + tok, i - tok)));
-		res[cnt] = tmp;
-		res[++cnt] = NULL;
-		i++;
+		}
+		res = ft_realloc(res, sizeof(*res) * (cnt + 1));
+		res[cnt - 1] = ft_strdupchr(s, c);
+		res[cnt] = NULL;
+		if (tmp)
+			s += ft_strlen(res[cnt++ - 1]);
+		else
+			break ;
 	}
 	return (res);
 }

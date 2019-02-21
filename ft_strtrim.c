@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:12:38 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 20:16:42 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/20 15:42:05 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char		*ft_strtrim(char const *s)
 	size_t	i;
 	char	*res;
 
+	RETURN_X_IF_NOT_Y(NULL, s);
 	while (ft_isspace(*s))
 		s++;
 	i = 0;

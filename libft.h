@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/18 18:51:02 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/20 15:18:24 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 
 # define RETURN_IF_NOT(x) ({ if (!x) return ;})
 # define RETURN_X_IF_NOT_Y(x, y) ({ if (!y) return (x);})
+# define CONTINUE_IF_NOT(x) ({ if (!x) continue ;})
+# define INLINE_IF(x, body) ({ if (x) body })
+# define INLINE_IF_ELSE(x, ix, ex) ({ if (x) ix else ex })
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
@@ -84,5 +87,6 @@ char	*ft_strndup(const char *s, size_t len);
 int		ft_int_len(int n);
 int		ft_int_len_base(int n, int base);
 char	*ft_itoa_base(int n, int base);
+char	*ft_strdupchr(const char *str, char c);
 
 #endif

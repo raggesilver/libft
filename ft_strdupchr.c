@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strdupchr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 23:19:44 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 12:56:46 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/02/20 14:15:23 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/02/20 15:34:14 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
-{
-	char	*res;
-	size_t	i;
+/*
+** Returns a copy of (char *)str up to (char c). If c isn't found a copy of
+** (char *str) is returned. Any allocation failure will return NULL
+*/
 
-	RETURN_X_IF_NOT_Y(NULL, s);
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(len + 1)));
-	i = 0;
-	while (i < len)
-		*(res + i++) = *(s + start++);
+char	*ft_strdupchr(const char *str, char c)
+{
+	char *res;
+	char *tmp;
+
+	RETURN_X_IF_NOT_Y(NULL, str);
+	if (!(tmp = ft_strchr(str, c)))
+		return (ft_strdup(str));
+	res = ft_strndup(str, tmp - str);
 	return (res);
 }

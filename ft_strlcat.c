@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:40:37 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 11:54:09 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/20 16:18:34 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	char	*tmp;
 	size_t	i;
 	size_t	j;
 
-	tmp = ft_strndup(src, size);
 	i = 0;
-	while (dest[i])
+	while (dest[i] && i < size)
 		i++;
-	j = 0;
-	while (tmp[j])
+	j = i;
+	RETURN_X_IF_NOT_Y((j + ft_strlen(src)), (size > 0));
+	while (src[i - j] && i < size - 1)
 	{
-		dest[j + i] = tmp[j];
-		j++;
+		dest[i] = src[i - j];
+		i++;
 	}
-	return (i + size);
+	if (j < size)
+		dest[i] = 0;
+	return (j + ft_strlen(src));
 }
