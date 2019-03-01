@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:12:38 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 15:42:05 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/28 16:26:07 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char		*ft_strtrim(char const *s)
 		else
 			i++;
 	}
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(i + 1)));
+	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(i)));
 	res = ft_strncpy(res, s, i);
 	return (res);
 }

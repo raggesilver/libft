@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 16:45:57 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 11:37:07 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/28 16:25:38 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char		*ft_itoa_base(int val, int base)
 
 	ex = (val < 0) ? 1 : 0;
 	len = ft_int_len_base(val, base);
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(len + 1)));
+	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(len)));
 	i = len;
 	while (--i >= 0 + ex)
 	{

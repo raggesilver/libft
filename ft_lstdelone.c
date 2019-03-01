@@ -6,13 +6,13 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 18:04:02 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 18:16:29 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/20 19:19:13 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void(*del)(void *, size_t))
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
 	if (alst && *alst)
 	{

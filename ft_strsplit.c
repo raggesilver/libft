@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:32:46 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 15:28:54 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/28 16:33:04 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**ft_strsplit(const char *s, char c)
 	size_t	cnt;
 
 	cnt = 1;
-	res = (char **)malloc(sizeof(*res));
+	RETURN_X_IF_NOT_Y(NULL, (s && (res = (char **)malloc(sizeof(*res)))));
 	res[0] = NULL;
 	while (s && *s)
 	{
@@ -29,7 +29,8 @@ char	**ft_strsplit(const char *s, char c)
 			s++;
 			continue ;
 		}
-		res = ft_realloc(res, sizeof(*res) * (cnt + 1));
+		RETURN_X_IF_NOT_Y(NULL, (res = ft_realloc(
+			res, sizeof(*res) * (cnt + 1))));
 		res[cnt - 1] = ft_strdupchr(s, c);
 		res[cnt] = NULL;
 		if (tmp)

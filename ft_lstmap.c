@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 18:25:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 19:08:52 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/20 19:18:52 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 		else
 		{
 			res = f(lst);
-			res_last = res;	
+			res_last = res;
 		}
 		lst = lst->next;
 	}

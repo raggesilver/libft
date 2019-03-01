@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 18:22:03 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 18:23:41 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/02/20 19:33:21 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	t_list *tmp;
-
-	if (alst && *alst && new)
-	{
-		tmp = *alst;
-		*alst = new;
-		new->next = tmp;
-	}
+	if (!alst)
+		return ;
+	new->next = *alst;
+	*alst = new;
 }
