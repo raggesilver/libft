@@ -74,11 +74,9 @@ INCDIR=.
 
 all: $(NAME)
 
-%.o: %.c
-	gcc $(FLAGS) -I$(INCDIR) -o $@ -c $<
-
-$(NAME): $(OBJECTS)
-	ar rc $@ $^
+$(NAME):
+	gcc $(FLAGS) -c $(FILES)
+	ar rc $@ $(OBJECTS)
 	ranlib $@
 
 check:
