@@ -17,9 +17,9 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char	*res;
 	size_t	i;
 
-	RETURN_X_IF_NOT_Y(NULL, s);
-	RETURN_X_IF_NOT_Y(ft_strdup(s), f);
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(ft_strlen(s))));
+	RETURN_VAL_IF_FAIL(NULL, s);
+	RETURN_VAL_IF_FAIL(ft_strdup(s), f);
+	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(ft_strlen(s))));
 	i = 0;
 	while (*(s + i))
 	{

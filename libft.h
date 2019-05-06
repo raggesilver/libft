@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/20 19:13:46 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/02 00:00:29 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define IS_WHITESPACE(x) (x == ' ' || x == '\t' || x == '\n' || _IW2(x))
 
 # define RETURN_IF_NOT(x) ({ if (!x) return ;})
-# define RETURN_X_IF_NOT_Y(x, y) ({ if (!y) return (x);})
+# define RETURN_VAL_IF_FAIL(x, y) ({ if (!y) return (x);})
 # define CONTINUE_IF_NOT(x) ({ if (!x) continue ;})
 # define INLINE_IF(x, body) ({ if (x) body })
 # define INLINE_IF_ELSE(x, ix, ex) ({ if (x) ix else ex })
@@ -101,7 +101,14 @@ t_list				*ft_lstnew(const void *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void(*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstappend(t_list *head, void *content, size_t s);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void				ft_lst_set_head_index(t_list **alst, size_t index);
+void				ft_lst_sort(t_list **alst, int (*cmp)(void *, void *));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+size_t				ft_lstcnt(t_list *head);
+
+int					ft_sqrt_ceil(int n);
+size_t				ft_strchrcnt(const char *s, char c);
 
 #endif

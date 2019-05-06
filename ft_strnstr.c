@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char	*ned;
 	size_t	l;
 
-	RETURN_X_IF_NOT_Y(((char *)haystack), ft_strcmp(needle, ""));
+	RETURN_VAL_IF_FAIL(((char *)haystack), ft_strcmp(needle, ""));
 	ned = (char *)needle;
 	while (*haystack && len > 0)
 	{
@@ -32,7 +32,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 				ned++;
 				l--;
 			}
-			RETURN_X_IF_NOT_Y(((char *)haystack), *ned);
+			RETURN_VAL_IF_FAIL(((char *)haystack), *ned);
 			ned = (char *)needle;
 		}
 		haystack++;

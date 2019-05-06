@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s)
 	size_t	l;
 
 	l = ft_strlen(s);
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(l)));
+	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(l)));
 	p = res;
 	while ((*p++ = *s++))
 		;

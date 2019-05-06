@@ -17,7 +17,7 @@ char	*ft_strndup(const char *s, size_t len)
 	char	*res;
 	size_t	i;
 
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_memalloc(len + 1)));
+	RETURN_VAL_IF_FAIL(NULL, (res = ft_memalloc(len + 1)));
 	i = 0;
 	while (s[i] && i < len)
 	{

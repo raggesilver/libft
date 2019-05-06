@@ -17,8 +17,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	char	*res;
 	size_t	i;
 
-	RETURN_X_IF_NOT_Y(NULL, s);
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(len)));
+	RETURN_VAL_IF_FAIL(NULL, s);
+	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(len)));
 	i = 0;
 	while (i < len)
 		*(res + i++) = *(s + start++);

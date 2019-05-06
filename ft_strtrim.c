@@ -39,7 +39,7 @@ char		*ft_strtrim(char const *s)
 	size_t	i;
 	char	*res;
 
-	RETURN_X_IF_NOT_Y(NULL, s);
+	RETURN_VAL_IF_FAIL(NULL, s);
 	while (ft_isspace(*s))
 		s++;
 	i = 0;
@@ -55,7 +55,7 @@ char		*ft_strtrim(char const *s)
 		else
 			i++;
 	}
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(i)));
+	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(i)));
 	res = ft_strncpy(res, s, i);
 	return (res);
 }

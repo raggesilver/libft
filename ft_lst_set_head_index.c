@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lst_set_head_index.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 23:30:11 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/28 16:25:29 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/02/20 18:22:03 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/04/24 14:36:21 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_lst_set_head_index(t_list **alst, size_t index)
 {
-	char *res;
+	t_list *prev;
+	t_list *cur;
 
-	RETURN_VAL_IF_FAIL(NULL, (s1 && s2));
-	if (s1 && !s2)
-		return (ft_strdup(s1));
-	if (s2 && !s1)
-		return (ft_strdup(s2));
-	res = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	RETURN_VAL_IF_FAIL(NULL, res);
-	res = ft_strcpy(res, s1);
-	res = ft_strcat(res, s2);
-	return (res);
+	if (!alst || !index || index >= ft_lstcnt(*alst))
+		return ;
+	prev = NULL;
+	cur = *alst;
+	while (index-- > 0 && cur)
+	{
+		prev = cur;
+		cur = cur->next;
+	}
+	RETURN_IF_NOT(cur);
+	prev->next = cur->next;
+	cur->next = *alst;
+	*alst = cur;
 }

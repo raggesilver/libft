@@ -29,7 +29,7 @@ char		*ft_itoa_base(int val, int base)
 
 	ex = (val < 0) ? 1 : 0;
 	len = ft_int_len_base(val, base);
-	RETURN_X_IF_NOT_Y(NULL, (res = ft_strnew(len)));
+	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(len)));
 	i = len;
 	while (--i >= 0 + ex)
 	{

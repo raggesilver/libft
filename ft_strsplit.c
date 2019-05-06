@@ -19,7 +19,7 @@ char	**ft_strsplit(const char *s, char c)
 	size_t	cnt;
 
 	cnt = 1;
-	RETURN_X_IF_NOT_Y(NULL, (s && (res = (char **)malloc(sizeof(*res)))));
+	RETURN_VAL_IF_FAIL(NULL, (s && (res = (char **)malloc(sizeof(*res)))));
 	res[0] = NULL;
 	while (s && *s)
 	{
@@ -29,7 +29,7 @@ char	**ft_strsplit(const char *s, char c)
 			s++;
 			continue ;
 		}
-		RETURN_X_IF_NOT_Y(NULL, (res = ft_realloc(
+		RETURN_VAL_IF_FAIL(NULL, (res = ft_realloc(
 			res, sizeof(*res) * (cnt + 1))));
 		res[cnt - 1] = ft_strdupchr(s, c);
 		res[cnt] = NULL;

@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	t_list *res;
 	t_list *res_last;
 
-	RETURN_X_IF_NOT_Y(NULL, lst);
+	RETURN_VAL_IF_FAIL(NULL, lst);
 	res = NULL;
 	res_last = res;
 	while (lst)

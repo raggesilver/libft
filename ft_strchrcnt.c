@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strchrcnt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 23:30:11 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/02/28 16:25:29 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/05/01 23:58:44 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/05/02 00:00:08 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t	ft_strchrcnt(const char *s, char c)
 {
-	char *res;
+	size_t res;
 
-	RETURN_VAL_IF_FAIL(NULL, (s1 && s2));
-	if (s1 && !s2)
-		return (ft_strdup(s1));
-	if (s2 && !s1)
-		return (ft_strdup(s2));
-	res = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	RETURN_VAL_IF_FAIL(NULL, res);
-	res = ft_strcpy(res, s1);
-	res = ft_strcat(res, s2);
+	res = 0;
+	while (*s)
+	{
+		if (*s == c)
+			res++;
+		s++;
+	}
 	return (res);
 }

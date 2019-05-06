@@ -1,7 +1,7 @@
 
 NAME=libft.a
 
-FLAGS=-Wall -Werror -Wextra
+FLAGS=-Wall -Werror -Wextra -g
 
 FILES=ft_atoi.c \
 	  ft_bzero.c \
@@ -66,18 +66,29 @@ FILES=ft_atoi.c \
 	  ft_strsub.c \
 	  ft_strtrim.c \
 	  ft_tolower.c \
-	  ft_toupper.c
+	  ft_toupper.c \
+	  ft_lstcnt.c \
+	  ft_lstappend.c \
+	  ft_lst_set_head_index.c \
+	  ft_lst_sort.c \
+	  ft_sqrt_ceil.c \
+	  ft_strchrcnt.c
 
+HEADERS=libft.h
 OBJECTS=$(FILES:.c=.o)
 
-INCDIR=.
+INCDIR=includes
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(INCDIR)
+	$(foreach hd, $(HEADERS), cp $(hd) $(INCDIR))
 	gcc $(FLAGS) -c $(FILES)
 	ar rc $@ $(OBJECTS)
 	ranlib $@
+
+$(INCDIR):
+	@mkdir -p $@
 
 check:
 	norminette ft_*.c libft.h

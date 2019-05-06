@@ -22,7 +22,7 @@ char	*ft_strdupchr(const char *str, char c)
 	char *res;
 	char *tmp;
 
-	RETURN_X_IF_NOT_Y(NULL, str);
+	RETURN_VAL_IF_FAIL(NULL, str);
 	if (!(tmp = ft_strchr(str, c)))
 		return (ft_strdup(str));
 	res = ft_strndup(str, tmp - str);
