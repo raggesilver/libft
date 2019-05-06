@@ -1,0 +1,5 @@
+libft/
+*
+!*.*
+!.gitignore
+!Makefile

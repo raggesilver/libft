@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/06 12:51:53 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/06 15:32:53 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
+# define BUFF_SIZE 32
 
 void				ft_bzero(void *s, size_t n);
 int					ft_atoi(const char *str);
@@ -123,5 +124,8 @@ typedef struct		s_file
 t_file				*ft_fopen(const char *path, int mode);
 void				ft_fclose(t_file *f);
 void				ft_fdestroy(t_file *f);
+char				*ft_fread(t_file *self);
+
+int					ft_readln(const int fd, char **line);
 
 #endif
