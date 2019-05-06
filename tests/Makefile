@@ -55,6 +55,5 @@ debug: fclean all
 TEST_ARGS=
 TEST_FLAGS=--error-exitcode=1 --leak-check=full
 
-ci:
-	@make REC=true re
+ci: re
 	valgrind $(TEST_FLAGS) ./$(NAME) $(TEST_ARGS)
