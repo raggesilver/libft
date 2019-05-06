@@ -1,0 +1,9 @@
+stages:
+  - build
+
+build_test:
+  stage: build
+  allow_failure: false
+  image: etews/gcc-expect-valgrind
+  script:
+    - make ci
