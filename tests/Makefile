@@ -21,7 +21,7 @@ DEPS=$(foreach DP, $(DEP), $(DP:.a=)/$(DP))
 
 INCS=$(foreach lib, $(DDEP), -I $(lib)/includes)
 
-.PHONY: $(NAME) pre
+.PHONY: $(NAME) pre re fclean clean run debug ci all
 
 all: pre $(NAME)
 
