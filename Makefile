@@ -72,7 +72,8 @@ FILES=ft_atoi.c \
 	  ft_lst_set_head_index.c \
 	  ft_lst_sort.c \
 	  ft_sqrt_ceil.c \
-	  ft_strchrcnt.c
+	  ft_strchrcnt.c \
+	  ft_file.c
 
 HEADERS=libft.h
 OBJECTS=$(FILES:.c=.o)

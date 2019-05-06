@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 21:35:41 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/06 12:47:16 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/05/06 12:58:53 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-void	ft_striter(char *s, void (*f)(char *))
+int	main(void)
 {
-	RETURN_IF_FAIL((s && f));
-	while (*s)
-		f(s++);
+	t_file *f;
+
+	f = ft_fopen("main.c", O_RDONLY);
+	if (f->fd > -1)
+		ft_putendl("ft_fopen OK");
+	else
+		ft_putendl("ft_fopen FAIL");
+	ft_fdestroy(f);
+	return (0);
 }

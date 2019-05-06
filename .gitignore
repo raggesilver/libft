@@ -1,5 +1,9 @@
 *test*
+!tests/
+includes/
 *.pdf
 *~
 *.a
 *.o
+
+.vscode

@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/02 00:00:29 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/06 12:51:53 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 # define _IW2(x) (x == '\r' || x == '\v' || x == '\f')
 
 # define IS_WHITESPACE(x) (x == ' ' || x == '\t' || x == '\n' || _IW2(x))
 
-# define RETURN_IF_NOT(x) ({ if (!x) return ;})
-# define RETURN_VAL_IF_FAIL(x, y) ({ if (!y) return (x);})
-# define CONTINUE_IF_NOT(x) ({ if (!x) continue ;})
-# define INLINE_IF(x, body) ({ if (x) body })
-# define INLINE_IF_ELSE(x, ix, ex) ({ if (x) ix else ex })
+# define RETURN_IF_FAIL(x) ({ if (!x) return ; })
+# define RETURN_VAL_IF_FAIL(x, y) ({ if (!y) return (x); })
+# define CONTINUE_IF_FAIL(x) ({ if (!x) continue ; })
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
@@ -110,5 +110,18 @@ size_t				ft_lstcnt(t_list *head);
 
 int					ft_sqrt_ceil(int n);
 size_t				ft_strchrcnt(const char *s, char c);
+
+typedef struct		s_file
+{
+	const char		*path;
+	int				fd;
+	int				mode;
+}					t_file;
+
+# define T_FILE(x) ((t_file *)x)
+
+t_file				*ft_fopen(const char *path, int mode);
+void				ft_fclose(t_file *f);
+void				ft_fdestroy(t_file *f);
 
 #endif
