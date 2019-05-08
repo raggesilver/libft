@@ -8,7 +8,8 @@ REC=true
 SLIB=true
 
 # Sources here
-SRC=ft_atoi.c \
+SRCDIR=src
+_SRC=ft_atoi.c \
 	ft_bzero.c \
 	ft_int_len.c \
 	ft_int_len_base.c \
@@ -78,8 +79,12 @@ SRC=ft_atoi.c \
 	ft_lst_sort.c \
 	ft_sqrt_ceil.c \
 	ft_strchrcnt.c \
-	ft_file.c
-OBJ=$(SRC:.c=.o)
+	ft_file.c \
+	string/ft_string.c
+
+_OBJ=$(_SRC:.c=.o)
+OBJ=$(foreach f,${_OBJ},$(notdir ${f}))
+SRC=$(addprefix $(SRCDIR)/,$(_SRC))
 
 PRESCRIPTS=
 
@@ -107,6 +112,8 @@ ifdef SLIB
 	$(CC) $(FLAGS) -c $(SRC) $(DEPS) $(INCS) $(FDEP)
 	ar rc $@ $(OBJ)
 	ranlib $@
+	@mkdir -p includes
+	@cp $(SRCDIR)/*.h includes
 else
 	$(CC) $(FLAGS) $(SRC) $(DEPS) -o $@ $(INCS) $(FDEP)
 endif

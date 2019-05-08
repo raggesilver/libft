@@ -6,11 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/06 15:51:08 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/08 14:58:34 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 int	main(void)
 {
@@ -36,5 +36,17 @@ int	main(void)
 	s = ft_strdupchr("batata\npotato", '\n');
 	ft_putendl(s);
 	ft_strdel(&s);
+
+	ft_putendl("t_string ========");
+	t_string *string = ft_string_new("test");
+	ft_putendl(string->data);
+	ft_putnbr((int)string->length);
+	ft_putchar('\n');
+	string->append(string, " another test");
+	ft_putendl(string->data);
+	ft_putnbr((int)string->length);
+	ft_putchar('\n');
+	string->destroy(&string);
+	ft_putendl("t_string end ====");
 	return (0);
 }

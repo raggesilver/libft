@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/06 15:32:53 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/08 14:58:43 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,28 @@ void				ft_fclose(t_file *f);
 void				ft_fdestroy(t_file *f);
 char				*ft_fread(t_file *self);
 
+/*
+** This is get_next_line under a different name
+*/
+
 int					ft_readln(const int fd, char **line);
+
+/*
+** String type
+*/
+
+typedef struct		s_string
+{
+	char			*data;
+	size_t			length;
+	void			(*append)(struct s_string *self, const char *s);
+	void			(*destroy)(struct s_string **self);
+}					t_string;
+
+# define T_STRING(x) ((t_string *)x)
+
+t_string			*ft_string_new(const char *s);
+void				ft_string_append(t_string *self, const char *s);
+void				ft_string_destroy(t_string **self);
 
 #endif
