@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/08 14:58:43 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/08 16:00:55 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 
 void				*ft_realloc(void *ptr, size_t len);
+void				*ft_reallocsz(void *ptr, size_t len, size_t new_len);
 char				*ft_strndup(const char *s, size_t len);
 int					ft_int_len(int n);
 int					ft_int_len_base(int n, int base);

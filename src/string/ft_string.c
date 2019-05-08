@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 14:19:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/08 14:59:25 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/08 16:08:03 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void			ft_string_append(t_string *self, const char *s)
 	else
 	{
 		tmp = ft_strlen(s);
-		self->data = ft_realloc(self->data, self->length + tmp + 1);
+		self->data = ft_reallocsz(
+			self->data, self->length, self->length + tmp + 1);
 		self->length += tmp;
 		self->data[self->length] = 0;
 		while (tmp >= 0)
