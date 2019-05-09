@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:15:35 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 00:33:54 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,21 @@ int	main(void)
 	ft_array_push(arr, AUTOPTR(42));
 	ft_array_push(arr, AUTOPTR(17));
 	ft_array_push(arr, AUTOPTR(255));
+	ft_array_push(arr, AUTOPTR(255));
+	ft_array_push(arr, AUTOPTR(255));
+	ft_array_push(arr, AUTOPTR(255));
+	ft_array_push(arr, AUTOPTR(255));
+	ft_array_push(arr, AUTOPTR(255));
+	ft_array_push(arr, AUTOPTR(255));
+	ft_array_push(arr, AUTOPTR(255));
+	ft_array_push(arr, AUTOPTR(255));
+
+	ft_array_delete(arr, 1);
+	ft_array_delete(arr, 1);
+
+	ft_putstr("Arr size ");
+	ft_putnbr((int) arr->size);
+	ft_putchar('\n');
 
 	for (size_t i = 0; i < arr->length; i++)
 	{
