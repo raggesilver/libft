@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 14:19:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 15:49:07 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:06:20 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void			ft_string_prepend(t_string *self, const char *s)
 		tmp = ft_strlen(s);
 		old = self->data;
 		self->data = malloc(self->length + tmp + 1);
+		self->data[0] = 0;
 		ft_strcat(self->data, s);
 		ft_strcat(self->data, old);
 		self->length += tmp;
