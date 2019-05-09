@@ -80,7 +80,10 @@ _SRC=ft_atoi.c \
 	ft_lst_sort.c \
 	ft_sqrt_ceil.c \
 	ft_strchrcnt.c \
-	ft_file.c \
+	file/ft_file.c \
+	array/ft_array.c \
+	array/ft_array_push.c \
+	array/ft_array_remove.c \
 	string/ft_string.c
 
 _OBJ=$(_SRC:.c=.o)
@@ -95,10 +98,10 @@ PRESCRIPTS=
 # tree: . .. libft/ Makefile #...
 DEP=
 DDEP=$(DEP:.a=)
-FDEP=$(foreach DP, $(DDEP), -L$(DP) -l$(subst lib,,$(DP)))
-DEPS=$(foreach DP, $(DEP), $(DP:.a=)/$(DP))
+FDEP=$(foreach DP,$(DDEP),-L$(DP) -l$(subst lib,,$(DP)))
+DEPS=$(foreach DP,$(DEP),$(DP:.a=)/$(DP))
 
-INCS=$(foreach lib, $(DDEP), -I $(lib)/includes)
+INCS=$(foreach lib,$(DDEP),-I $(lib)/includes)
 
 .PHONY: all re fclean clean $(NAME) pre
 
