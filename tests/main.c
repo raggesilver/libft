@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:33:54 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 00:37:07 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ int	main(void)
 	tmp = ft_fread(f);
 	ft_putendl("ft_fread ===========");
 	ft_putstr(tmp->data);
-	ft_putendl("ft_fwrite ==========");
-	tmp->append(tmp, "BLAH BLAH BLAH\n");
-	if (ft_fwrite(f, tmp) > 0)
-		ft_putendl("File written OK");
-	else
-		ft_putendl("File written FAIL");
-	ft_putendl("ft_fread end =======");
+	// It works
+	// ft_putendl("ft_fwrite ==========");
+	// tmp->append(tmp, "BLAH BLAH BLAH\n");
+	// if (ft_fwrite(f, tmp) > 0)
+	// 	ft_putendl("File written OK");
+	// else
+	// 	ft_putendl("File written FAIL");
+	// ft_putendl("ft_fread end =======");
 	ft_string_destroy(&tmp);
 	ft_fdestroy(f);
 
