@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/08 23:42:15 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:48:03 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct		s_string
 
 t_string			*ft_string_new(const char *s);
 void				ft_string_append(t_string *self, const char *s);
+void				ft_string_prepend(t_string *self, const char *s);
 void				ft_string_destroy(t_string **self);
 
 /*

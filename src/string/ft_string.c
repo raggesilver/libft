@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 14:19:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/08 16:08:03 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:49:07 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,26 @@ t_string		*ft_string_new(const char *s)
 	self->append = &ft_string_append;
 	self->destroy = &ft_string_destroy;
 	return (self);
+}
+
+void			ft_string_prepend(t_string *self, const char *s)
+{
+	ssize_t tmp;
+	char	*old;
+
+	if (self->data == NULL)
+		self->length = ft_strdupsz(&self->data, s);
+	else
+	{
+		tmp = ft_strlen(s);
+		old = self->data;
+		self->data = malloc(self->length + tmp + 1);
+		ft_strcat(self->data, s);
+		ft_strcat(self->data, old);
+		self->length += tmp;
+		self->data[self->length] = 0;
+		ft_strdel(&old);
+	}
 }
 
 void			ft_string_append(t_string *self, const char *s)

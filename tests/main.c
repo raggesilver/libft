@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:37:07 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:01:15 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(void)
 	ft_fdestroy(f);
 
 	int *a = AUTOPTR(20);
-	ft_putendl("AUTOPTR (int 20)====");
+	ft_putendl("AUTOPTR (int 20) ===");
 	ft_putnbr(*a);
 	ft_putchar('\n');
 	ft_putendl("AUTOPTR ============");
@@ -89,5 +89,10 @@ int	main(void)
 		ft_putchar('\n');
 	}
 	ft_array_terminate(&arr);
+
+	t_string *ss = ft_string_new("is good!");
+	ft_string_prepend(ss, "Batata ");
+	ft_putendl(ss->data);
+	ft_string_destroy(&ss);
 	return (0);
 }
