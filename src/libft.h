@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 19:45:11 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 23:05:44 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,14 @@ long long			ft_atoll(const char *str);
 
 char				*ft_itoa_base(int n, int base);
 char				*ft_itoa(int n);
+char				*ft_lltoa_base(long long n, int base);
 char				*ft_lltoa(long long n);
+char				*ft_ltoa_base(long n, int base);
 char				*ft_ltoa(long n);
+char				*ft_ulltoa_base(unsigned long long n, int base);
+char				*ft_ulltoa(unsigned long long n);
+char				*ft_ultoa_base(unsigned long n, int base);
+char				*ft_ultoa(unsigned long n);
 
 /*
 ** Char =====
@@ -124,6 +130,7 @@ void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 int					ft_int_len_base(int n, int base);
 int					ft_int_len(int n);
 int					ft_sqrt_ceil(int n);
+size_t				ft_ull_len_base(unsigned long long n, int base);
 size_t				ft_ull_len(unsigned long long n);
 
 /*
@@ -166,6 +173,8 @@ t_string			*ft_string_new(const char *s);
 void				ft_string_append(t_string *self, const char *s);
 void				ft_string_destroy(t_string **self);
 void				ft_string_prepend(t_string *self, const char *s);
+void				ft_string_to_lower(t_string *self);
+void				ft_string_to_upper(t_string *self);
 
 /*
 ** File type ===================================================================

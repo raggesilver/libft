@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_number_len.c                                    :+:      :+:    :+:   */
+/*   ft_string_format.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/18 16:33:51 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 22:52:59 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/05/09 23:02:23 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/05/09 23:08:03 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-int			ft_int_len(int n)
+void		ft_string_to_lower(t_string *self)
 {
-	return (ft_int_len_base(n, 10));
+	size_t	i;
+
+	i = 0;
+	while (i < self->length)
+	{
+		self->data[i] = ft_tolower(self->data[i]);
+		i++;
+	}
 }
 
-size_t		ft_ull_len_base(unsigned long long n, int base)
+void		ft_string_to_upper(t_string *self)
 {
-	size_t				res;
+	size_t	i;
 
-	res = 1;
-	while ((n /= base))
-		res++;
-	return (res);
-}
-
-size_t		ft_ull_len(unsigned long long n)
-{
-	return (ft_ull_len_base(n, 10));
+	i = 0;
+	while (i < self->length)
+	{
+		self->data[i] = ft_toupper(self->data[i]);
+		i++;
+	}
 }

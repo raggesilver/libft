@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_number_to_string.c                              :+:      :+:    :+:   */
+/*   ft_unsigned_to_string.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:49:40 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 22:59:03 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 22:58:48 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,34 @@
 
 static const char	*g_chars = "0123456789ABCDEF";
 
-char				*ft_lltoa_base(long long n, int base)
+char				*ft_ulltoa_base(unsigned long long n, int base)
 {
 	char				*res;
-	unsigned long long	nn;
 	int					len;
 	int					i;
 
-	nn = (n < 0) ? -n : n;
-	len = ft_ull_len(nn) + (n < 0);
+	len = ft_ull_len_base(n, base);
 	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(len)));
 	i = len;
-	while (--i >= 0 + (n < 0))
+	while (--i >= 0)
 	{
-		res[i] = g_chars[nn % base];
-		nn /= base;
+		res[i] = g_chars[n % base];
+		n /= base;
 	}
-	if (n < 0)
-		res[0] = '-';
 	return (res);
 }
 
-char				*ft_lltoa(long long n)
+char				*ft_ulltoa(unsigned long long n)
 {
-	return (ft_lltoa_base(n, 10));
+	return (ft_ulltoa_base(n, 10));
 }
 
-char				*ft_ltoa_base(long n, int base)
+char				*ft_ultoa_base(unsigned long n, int base)
 {
-	return (ft_lltoa_base(n, base));
+	return (ft_ulltoa_base(n, base));
 }
 
-char				*ft_ltoa(long n)
+char				*ft_ultoa(unsigned long n)
 {
-	return (ft_ltoa_base(n, 10));
+	return (ft_ulltoa_base(n, 10));
 }
