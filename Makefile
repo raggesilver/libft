@@ -11,7 +11,8 @@ SLIB=true
 SRCDIR=src
 _SRC=ft_atoi.c \
 	ft_bzero.c \
-	ft_int_len.c \
+	ft_number_len.c \
+	ft_number_to_string.c \
 	ft_int_len_base.c \
 	ft_isalnum.c \
 	ft_isalpha.c \
