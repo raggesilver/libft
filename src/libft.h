@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 15:48:03 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/09 18:09:07 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 
 void				ft_bzero(void *s, size_t n);
 int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
+long long			ft_atoll(const char *str);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
