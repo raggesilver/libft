@@ -14,6 +14,7 @@ _SRC=ft_atoi.c \
 	ft_number_len.c \
 	ft_number_to_string.c \
 	ft_unsigned_to_string.c \
+	ft_unsigned2_to_string.c \
 	ft_int_len_base.c \
 	ft_isalnum.c \
 	ft_isalpha.c \
@@ -87,6 +88,7 @@ _SRC=ft_atoi.c \
 	array/ft_array_push.c \
 	array/ft_array_remove.c \
 	string/ft_string.c \
+	string/ft_string_inpend.c \
 	string/ft_string_format.c
 
 _OBJ=$(_SRC:.c=.o)

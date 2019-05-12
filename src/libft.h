@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 23:05:44 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/11 22:20:58 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ char				*ft_ulltoa_base(unsigned long long n, int base);
 char				*ft_ulltoa(unsigned long long n);
 char				*ft_ultoa_base(unsigned long n, int base);
 char				*ft_ultoa(unsigned long n);
+char				*ft_utoa_base(unsigned n, int base);
+char				*ft_utoa(unsigned n);
 
 /*
 ** Char =====
@@ -172,6 +174,8 @@ typedef struct		s_string
 t_string			*ft_string_new(const char *s);
 void				ft_string_append(t_string *self, const char *s);
 void				ft_string_destroy(t_string **self);
+void				ft_string_inpend(t_string *self, size_t index,
+										const char *str);
 void				ft_string_prepend(t_string *self, const char *s);
 void				ft_string_to_lower(t_string *self);
 void				ft_string_to_upper(t_string *self);
@@ -231,8 +235,8 @@ void				ft_array_push(t_array *self, void *value);
 ** to an array. This pointer can be freed manually or using `ft_array_terminate`
 */
 
-# define _AUTOMAL(x) ({ typeof(x) *pp_f = malloc(sizeof(x)); pp_f; })
-# define AUTOPTR(x) ({ typeof(x) *pp_f = _AUTOMAL(x); *pp_f = x; pp_f; })
+# define _AUTOMAL(x)	({ typeof(x) *pp_f = malloc(sizeof(x)); pp_f; })
+# define AUTOPTR(x)		({ typeof(x) *pp_f = _AUTOMAL(x); *pp_f = x; pp_f; })
 
 /*
 ** This function initializes the array with values from a NULL terminated

@@ -6,12 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 16:45:57 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 18:28:47 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/11 15:24:05 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	g_list[16] = "0123456789ABCDEF";
 
