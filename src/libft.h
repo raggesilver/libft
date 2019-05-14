@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/11 22:20:58 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/13 18:22:08 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,42 @@
 # define RETURN_IF_FAIL(x)			({ if (!x) return ; })
 # define RETURN_VAL_IF_FAIL(x, y)	({ if (!y) return (x); })
 
+# define MIN(x, y)	((x > y) ? y : x)
+# define MAX(x, y)	((x > y) ? x : y)
+# define MOD(x)		((x < 0) ? -x : x)
+
 # define BUFF_SIZE	32
 # define INT_MAX	2147483647
 # define INT_MIN	-2147483648
 
+# define _ULL unsigned long long
+
+typedef _ULL		t_ull;
+
 /*
 ** Conversion =====
 */
+
+typedef union		u_ld_i64
+{
+	long double		f;
+	int64_t			i;
+	unsigned char	c[128];
+}					t_u_ld_i64;
+
+typedef struct		s_float
+{
+	// long			exp;
+	// long			man;
+	// uint64_t		den;
+	// uint64_t		num;
+	int64_t			mantissa;
+	int16_t			exponent;
+	t_u_ld_i64		un;
+	int				sign : 1;
+}					t_float;
+
+t_float				ft_float_new(long double n);
 
 int					ft_atoi(const char *str);
 long				ft_atol(const char *str);
@@ -38,6 +67,7 @@ long long			ft_atoll(const char *str);
 
 char				*ft_itoa_base(int n, int base);
 char				*ft_itoa(int n);
+char				*ft_ldtoa(long double n, int precision);
 char				*ft_lltoa_base(long long n, int base);
 char				*ft_lltoa(long long n);
 char				*ft_ltoa_base(long n, int base);

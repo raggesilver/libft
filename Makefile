@@ -21,6 +21,8 @@ _SRC=ft_atoi.c \
 	ft_isascii.c \
 	ft_isdigit.c \
 	ft_isprint.c \
+	ft_ftoa.c \
+	ft_float.c \
 	ft_itoa.c \
 	ft_itoa_base.c \
 	ft_lstadd.c \

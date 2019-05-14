@@ -8,3 +8,4 @@ includes/
 *.out
 
 .vscode
+._*
