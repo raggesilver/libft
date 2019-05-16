@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:05:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/16 00:54:49 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/16 12:43:52 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ t_socket			*ft_socket_new(void)
 	return (ft_socket_new_with_port(-1));
 }
 
-t_socket
-
 int					ft_socket_bind(t_socket *self)
 {
-	return (bind(self->fd, (const struct sockaddr *)&self->address,
-		sizeof(self->address)));
+	int res;
+
+	res = bind(self->fd, (const struct sockaddr *)&self->address,
+		sizeof(self->address));
+	return (res);
 }
