@@ -9,23 +9,27 @@ SLIB=true
 
 # Sources here
 SRCDIR=src
-_SRC=ft_atoi.c \
+_SRC=array/ft_array_push.c \
+	array/ft_array_remove.c \
+	array/ft_array.c \
+	file/ft_file.c \
+	ft_atoi.c \
 	ft_bzero.c \
-	ft_number_len.c \
-	ft_number_to_string.c \
-	ft_unsigned_to_string.c \
-	ft_unsigned2_to_string.c \
+	ft_float.c \
+	ft_ftoa.c \
 	ft_int_len_base.c \
 	ft_isalnum.c \
 	ft_isalpha.c \
 	ft_isascii.c \
 	ft_isdigit.c \
 	ft_isprint.c \
-	ft_ftoa.c \
-	ft_float.c \
-	ft_itoa.c \
 	ft_itoa_base.c \
+	ft_itoa.c \
+	ft_lst_set_head_index.c \
+	ft_lst_sort.c \
 	ft_lstadd.c \
+	ft_lstappend.c \
+	ft_lstcnt.c \
 	ft_lstdel.c \
 	ft_lstdelone.c \
 	ft_lstiter.c \
@@ -39,18 +43,24 @@ _SRC=ft_atoi.c \
 	ft_memdel.c \
 	ft_memmove.c \
 	ft_memset.c \
-	ft_putchar.c \
+	ft_number_len.c \
+	ft_number_to_string.c \
 	ft_putchar_fd.c \
-	ft_putendl.c \
+	ft_putchar.c \
 	ft_putendl_fd.c \
-	ft_putnbr.c \
+	ft_putendl.c \
 	ft_putnbr_fd.c \
-	ft_putstr.c \
+	ft_putnbr.c \
 	ft_putstr_fd.c \
+	ft_putstr.c \
+	ft_readln.c \
 	ft_realloc.c \
 	ft_reallocsz.c \
+	ft_socket.c \
+	ft_sqrt_ceil.c \
 	ft_strcat.c \
 	ft_strchr.c \
+	ft_strchrcnt.c \
 	ft_strclr.c \
 	ft_strcmp.c \
 	ft_strcpy.c \
@@ -79,19 +89,11 @@ _SRC=ft_atoi.c \
 	ft_strtrim.c \
 	ft_tolower.c \
 	ft_toupper.c \
-	ft_lstcnt.c \
-	ft_lstappend.c \
-	ft_lst_set_head_index.c \
-	ft_lst_sort.c \
-	ft_sqrt_ceil.c \
-	ft_strchrcnt.c \
-	file/ft_file.c \
-	array/ft_array.c \
-	array/ft_array_push.c \
-	array/ft_array_remove.c \
-	string/ft_string.c \
+	ft_unsigned_to_string.c \
+	ft_unsigned2_to_string.c \
+	string/ft_string_format.c \
 	string/ft_string_inpend.c \
-	string/ft_string_format.c
+	string/ft_string.c
 
 _OBJ=$(_SRC:.c=.o)
 OBJ=$(foreach f,${_OBJ},$(notdir ${f}))
