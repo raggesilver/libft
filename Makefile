@@ -112,24 +112,18 @@ DEPS=$(foreach DP,$(DEP),$(DP:.a=)/$(DP))
 
 INCS=$(foreach lib,$(DDEP),-I $(lib)/includes)
 
-.PHONY: all re fclean clean $(NAME) pre
+.PHONY: all re fclean clean
+all: $(NAME)
 
-all: pre $(NAME)
-
-pre:
-	$(foreach ps, $(PRESCRIPTS), ./$(ps))
-
-$(NAME):
+$(NAME): includes
 	$(foreach dep, $(DDEP), make -C $(dep))
-ifdef SLIB
 	$(CC) $(FLAGS) -c $(SRC) $(DEPS) $(INCS) $(FDEP)
 	ar rc $@ $(OBJ)
 	ranlib $@
-	@mkdir -p includes
 	@cp $(SRCDIR)/*.h includes
-else
-	$(CC) $(FLAGS) $(SRC) $(DEPS) -o $@ $(INCS) $(FDEP)
-endif
+
+includes:
+	@mkdir -p includes
 
 clean:
 ifdef REC
