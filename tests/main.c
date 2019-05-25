@@ -6,11 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 16:01:15 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/24 23:53:58 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	main(void)
 {
@@ -93,6 +94,21 @@ int	main(void)
 	t_string *ss = ft_string_new("is good!");
 	ft_string_prepend(ss, "Batata ");
 	ft_putendl(ss->data);
+
+	ft_string_remove(ss, 7, 2);
+	ft_string_inpend(ss, 7, "are");
+	ft_putendl(ss->data);
+
+	ft_string_remove(ss, 0, 200);
+	ft_putendl(ss->data);
+
 	ft_string_destroy(&ss);
+
+	// t_bignum *n = ft_bignum(NULL, 10);
+	// ft_bignum_add(n, 10);
+	// ft_bignum_add(n, 100);
+	// ft_bignum_add(n, 1000);
+	// ft_bignum_add(n, 42);
+	// printf("'%s'\n", n->str);
 	return (0);
 }

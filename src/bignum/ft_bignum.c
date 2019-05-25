@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned2_to_string.c                           :+:      :+:    :+:   */
+/*   ft_bignum.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 18:49:40 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/24 16:53:11 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/05/24 16:24:14 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/05/24 16:41:40 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-char				*ft_utoa_base(unsigned n, int base)
+t_bignum		*ft_bignum(const char *str, unsigned base)
 {
-	char				*res;
-	int					len;
-	int					i;
+	t_bignum	*res;
 
-	len = ft_ull_len_base(n, base);
-	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(len)));
-	i = len;
-	while (--i >= 0)
-	{
-		res[i] = g_chars[n % base];
-		n /= base;
-	}
+	res = malloc(sizeof(*res));
+	res->str = (str) ? str : ft_strdup("0");
+	res->length = (str) ? ft_strlen(str) : 1;
+	res->base = base;
 	return (res);
 }
 
-char				*ft_utoa(unsigned n)
+void			ft_bignum_destroy(t_bignum **self)
 {
-	return (ft_utoa_base(n, 10));
+	ft_strdel((char **)&(*self)->str);
+	ft_memdel((void **)self);
 }

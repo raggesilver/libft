@@ -51,6 +51,7 @@ _SRC=ft_atoi.c \
 	ft_reallocsz.c \
 	ft_strcat.c \
 	ft_strchr.c \
+	ft_strrev.c \
 	ft_strclr.c \
 	ft_strcmp.c \
 	ft_strcpy.c \
@@ -91,7 +92,10 @@ _SRC=ft_atoi.c \
 	array/ft_array_remove.c \
 	string/ft_string.c \
 	string/ft_string_inpend.c \
-	string/ft_string_format.c
+	string/ft_string_remove.c \
+	string/ft_string_format.c \
+	bignum/ft_bignum.c \
+	bignum/ft_bignum_add.c
 
 _OBJ=$(_SRC:.c=.o)
 OBJ=$(foreach f,${_OBJ},$(notdir ${f}))
@@ -110,7 +114,7 @@ DEPS=$(foreach DP,$(DEP),$(DP:.a=)/$(DP))
 
 INCS=$(foreach lib,$(DDEP),-I $(lib)/includes)
 
-.PHONY: all re fclean clean $(NAME) pre
+.PHONY: all re fclean clean pre
 
 all: pre $(NAME)
 

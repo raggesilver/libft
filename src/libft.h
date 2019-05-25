@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/13 18:22:08 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/24 23:52:54 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,18 @@ typedef _ULL		t_ull;
 ** Conversion =====
 */
 
-typedef union		u_ld_i64
+typedef union		u_dbl
 {
-	long double		f;
-	int64_t			i;
-	unsigned char	c[128];
-}					t_u_ld_i64;
+	long double		val;
+	char			bytes[sizeof(long double)];
+}					t_dbl;
 
 typedef struct		s_float
 {
-	// long			exp;
-	// long			man;
-	// uint64_t		den;
-	// uint64_t		num;
-	int64_t			mantissa;
-	int16_t			exponent;
-	t_u_ld_i64		un;
-	int				sign : 1;
+	short			exponent;
+	uint64_t		mantissa;
+	t_dbl			dbl;
+	unsigned		sign : 1;
 }					t_float;
 
 t_float				ft_float_new(long double n);
@@ -140,6 +135,7 @@ char				*ft_strnew(size_t size);
 char				*ft_strnstr(const char *haystack, const char *needle,
 								size_t len);
 char				*ft_strrchr(const char *s, int c);
+char				*ft_strrev(char *str);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
@@ -305,5 +301,26 @@ void				*ft_array_remove(t_array *self, size_t index);
 */
 
 void				ft_array_delete(t_array *self, size_t index);
+
+/*
+** Bignum type =================================================================
+*/
+
+extern const char	*g_chars;
+
+# define _FK_NBNSTR(x) ({ (t_string){(char *)x->str, x->length, NULL, NULL}; })
+# define BN_TO_STRING(x) ({ t_string s = _FK_NBNSTR(x); &s; })
+
+typedef struct		s_bignum
+{
+	const char		*str;
+	size_t			length;
+	unsigned		base;
+}					t_bignum;
+
+t_bignum			*ft_bignum_add(t_bignum *self, int n);
+t_bignum			*ft_bignum(const char *str, unsigned base);
+t_string			*ft_string_remove(t_string *self, size_t index, size_t len);
+void				ft_bignum_destroy(t_bignum **self);
 
 #endif

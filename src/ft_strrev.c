@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned2_to_string.c                           :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 18:49:40 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/24 16:53:11 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/05/23 23:51:36 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/05/23 23:55:01 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*ft_utoa_base(unsigned n, int base)
+char	*ft_strrev(char *str)
 {
-	char				*res;
-	int					len;
-	int					i;
+	size_t	len;
+	size_t	i;
+	char	c;
 
-	len = ft_ull_len_base(n, base);
-	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(len)));
-	i = len;
-	while (--i >= 0)
+	i = 0;
+	len = ft_strlen(str);
+	while (i < len)
 	{
-		res[i] = g_chars[n % base];
-		n /= base;
+		c = str[i];
+		str[i] = str[--len];
+		str[len] = c;
+		i++;
 	}
-	return (res);
-}
-
-char				*ft_utoa(unsigned n)
-{
-	return (ft_utoa_base(n, 10));
+	return (str);
 }

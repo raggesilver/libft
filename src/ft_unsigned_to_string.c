@@ -6,13 +6,13 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 18:49:40 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 22:58:48 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:44:31 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static const char	*g_chars = "0123456789ABCDEF";
+const char			*g_chars = "0123456789ABCDEF";
 
 char				*ft_ulltoa_base(unsigned long long n, int base)
 {
