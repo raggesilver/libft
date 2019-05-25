@@ -97,7 +97,7 @@ _SRC=array/ft_array_push.c \
 	string/ft_string_remove.c \
 	string/ft_string_format.c \
 	bignum/ft_bignum.c \
-	bignum/ft_bignum_add.c
+	bignum/ft_bignum_add.c \
 	string/ft_string.c
 
 _OBJ=$(_SRC:.c=.o)
@@ -120,6 +120,9 @@ INCS=$(foreach lib,$(DDEP),-I $(lib)/includes)
 .PHONY: all re fclean clean pre
 
 all: pre $(NAME)
+
+pre:
+	$(foreach ps, $(PRESCRIPTS), ./$(ps))
 
 $(NAME): includes
 	$(foreach dep, $(DDEP), make -C $(dep))
