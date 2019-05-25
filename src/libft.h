@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/24 23:52:54 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/25 00:10:26 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <netinet/in.h>
+# include <sys/socket.h>
 
 # define _IW2(x)			(x == '\r' || x == '\v' || x == '\f')
 # define IS_WHITESPACE(x)	(x == ' ' || x == '\t' || x == '\n' || _IW2(x))
@@ -301,6 +303,24 @@ void				*ft_array_remove(t_array *self, size_t index);
 */
 
 void				ft_array_delete(t_array *self, size_t index);
+
+/*
+** Socket type =================================================================
+*/
+
+# define _S_SADDRIN struct sockaddr_in
+
+typedef _S_SADDRIN	t_addr;
+
+typedef struct		s_socket
+{
+	int				fd;
+	t_addr			address;
+}					t_socket;
+
+t_socket			*ft_socket_new(void);
+t_socket			*ft_socket_new_with_port(int port);
+int					ft_socket_bind(t_socket *self);
 
 /*
 ** Bignum type =================================================================

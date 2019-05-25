@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 18:04:33 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/03/25 13:18:33 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/16 13:24:08 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_list	*ft_lstnew(const void *content, size_t content_size)
 		res->content = malloc(content_size);
 		ft_memcpy(res->content, content, content_size);
 	}
+	else
+		res->content = NULL;
 	res->content_size = (content) ? content_size : 0;
 	res->next = NULL;
 	return (res);
