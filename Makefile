@@ -53,4 +53,10 @@ fclean: clean
 
 re: fclean all
 
+debug: FLAGS += -g
+debug: fclean all
+
+ci:
+	@make -C tests ci
+
 -include $(DEPS)

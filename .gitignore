@@ -1,6 +1,7 @@
 *test*
 !tests/
 includes/
+build/
 *.pdf
 *~
 *.a
