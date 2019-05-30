@@ -1,161 +1,56 @@
 
-# Name here
-NAME=libft.a
-CC=gcc
-FLAGS=-Wall -Werror -Wextra
+CC = gcc
+NAME = libft.a
 
-REC=true
-SLIB=true
+# Comment for normal executable
+IS_LIB=true
 
-# Sources here
-SRCDIR=src
-_SRC=array/ft_array_push.c \
-	array/ft_array_remove.c \
-	array/ft_array.c \
-	file/ft_file.c \
-	ft_atoi.c \
-	ft_bzero.c \
-	ft_float.c \
-	ft_ftoa.c \
-	ft_int_len_base.c \
-	ft_isalnum.c \
-	ft_isalpha.c \
-	ft_isascii.c \
-	ft_isdigit.c \
-	ft_isprint.c \
-	ft_itoa_base.c \
-	ft_itoa.c \
-	ft_lst_set_head_index.c \
-	ft_lst_sort.c \
-	ft_lstadd.c \
-	ft_lstappend.c \
-	ft_lstcnt.c \
-	ft_lstdel.c \
-	ft_lstdelone.c \
-	ft_lstiter.c \
-	ft_lstmap.c \
-	ft_lstnew.c \
-	ft_memalloc.c \
-	ft_memccpy.c \
-	ft_memchr.c \
-	ft_memcmp.c \
-	ft_memcpy.c \
-	ft_memdel.c \
-	ft_memmove.c \
-	ft_memset.c \
-	ft_number_len.c \
-	ft_number_to_string.c \
-	ft_putchar_fd.c \
-	ft_putchar.c \
-	ft_putendl_fd.c \
-	ft_putendl.c \
-	ft_putnbr_fd.c \
-	ft_putnbr.c \
-	ft_putstr_fd.c \
-	ft_putstr.c \
-	ft_readln.c \
-	ft_realloc.c \
-	ft_reallocsz.c \
-	ft_socket.c \
-	ft_sqrt_ceil.c \
-	ft_strcat.c \
-	ft_strchr.c \
-	ft_strrev.c \
-	ft_strchrcnt.c \
-	ft_strclr.c \
-	ft_strcmp.c \
-	ft_strcpy.c \
-	ft_strdel.c \
-	ft_strdup.c \
-	ft_strdupchr.c \
-	ft_strequ.c \
-	ft_striter.c \
-	ft_striteri.c \
-	ft_strjoin.c \
-	ft_strlcat.c \
-	ft_strlen.c \
-	ft_strmap.c \
-	ft_strmapi.c \
-	ft_strncat.c \
-	ft_strncmp.c \
-	ft_strncpy.c \
-	ft_strndup.c \
-	ft_strnequ.c \
-	ft_strnew.c \
-	ft_strnstr.c \
-	ft_strrchr.c \
-	ft_strsplit.c \
-	ft_strstr.c \
-	ft_strsub.c \
-	ft_strtrim.c \
-	ft_tolower.c \
-	ft_toupper.c \
-	ft_unsigned_to_string.c \
-	ft_unsigned2_to_string.c \
-	string/ft_string_format.c \
-	string/ft_string_inpend.c \
-	string/ft_string_remove.c \
-	string/ft_string_format.c \
-	bignum/ft_bignum.c \
-	bignum/ft_bignum_add.c \
-	string/ft_string.c
+SRCDIR := src
+BUILD_DIR := build
 
-_OBJ=$(_SRC:.c=.o)
-OBJ=$(foreach f,${_OBJ},$(notdir ${f}))
-SRC=$(addprefix $(SRCDIR)/,$(_SRC))
+SRCS := $(shell find $(SRCDIR) -name "*.c")
+OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
+DEPS := $(OBJS:.o=.d)
 
-PRESCRIPTS=
+HEADDIR := includes
+HEAD := $(shell find $(SRCDIR) -name "*.h" -and ! -name "*_priv.h")
+HEAD := $(subst $(SRCDIR),$(HEADDIR),$(HEAD))
 
-# Dependencies here (.a files)
-# Make sure those dependencies' directories are on your project's root
-# i.e: dep = libft.a
-# tree: . .. libft/ Makefile #...
-DEP=
-DDEP=$(DEP:.a=)
-FDEP=$(foreach DP,$(DDEP),-L$(DP) -l$(subst lib,,$(DP)))
-DEPS=$(foreach DP,$(DEP),$(DP:.a=)/$(DP))
+_INC := $(shell find $(SRCDIR) -type d)
+INCS := $(addprefix -I,$(_INC))
 
-INCS=$(foreach lib,$(DDEP),-I $(lib)/includes)
+FLAGS := -Wall -Werror -Wextra
+CFLAGS := $(FLAGS) -MMD -MP
 
-.PHONY: all re fclean clean pre
+.PHONY: all clean fclean re
 
-all: pre $(NAME)
+all: $(NAME)
 
-pre:
-	$(foreach ps, $(PRESCRIPTS), ./$(ps))
-
-$(NAME): includes
-	$(foreach dep, $(DDEP), make -C $(dep))
-	$(CC) $(FLAGS) -c $(SRC) $(DEPS) $(INCS) $(FDEP)
-	ar rc $@ $(OBJ)
+$(NAME): $(OBJS) $(HEAD)
+ifdef IS_LIB
+	ar rc $@ $(OBJS)
 	ranlib $@
-	@cp $(SRCDIR)/*.h includes
+else
+	$(CC) $(FLAGS) -o $@ $(OBJS) $(INCS)
+endif
 
-includes:
-	@mkdir -p includes
+$(HEADDIR)/%.h:
+	@mkdir -p $(dir $@)
+	cp $(subst $(HEADDIR),$(SRCDIR),$@) $@
+
+$(BUILD_DIR)/%.c.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-ifdef REC
-	@$(foreach dep, $(DDEP), make -C $(dep) clean)
-endif
-	rm -f $(OBJ)
+	rm -f $(OBJS)
+	rm -f $(DEPS)
+	rm -fr $(BUILD_DIR)
 
 fclean: clean
-ifdef REC
-		@$(foreach dep, $(DDEP), make -C $(dep) fclean)
-endif
 	rm -f $(NAME)
+	rm -rf $(HEADDIR)
 
 re: fclean all
 
-run: $(NAME)
-	./$(NAME)
-
-debug: FLAGS += -g
-debug: fclean all
-
-# TEST_ARGS=
-# TEST_FLAGS=--error-exitcode=1 --leak-check=full
-
-ci:
-	@make -C tests ci
+-include $(DEPS)
