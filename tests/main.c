@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/24 23:53:58 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/01 00:59:00 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,35 @@ int	main(void)
 
 	ft_string_destroy(&ss);
 
-	// t_bignum *n = ft_bignum(NULL, 10);
-	// ft_bignum_add(n, 10);
-	// ft_bignum_add(n, 100);
-	// ft_bignum_add(n, 1000);
-	// ft_bignum_add(n, 42);
-	// printf("'%s'\n", n->str);
+	/*t_bignum *n = ft_bignum(ft_strdup("AF"), 16);
+	printf("Num: (%s)\n", n->str);
+	ft_bignum_add(n, 1);
+	printf("'%s'\n", n->str);
+	ft_bignum_destroy(&n);
+
+	n = ft_bignum(ft_strdup("9"), 10);
+	printf("Num: (%s)\n", n->str);
+	ft_bignum_add(n, 1);
+	printf("'%s'\n", n->str);
+	ft_bignum_destroy(&n);
+
+	n = ft_bignum(ft_strdup("99"), 10);
+	printf("Num: (%s)\n", n->str);
+	ft_bignum_add(n, 1);
+	printf("'%s'\n", n->str);
+	ft_bignum_destroy(&n);
+
+	n = ft_bignum(ft_strdup("0"), 10);
+	printf("Num: (%s)\n", n->str);
+	ft_bignum_add(n, 1);
+	printf("'%s'\n", n->str);
+	ft_bignum_destroy(&n);
+
+	n = ft_bignum(ft_strdup("-1"), 10);
+	printf("Num: (%s)\n", n->str);
+	ft_bignum_add(n, 1);
+	printf("'%s'\n", n->str);
+	ft_bignum_destroy(&n);*/
+
 	return (0);
 }

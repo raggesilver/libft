@@ -6,25 +6,20 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 12:44:37 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/24 14:40:38 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/31 10:28:06 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// t_float		ft_float_new(long double n)
-// {
-// 	t_float res;
+#define BIAS			16383
+#define MANT_SIZE		63
+#define _15BITS			32767
 
-// 	res.sign = (n < 0);
-// 	res.un = (t_u_ld_i64){.f = n};
-// 	res.exp = res.un.i & (255l << 52);
-// 	res.exp = res.exp >> 52;
-// 	res.man = res.un.i & ((1l << 52) - 1);
-// 	res.den = 1l << 52;
-// 	res.num = res.man + res.den;
-// 	return (res);
-// }
+/*
+** This function only works with double precision extended floats.
+** More on extended precision: https://en.wikipedia.org/wiki/Extended_precision
+*/
 
 t_float		ft_float_new(long double n)
 {
@@ -32,5 +27,7 @@ t_float		ft_float_new(long double n)
 
 	res.sign = (n < 0);
 	res.dbl.val = n;
+	res.exponent = (*(short *)&res.dbl.bytes[8] & _15BITS) - BIAS - MANT_SIZE;
+	res.mantissa = *(uint64_t *)res.dbl.bytes;
 	return (res);
 }

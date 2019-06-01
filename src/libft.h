@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/25 00:10:26 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/05/31 21:20:58 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,27 @@
 
 typedef _ULL		t_ull;
 
+# define _SSTR struct s_string
+
+typedef _SSTR		t_string;
+
+# undef _SSTR
+
 /*
 ** Conversion =====
 */
 
-typedef union		u_dbl
+typedef union		u_ldbl
 {
 	long double		val;
 	char			bytes[sizeof(long double)];
-}					t_dbl;
+}					t_ldbl;
 
 typedef struct		s_float
 {
 	short			exponent;
 	uint64_t		mantissa;
-	t_dbl			dbl;
+	t_ldbl			dbl;
 	unsigned		sign : 1;
 }					t_float;
 
@@ -64,7 +70,6 @@ long long			ft_atoll(const char *str);
 
 char				*ft_itoa_base(int n, int base);
 char				*ft_itoa(int n);
-char				*ft_ldtoa(long double n, int precision);
 char				*ft_lltoa_base(long long n, int base);
 char				*ft_lltoa(long long n);
 char				*ft_ltoa_base(long n, int base);
@@ -75,6 +80,7 @@ char				*ft_ultoa_base(unsigned long n, int base);
 char				*ft_ultoa(unsigned long n);
 char				*ft_utoa_base(unsigned n, int base);
 char				*ft_utoa(unsigned n);
+t_string			*ft_ldtos(long double n, int precision);
 
 /*
 ** Char =====
@@ -189,17 +195,18 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 ** String type =================================================================
 */
 
-typedef struct		s_string
+struct				s_string
 {
 	char			*data;
 	size_t			length;
 	void			(*append)(struct s_string *self, const char *s);
 	void			(*destroy)(struct s_string **self);
-}					t_string;
+};
 
 # define T_STRING(x) ((t_string *)x)
 
 t_string			*ft_string_new(const char *s);
+t_string			*ft_string_new_steal(char **str);
 void				ft_string_append(t_string *self, const char *s);
 void				ft_string_destroy(t_string **self);
 void				ft_string_inpend(t_string *self, size_t index,
@@ -338,7 +345,7 @@ typedef struct		s_bignum
 	unsigned		base;
 }					t_bignum;
 
-t_bignum			*ft_bignum_add(t_bignum *self, int n);
+t_string			*ft_bignum_add(t_string *self, int n);
 t_bignum			*ft_bignum(const char *str, unsigned base);
 t_string			*ft_string_remove(t_string *self, size_t index, size_t len);
 void				ft_bignum_destroy(t_bignum **self);

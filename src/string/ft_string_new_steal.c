@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_remove.c                                 :+:      :+:    :+:   */
+/*   ft_string_new_steal.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 23:08:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/31 15:00:02 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/05/29 17:47:51 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/05/29 18:01:49 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-t_string	*ft_string_remove(t_string *self, size_t index, size_t len)
+t_string		*ft_string_new_steal(char **str)
 {
-	char	*tmp;
+	t_string *self;
 
-	RETURN_VAL_IF_FAIL(self, (index < self->length && len > 0));
-	if (len + index > self->length)
-		len = self->length - index;
-	tmp = ft_strnew(self->length - len);
-	ft_strncpy(tmp, self->data, index);
-	ft_strncpy(tmp + index, self->data + len + index,
-		self->length - len - index);
-	ft_strdel(&self->data);
-	self->data = tmp;
-	self->length -= len;
+	self = malloc(sizeof(*self));
+	self->data = *str;
+	self->length = ft_strlen(*str);
+	*str = NULL;
+	self->append = &ft_string_append;
+	self->destroy = &ft_string_destroy;
 	return (self);
 }
