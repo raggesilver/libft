@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 16:35:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/31 22:43:44 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/03 14:05:33 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #define MAX_EXPONENT	(32767 - BIAS - MANT_SIZE)
 #define EMPTY			9223372036854775808u
 
-#define INF				(res.exponent == MAX_EXPONENT && res.mantissa == EMPTY)
-#define NAN_			(res.exponent == MAX_EXPONENT && res.mantissa != EMPTY)
+#define INF				(f.exponent == MAX_EXPONENT && f.mantissa == EMPTY)
+#define NAN_			(f.exponent == MAX_EXPONENT && f.mantissa != EMPTY)
 
 static char		g_carry[2] = " \0";
 
@@ -55,7 +55,12 @@ static void		fk_strd2(t_string *s)
 	char *aux;
 
 	fk_strm(s, 5);
-	if ((aux = ft_strchr(s->data, '.')))
+	if (s->data[0] == '.')
+	{
+		ft_string_prepend(s, ".");
+		s->data[1] = '0';
+	}
+	else if ((aux = ft_strchr(s->data, '.')))
 	{
 		*aux = *(aux - 1);
 		*(aux - 1) = '.';
@@ -69,12 +74,12 @@ static void		fk_ldround(t_string *s, int precision)
 	char		*pt;
 	char		*zeros;
 	size_t		aux;
-printf("%lu, %s\n", s->length, s->data);
+
 	if ((pt = ft_strchr(s->data, '.')) &&
-		s->length - (pt + 1 - s->data) < (unsigned)precision)
+		s->length - (pt - 1 - s->data) < (unsigned)precision)
 	{
-		zeros = ft_strnew(precision - s->length - (pt + 1 - s->data));
-		ft_memset(zeros, 'y', precision - s->length - (pt + 1 - s->data));
+		zeros = ft_strnew(precision - s->length - (pt - 1 - s->data));
+		ft_memset(zeros, '0', precision - s->length - (pt - 1 - s->data));
 		ft_string_append(s, zeros);
 		ft_strdel(&zeros);
 	}
@@ -91,6 +96,14 @@ printf("%lu, %s\n", s->length, s->data);
 				ft_string_remove(s, aux, s->length);
 		}
 	}
+	else
+	{
+		zeros = ft_strnew(precision + 1);
+		ft_memset(zeros, '0', precision + 1);
+		*zeros = '.';
+		ft_string_append(s, zeros);
+		ft_strdel(&zeros);
+	}
 }
 
 t_string		*ft_ldtos(long double n, int precision)
@@ -99,8 +112,9 @@ t_string		*ft_ldtos(long double n, int precision)
 	t_string	*res;
 	char		*tmp;
 
-	(void)precision;
 	f = ft_float_new(n);
+	RETURN_VAL_IF_FAIL(ft_string_new(f.sign ? "-inf" : "inf"), !INF);
+	RETURN_VAL_IF_FAIL(ft_string_new("nan"), !NAN_);
 	tmp = ft_ulltoa(f.mantissa);
 	res = ft_string_new_steal(&tmp);
 	if (f.exponent > 0)
@@ -110,6 +124,8 @@ t_string		*ft_ldtos(long double n, int precision)
 		while (f.exponent++ < 0)
 			fk_strd2(res);
 	fk_ldround(res, precision);
+	if (res->data[0] == '.')
+		ft_string_prepend(res, "0");
 	if (n < 0)
 		ft_string_prepend(res, "-");
 	return (res);
