@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/31 21:20:58 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/05 16:40:29 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,8 +205,10 @@ struct				s_string
 
 # define T_STRING(x) ((t_string *)x)
 
+t_string			*ft_string_new_s(char **str);
 t_string			*ft_string_new(const char *s);
-t_string			*ft_string_new_steal(char **str);
+t_string			*ft_string_padding(t_string *self, size_t i, size_t s,
+										char c);
 void				ft_string_append(t_string *self, const char *s);
 void				ft_string_destroy(t_string **self);
 void				ft_string_inpend(t_string *self, size_t index,

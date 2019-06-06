@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ftoa.c                                          :+:      :+:    :+:   */
+/*   ft_ldtos.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 16:35:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/03 14:05:33 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/05 19:27:52 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,40 +69,42 @@ static void		fk_strd2(t_string *s)
 		ft_string_inpend(s, s->length - 1, ".");
 }
 
+static void		fk_ldround_with_decimal(t_string *s, const char *pt, size_t aux,
+										int precision)
+{
+	if (precision == 0)
+	{
+		aux = (*(pt + 1) >= '5');
+		ft_string_remove(s, pt - s->data, s->length);
+		if (aux)
+			ft_bignum_add(s, 1);
+	}
+	else if ((aux = s->length - (pt - s->data)) < (unsigned)precision)
+	{
+		ft_string_padding(s, s->length, precision - aux, '0');
+	}
+	else if (aux > (unsigned)precision)
+	{
+		aux = (s->data[pt - s->data + precision + 1] >= '5');
+		ft_string_remove(s, pt - s->data + precision + 1, s->length);
+		if (aux)
+			ft_bignum_add(s, 1);
+	}
+}
+
 static void		fk_ldround(t_string *s, int precision)
 {
 	char		*pt;
-	char		*zeros;
 	size_t		aux;
 
-	if ((pt = ft_strchr(s->data, '.')) &&
-		s->length - (pt - 1 - s->data) < (unsigned)precision)
+	aux = 0;
+	if ((pt = ft_strchr(s->data, '.')))
+		fk_ldround_with_decimal(s, pt, aux, precision);
+	else if (precision > 0)
 	{
-		zeros = ft_strnew(precision - s->length - (pt - 1 - s->data));
-		ft_memset(zeros, '0', precision - s->length - (pt - 1 - s->data));
-		ft_string_append(s, zeros);
-		ft_strdel(&zeros);
-	}
-	else if (pt && s->length - (pt + 1 - s->data) > (unsigned)precision)
-	{
-		if (precision == 0)
-			ft_string_remove(s, pt - s->data, s->length);
-		else
-		{
-			aux = pt - s->data + precision + 1;
-			if (s->data[aux] >= '5' && ft_string_remove(s, aux, s->length))
-				ft_bignum_add(s, 1);
-			else
-				ft_string_remove(s, aux, s->length);
-		}
-	}
-	else
-	{
-		zeros = ft_strnew(precision + 1);
-		ft_memset(zeros, '0', precision + 1);
-		*zeros = '.';
-		ft_string_append(s, zeros);
-		ft_strdel(&zeros);
+		aux = s->length;
+		ft_string_padding(s, aux, precision + 1, '0');
+		s->data[aux] = '.';
 	}
 }
 
@@ -116,7 +118,7 @@ t_string		*ft_ldtos(long double n, int precision)
 	RETURN_VAL_IF_FAIL(ft_string_new(f.sign ? "-inf" : "inf"), !INF);
 	RETURN_VAL_IF_FAIL(ft_string_new("nan"), !NAN_);
 	tmp = ft_ulltoa(f.mantissa);
-	res = ft_string_new_steal(&tmp);
+	res = ft_string_new_s(&tmp);
 	if (f.exponent > 0)
 		while (f.exponent-- > 0)
 			fk_strm(res, 2);
@@ -124,7 +126,7 @@ t_string		*ft_ldtos(long double n, int precision)
 		while (f.exponent++ < 0)
 			fk_strd2(res);
 	fk_ldround(res, precision);
-	if (res->data[0] == '.')
+	if (res->data[0] == '.' || res->data[0] == 0)
 		ft_string_prepend(res, "0");
 	if (n < 0)
 		ft_string_prepend(res, "-");
