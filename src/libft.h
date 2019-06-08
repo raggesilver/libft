@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/05 16:40:29 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/07 19:50:27 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@ void				ft_string_append(t_string *self, const char *s);
 void				ft_string_destroy(t_string **self);
 void				ft_string_inpend(t_string *self, size_t index,
 										const char *str);
+void				ft_string_prepend_s(t_string *self, const char *s);
 void				ft_string_prepend(t_string *self, const char *s);
 void				ft_string_to_lower(t_string *self);
 void				ft_string_to_upper(t_string *self);
@@ -342,13 +343,19 @@ extern const char	*g_chars;
 
 typedef struct		s_bignum
 {
-	const char		*str;
-	size_t			length;
-	unsigned		base;
+	t_string		*str;
+	ssize_t			point;
 }					t_bignum;
 
+t_bignum			*ft_bignum_div_10pow(t_bignum *self, size_t n);
+t_bignum			*ft_bignum_mult(t_bignum *self, t_ull n);
+t_bignum			*ft_bignum_mult_10pow(t_bignum *self, size_t n);
+t_bignum			*ft_bignum_real_add(t_bignum *self, t_bignum *num);
+t_bignum			*ft_bignum_set_decimal_padding(t_bignum *self, size_t s);
+t_bignum			*ft_bignum_set_whole_padding(t_bignum *self, size_t s);
+t_bignum			*ft_bignum_set(t_bignum *self, const char *s);
+t_bignum			*ft_bignum(const char *str);
 t_string			*ft_bignum_add(t_string *self, int n);
-t_bignum			*ft_bignum(const char *str, unsigned base);
 t_string			*ft_string_remove(t_string *self, size_t index, size_t len);
 void				ft_bignum_destroy(t_bignum **self);
 

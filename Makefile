@@ -19,8 +19,8 @@ HEAD := $(subst $(SRCDIR),$(HEADDIR),$(HEAD))
 _INC := $(shell find $(SRCDIR) -type d)
 INCS := $(addprefix -I,$(_INC))
 
-FLAGS := -Wall -Werror -Wextra
-CFLAGS := $(FLAGS) -MMD -MP
+FLAGS := -Wall -Werror -Wextra -O3
+CFLAGS = $(FLAGS) -MMD -MP -O3
 
 .PHONY: all clean fclean re
 

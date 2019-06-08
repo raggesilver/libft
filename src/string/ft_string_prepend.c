@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 15:03:49 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/05 15:04:47 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/05 23:25:59 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void			ft_string_prepend(t_string *self, const char *s)
 		self->data[self->length] = 0;
 		ft_strdel(&old);
 	}
+}
+
+void			ft_string_prepend_s(t_string *self, const char *s)
+{
+	ft_string_prepend(self, s);
+	ft_strdel((char **)&s);
 }

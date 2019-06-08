@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bignum.c                                        :+:      :+:    :+:   */
+/*   ft_bignum_set.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 16:24:14 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/05 23:48:32 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/06/07 15:18:45 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/06/07 15:57:55 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include "../string/ft_string_priv.h"
 
-t_bignum		*ft_bignum(const char *str)
+t_bignum		*ft_bignum_set(t_bignum *self, const char *s)
 {
-	t_bignum	*res;
 	char		*aux;
 
-	res = malloc(sizeof(*res));
-	res->str = ft_string_new(str ? str : "0");
-	if (str && (aux = ft_strchr(res->str->data, '.')))
-		res->point = aux - res->str->data;
+	ft_string_destroy(&self->str);
+	self->str = ft_string_new(s);
+	if ((aux = ft_strchr(self->str->data, '.')))
+		self->point = aux - self->str->data;
 	else
-		res->point = -1;
-	return (res);
-}
-
-void			ft_bignum_destroy(t_bignum **self)
-{
-	ft_string_destroy(&(*self)->str);
-	ft_memdel((void **)self);
+		self->point = -1;
+	return (self);
 }
