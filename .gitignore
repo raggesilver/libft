@@ -7,6 +7,7 @@ build/
 *.a
 *.o
 *.out
-
+*.c_old
 .vscode
 ._*
+*.dSYM

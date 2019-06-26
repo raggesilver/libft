@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/07 19:50:27 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:17:10 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,9 +348,10 @@ typedef struct		s_bignum
 }					t_bignum;
 
 t_bignum			*ft_bignum_div_10pow(t_bignum *self, size_t n);
-t_bignum			*ft_bignum_mult(t_bignum *self, t_ull n);
 t_bignum			*ft_bignum_mult_10pow(t_bignum *self, size_t n);
+t_bignum			*ft_bignum_mult(t_bignum *self, t_ull n);
 t_bignum			*ft_bignum_real_add(t_bignum *self, t_bignum *num);
+t_bignum			*ft_bignum_s(const char *str);
 t_bignum			*ft_bignum_set_decimal_padding(t_bignum *self, size_t s);
 t_bignum			*ft_bignum_set_whole_padding(t_bignum *self, size_t s);
 t_bignum			*ft_bignum_set(t_bignum *self, const char *s);

@@ -8,7 +8,7 @@ IS_LIB=true
 SRCDIR := src
 BUILD_DIR := build
 
-SRCS := $(shell find $(SRCDIR) -name "*.c")
+SRCS := $(shell find $(SRCDIR) -type f -name "*.c")
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
 DEPS := $(OBJS:.o=.d)
 
@@ -19,8 +19,9 @@ HEAD := $(subst $(SRCDIR),$(HEADDIR),$(HEAD))
 _INC := $(shell find $(SRCDIR) -type d)
 INCS := $(addprefix -I,$(_INC))
 
-FLAGS := -Wall -Werror -Wextra -O3
-CFLAGS = $(FLAGS) -MMD -MP -O3
+FLAGS = -Wall -Werror -Wextra
+
+CFLAGS = $(FLAGS) -MMD -MP
 
 .PHONY: all clean fclean re
 

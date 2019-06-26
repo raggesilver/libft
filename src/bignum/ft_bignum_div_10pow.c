@@ -6,12 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:27:01 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/07 20:00:41 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:31:46 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-
 /*
 ** self / (10^n)
 */
@@ -32,6 +31,7 @@ t_bignum		*ft_bignum_div_10pow(t_bignum *self, size_t n)
 			ft_string_inpend(self->str, self->str->length - n, ".");
 			self->point = self->str->length - n;
 		}
+		return (self);
 	}
 	if ((ssize_t)n >= self->point &&
 		ft_string_padding(self->str, 0, (n - self->point) + 1, '0'))
