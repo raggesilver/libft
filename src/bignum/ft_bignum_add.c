@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 16:43:15 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:34:39 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:43:34 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ static void		ftfk_fix_places(t_bignum *a, t_bignum *b)
 		ft_bignum_set_decimal_padding(a, b->str->length - b->point - 1);
 	if (a->str->length > b->str->length)
 		ft_bignum_set_whole_padding(b,
-			(a->point != -1) ? a->point : a->str->length);
+			(a->point != -1) ? (size_t)a->point : a->str->length);
 	if (a->str->length < b->str->length)
 		ft_bignum_set_whole_padding(a,
-			(b->point != -1) ? b->point : b->str->length);
+			(b->point != -1) ? (size_t)b->point : b->str->length);
 }
 
 t_bignum		*ft_bignum_real_add(t_bignum *self, t_bignum *num)
