@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 16:43:15 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:43:34 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:12:30 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_string			*ft_bignum_add(t_string *self, int n)
 	return (self);
 }
 
-static void		ftfk_fix_places(t_bignum *a, t_bignum *b)
+static void			ftfk_fix_places(t_bignum *a, t_bignum *b)
 {
 	if (a->point > -1 && b->point > -1)
 	{
@@ -65,7 +65,7 @@ static void		ftfk_fix_places(t_bignum *a, t_bignum *b)
 			(b->point != -1) ? (size_t)b->point : b->str->length);
 }
 
-t_bignum		*ft_bignum_real_add(t_bignum *self, t_bignum *num)
+t_bignum			*ft_bignum_real_add(t_bignum *self, t_bignum *num)
 {
 	ssize_t		i;
 	ssize_t		j;

@@ -6,13 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 16:35:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:31:12 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/26 13:00:53 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#define LD long double
 #define BIAS			16383
 #define MANT_SIZE		63
 #define _15BITS			32767
@@ -80,22 +79,29 @@ static void		fk_ldround(t_bignum *s, int precision)
 		s->str->data[aux] = '.';
 	}
 }
-#define ABS(a) ((a) < 0 ? -(a) : (a))
+
+/*
+** VIT stands for Valid Incomplete Ternary and is used because norminette does
+** not like `(a) ?: b` which translates to `(a) ? a : b`
+*/
+
+#define VIT(a, b) ((a) ? (a) : (b))
+
 static void		fk_do_expo(t_bignum *n, t_float *f)
 {
 	RETURN_IF_FAIL((f->mantissa != 0));
 	if (f->exponent > 0)
 		while (f->exponent > 0)
 		{
-			ft_bignum_mult(n, g_2pow_arr[(f->exponent % 62) ?: 62]);
-			f->exponent -= (f->exponent % 62) ?: 62;
+			ft_bignum_mult(n, g_2pow_arr[VIT((f->exponent % 62), 62)]);
+			f->exponent -= VIT((f->exponent % 62), 62);
 		}
 	else
 		while (f->exponent < 0)
 		{
-			ft_bignum_mult(n, g_5pow_arr[(MOD(f->exponent) % 27) ?: 27]);
-			ft_bignum_div_10pow(n, (MOD(f->exponent) % 27) ?: 27);
-			f->exponent += (MOD(f->exponent) % 27) ?: 27;
+			ft_bignum_mult(n, g_5pow_arr[VIT((MOD(f->exponent) % 27), 27)]);
+			ft_bignum_div_10pow(n, VIT((MOD(f->exponent) % 27), 27));
+			f->exponent += VIT((MOD(f->exponent) % 27), 27);
 		}
 }
 
