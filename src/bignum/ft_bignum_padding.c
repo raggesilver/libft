@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:56:40 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/07 16:47:02 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:50:43 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_bignum		*ft_bignum_set_whole_padding(t_bignum *self, size_t s)
 {
 	size_t		len;
 
-	len = (self->point != -1) ? self->point : self->str->length;
+	len = (self->point != -1) ? (size_t)self->point : self->str->length;
 	if (len < s)
 	{
 		ft_string_padding(self->str, 0, s - len, '0');
