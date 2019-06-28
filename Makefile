@@ -29,7 +29,7 @@ _$(NAME): $(LIBS)
 	@$(MAKE) $(NAME)
 
 $(NAME): $(HEADIR) $(HEAD) $(OBJDIR) $(OBJS)
-	libtool -static -o $@ $(OBJS) $(LIBS)
+	ar rc $@ $(OBJS) $(LIBS)
 	ranlib $@
 
 $(OBJDIR) $(HEADIR):
