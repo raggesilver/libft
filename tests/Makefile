@@ -1,59 +1,66 @@
-# Name here
-NAME=libft_test
-REC=true
-CC=gcc
-FLAGS=-Wall -Werror -Wextra
 
-# Sources here
-SRC=main.c
-OBJ=$(SRC:.c=.o)
+NAME := test
+# CC ?= gcc
 
-PRESCRIPTS=link.sh
+CFLAGS := -Wall -Werror -Wextra -Ofast
 
-# Dependencies here (.a files)
-# Make sure those dependencies' directories are on your project's root
-# i.e: dep = libft.a
-# tree: . .. libft/ Makefile #...
-DEP=libft.a
-DDEP=$(DEP:.a=)
-FDEP=$(foreach DP, $(DDEP), -L$(DP) -l$(subst lib,,$(DP)))
-DEPS=$(foreach DP, $(DEP), $(DP:.a=)/$(DP))
+OBJDIR := build
+SRCDIR := .
+HEADIR := includes
 
-INCS=$(foreach lib, $(DDEP), -I $(lib)/includes)
+SRCS := $(shell find $(SRCDIR) -type f -name "*.c")
+OBJS := $(SRCS:%=$(OBJDIR)/%.o)
 
-.PHONY: $(NAME) pre re fclean clean run debug ci all
+HEAD := $(shell find $(SRCDIR) -name "*.h" -and ! -name "*_priv.h")
+HEAD := $(subst $(SRCDIR),$(HEADIR),$(HEAD))
 
-all: pre $(NAME)
+LIBS := ../libft.a
+LIBINCS := $(foreach lib,$(LIBS),-I$(dir $(lib))includes)
 
-pre:
-	$(foreach ps, $(PRESCRIPTS), ./$(ps))
+# This might not be necessary
+# _INC := $(shell find $(SRCDIR) -type d)
+# INCS := $(addprefix -I,$(_INC))
 
-$(NAME):
-	$(foreach dep, $(DDEP), make -C $(dep))
-	$(CC) $(FLAGS) $(SRC) $(DEPS) -o $@ $(INCS) $(FDEP)
+.PHONY: all re clean fclean debug $(LIBS) _$(NAME)
+
+all: _$(NAME)
+
+_$(NAME): $(LIBS)
+	@$(MAKE) $(NAME)
+
+$(NAME): $(HEADIR) $(HEAD) $(OBJDIR) $(OBJS)
+	$(CC) -o $@ $(OBJS) $(LIBS)
+
+$(OBJDIR) $(HEADIR):
+	@mkdir -p $@
+
+$(OBJDIR)/%.c.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@ $(LIBINCS)
+
+$(HEADIR)/%.h:
+	@mkdir -p $(dir $@)
+	cp $(subst $(HEADIR),$(SRCDIR),$@) $@
+
+$(LIBS):
+	@$(MAKE) -C $(dir $@) $(MAKECMDGOALS)
 
 clean:
-ifdef REC
-	@$(foreach dep, $(DDEP), make -C $(dep) clean)
-endif
-	rm -f $(OBJ)
+	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) clean)
+	rm -f $(OBJS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
-ifdef REC
-		@$(foreach dep, $(DDEP), make -C $(dep) fclean)
-endif
+	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) fclean)
 	rm -f $(NAME)
+	rm -rf $(HEADIR)
 
-re: fclean all
+re: fclean
+	@$(MAKE) all
 
-run: $(NAME)
-	./$(NAME)
+debug: fclean
+	@$(MAKE) all CFLAGS="$(CFLAGS) -g"
 
-debug: FLAGS += -g
-debug: fclean all
-
-TEST_ARGS=
-TEST_FLAGS=--error-exitcode=1 --leak-check=full
-
-ci: re
-	valgrind $(TEST_FLAGS) ./$(NAME) $(TEST_ARGS)
+ci: MAKECMDGOALS=
+ci: all
+	valgrind --error-exitcode=1 --leak-check=full ./$(NAME)

@@ -1,63 +1,66 @@
 
-CC = gcc
-NAME = libft.a
+NAME := libft.a
+# CC ?= gcc
 
-# Comment for normal executable
-IS_LIB=true
+CFLAGS := -Wall -Werror -Wextra -Ofast
 
+OBJDIR := build
 SRCDIR := src
-BUILD_DIR := build
+HEADIR := includes
 
 SRCS := $(shell find $(SRCDIR) -type f -name "*.c")
-OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
-DEPS := $(OBJS:.o=.d)
+OBJS := $(SRCS:%=$(OBJDIR)/%.o)
 
-HEADDIR := includes
 HEAD := $(shell find $(SRCDIR) -name "*.h" -and ! -name "*_priv.h")
-HEAD := $(subst $(SRCDIR),$(HEADDIR),$(HEAD))
+HEAD := $(subst $(SRCDIR),$(HEADIR),$(HEAD))
 
-_INC := $(shell find $(SRCDIR) -type d)
-INCS := $(addprefix -I,$(_INC))
+LIBS :=
+LIBINCS := $(foreach lib,$(LIBS),-I$(dir $(lib))includes)
 
-FLAGS = -Wall -Werror -Wextra
+# This might not be necessary
+# _INC := $(shell find $(SRCDIR) -type d)
+# INCS := $(addprefix -I,$(_INC))
 
-CFLAGS = $(FLAGS) -MMD -MP
+.PHONY: all re clean fclean debug $(LIBS) _$(NAME)
 
-.PHONY: all clean fclean re
+all: _$(NAME)
 
-all: $(NAME)
+_$(NAME): $(LIBS)
+	@$(MAKE) $(NAME)
 
-$(NAME): $(OBJS) $(HEAD)
-ifdef IS_LIB
-	ar rc $@ $(OBJS)
+$(NAME): $(HEADIR) $(HEAD) $(OBJDIR) $(OBJS)
+	libtool -static -o $@ $(OBJS) $(LIBS)
 	ranlib $@
-else
-	$(CC) $(FLAGS) -o $@ $(OBJS) $(INCS)
-endif
 
-$(HEADDIR)/%.h:
-	@mkdir -p $(dir $@)
-	cp $(subst $(HEADDIR),$(SRCDIR),$@) $@
+$(OBJDIR) $(HEADIR):
+	@mkdir -p $@
 
-$(BUILD_DIR)/%.c.o: %.c
+$(OBJDIR)/%.c.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ $(LIBINCS)
+
+$(HEADIR)/%.h:
+	@mkdir -p $(dir $@)
+	cp $(subst $(HEADIR),$(SRCDIR),$@) $@
+
+$(LIBS):
+	@$(MAKE) -C $(dir $@) $(MAKECMDGOALS)
 
 clean:
+	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) clean)
 	rm -f $(OBJS)
-	rm -f $(DEPS)
-	rm -fr $(BUILD_DIR)
+	rm -rf $(OBJDIR)
 
 fclean: clean
+	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) fclean)
 	rm -f $(NAME)
-	rm -rf $(HEADDIR)
+	rm -rf $(HEADIR)
 
-re: fclean all
+re: fclean
+	@$(MAKE) all
 
-debug: FLAGS += -g
-debug: fclean all
+debug: fclean
+	@$(MAKE) all CFLAGS="$(CFLAGS) -g"
 
 ci:
-	@make -C tests ci
-
--include $(DEPS)
+	@$(MAKE) -C tests ci
