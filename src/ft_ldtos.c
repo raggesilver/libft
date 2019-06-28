@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 16:35:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/26 13:00:53 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/06/28 01:18:16 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,25 @@ const t_ull		g_5pow_arr[] = { 1, 5, 25, 125, 625, 3125, 15625, 78125, 390625,
 	476837158203125, 2384185791015625, 11920928955078125, 59604644775390625,
 	298023223876953125, 1490116119384765625, 7450580596923828125 };
 
-static void		fk_ldround_with_decimal(t_bignum *s, const char *pt, size_t aux,
-										int precision)
+static void		fk_ldround_with_decimal(t_bignum *s, int precision)
 {
+	size_t aux;
+
 	if (precision == 0)
 	{
-		aux = (*(pt + 1) >= '5');
-		ft_string_remove(s->str, pt - s->str->data, s->str->length);
+		aux = s->str->data[s->point + 1] >= '5';
+		ft_string_remove(s->str, s->point, s->str->length);
 		if (aux)
 			ft_bignum_add(s->str, 1);
 	}
-	else if ((aux = s->str->length - (pt - s->str->data)) < (unsigned)precision)
+	else if ((aux = s->str->length - s->point) < (size_t)precision)
 	{
-		ft_string_padding(s->str, s->str->length, precision - aux, '0');
+		ft_string_padding(s->str, s->str->length, precision - aux + 1, '0');
 	}
 	else if (aux > (unsigned)precision)
 	{
-		aux = (s->str->data[pt - s->str->data + precision + 1] >= '5');
-		ft_string_remove(s->str, pt - s->str->data + precision + 1,
-			s->str->length);
+		aux = s->str->data[s->point + precision + 1] >= '5';
+		ft_string_remove(s->str, s->point + precision + 1, s->str->length);
 		if (aux)
 			ft_bignum_add(s->str, 1);
 	}
@@ -66,12 +66,11 @@ static void		fk_ldround_with_decimal(t_bignum *s, const char *pt, size_t aux,
 
 static void		fk_ldround(t_bignum *s, int precision)
 {
-	char		*pt;
 	size_t		aux;
 
 	aux = 0;
-	if ((pt = ft_strchr(s->str->data, '.')))
-		fk_ldround_with_decimal(s, pt, aux, precision);
+	if (s->point != -1)
+		fk_ldround_with_decimal(s, precision);
 	else if (precision > 0)
 	{
 		aux = s->str->length;
