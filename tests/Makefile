@@ -10,6 +10,7 @@ HEADIR := includes
 
 SRCS := $(shell find $(SRCDIR) -type f -name "*.c")
 OBJS := $(SRCS:%=$(OBJDIR)/%.o)
+DEPS := $(SRCS:%=$(OBJDIR)/%.d)
 
 HEAD := $(shell find $(SRCDIR) -name "*.h" -and ! -name "*_priv.h")
 HEAD := $(subst $(SRCDIR),$(HEADIR),$(HEAD))
@@ -28,15 +29,17 @@ all: _$(NAME)
 _$(NAME): $(LIBS)
 	@$(MAKE) $(NAME)
 
-$(NAME): $(HEADIR) $(HEAD) $(OBJDIR) $(OBJS)
+$(NAME): $(HEAD) $(OBJS)
 	$(CC) -o $@ $(OBJS) $(LIBS)
 
 $(OBJDIR) $(HEADIR):
 	@mkdir -p $@
 
-$(OBJDIR)/%.c.o: %.c
+-include $(DEPS)
+
+$(OBJDIR)/%.c.o: %.c Makefile
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@ $(LIBINCS)
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@ $(LIBINCS)
 
 $(HEADIR)/%.h:
 	@mkdir -p $(dir $@)

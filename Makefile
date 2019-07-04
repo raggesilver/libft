@@ -19,6 +19,7 @@ endif
 
 SRCS := $(shell find $(SRCDIR) -type f -name "*.c" $(DISABLED))
 OBJS := $(SRCS:%=$(OBJDIR)/%.o)
+DEPS := $(SRCS:%=$(OBJDIR)/%.d)
 
 HEAD := $(shell find $(SRCDIR) -name "*.h" -and ! -name "*_priv.h")
 HEAD := $(subst $(SRCDIR),$(HEADIR),$(HEAD))
@@ -37,16 +38,18 @@ all: _$(NAME)
 _$(NAME): $(LIBS)
 	@$(MAKE) $(NAME)
 
-$(NAME): $(HEADIR) $(HEAD) $(OBJDIR) $(OBJS)
+$(NAME): $(HEAD) $(OBJS)
 	ar rc $@ $(OBJS) $(LIBS)
 	ranlib $@
 
 $(OBJDIR) $(HEADIR):
 	@mkdir -p $@
 
-$(OBJDIR)/%.c.o: %.c
+-include $(DEPS)
+
+$(OBJDIR)/%.c.o: %.c Makefile
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@ $(LIBINCS)
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@ $(LIBINCS)
 
 $(HEADIR)/%.h:
 	@mkdir -p $(dir $@)
@@ -58,6 +61,7 @@ $(LIBS):
 clean:
 	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) clean)
 	rm -f $(OBJS)
+	rm -f $(DEPS)
 	rm -rf $(OBJDIR)
 
 fclean: clean

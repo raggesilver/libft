@@ -6,17 +6,42 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 14:44:47 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 16:21:47 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "hashtable/ft_hashtable.h"
 #include "ft_printf/ft_printf.h"
 
 #include <float.h>
 
 int	main(void)
 {
+	// Test t_hashtable ========================================================
+	{
+		char *s = "batata";
+		size_t sz = 3000;
+		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
+		s = "abroba";
+		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
+		s = "sopa";
+		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
+		s = "mangenkyo sharingan";
+		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
+		s = "disney";
+		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
+		s = "la batata";
+		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
+		s = "abcd";
+		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
+		s = "dcba";
+		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
+
+		t_hashtable *ht = ft_hashtable_new();
+		ft_hashtable_destroy(&ht);
+		return (0);
+	}
 	// Test ft_printf ==========================================================
 	ft_printf("Hello world!\n");
 	ft_printf("'%d'\n", 42);
