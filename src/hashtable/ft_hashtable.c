@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 15:21:11 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 16:21:04 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 16:54:22 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ t_hashtable		*ft_hashtable_new()
 	return (self);
 }
 
-#define HT_DSTY_ATTR __attribute__((always_inline))
-void			ft_hashtable_destroy(t_hashtable **self) HT_DSTY_ATTR;
 void			ft_hashtable_destroy(t_hashtable **self)
 {
 	if ((*self)->values)
