@@ -8,7 +8,16 @@ OBJDIR := build
 SRCDIR := src
 HEADIR := includes
 
-SRCS := $(shell find $(SRCDIR) -type f -name "*.c")
+SPC :=
+SPC +=
+
+DISABLED := $(shell cat .disabled 2> /dev/null || printf "")
+ifneq ($(DISABLED),)
+DISABLED := $(DISABLED:%='%')
+DISABLED := -not \( -path $(subst $(SPC), -o -path ,$(DISABLED)) \)
+endif
+
+SRCS := $(shell find $(SRCDIR) -type f -name "*.c" $(DISABLED))
 OBJS := $(SRCS:%=$(OBJDIR)/%.o)
 
 HEAD := $(shell find $(SRCDIR) -name "*.h" -and ! -name "*_priv.h")
