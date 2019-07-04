@@ -99,4 +99,4 @@ Sizes: l ll L h hh (L for floats only)
 
 
 ## Credits
-Thanks for [fprevela](https://github.com/prevelat) for coming up with the term "inpend".
+Thanks [fprevela](https://github.com/prevelat) for coming up with the term "inpend".
