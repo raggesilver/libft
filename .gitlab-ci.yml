@@ -1,8 +1,8 @@
 stages:
-  - build
+  - test
 
-build_test:
-  stage: build
+leak check:
+  stage: test
   allow_failure: false
   image: etews/gcc-expect-valgrind
   script:
