@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 11:44:34 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 14:26:33 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,6 +308,7 @@ void				ft_array_terminate(t_array **self);
 */
 
 void				*ft_array_remove(t_array *self, size_t index);
+void				*ft_array_pop(t_array *self);
 
 /*
 ** Delete (free) an index from the array if it exists and shift all following

@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 11:41:28 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 14:44:47 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ int	main(void)
 		ft_array_push(arr, ft_strdup("La batata 7"));
 		ft_array_push(arr, ft_strdup("La batata 8"));
 		ft_array_push(arr, ft_strdup("La batata 9"));
+		char *s = ft_array_pop(arr);
+		if (ft_strcmp("La batata 9", s) != 0)
+		{
+			ft_strdel(&s);
+			ft_array_terminate(&arr);
+			ft_printf("{red}ft_array_pop returned some doideira{eoc}\n");
+			return (1);
+		}
+		ft_strdel(&s);
 		size_t i = 0;
 		while (i < arr->length)
 		{
