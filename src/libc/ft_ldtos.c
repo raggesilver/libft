@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 16:35:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 11:44:25 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ t_string		*ft_ldtos(long double n, int precision)
 	RETURN_VAL_IF_FAIL(ft_string_new(f.sign ? "-inf" : "inf"), !INF);
 	RETURN_VAL_IF_FAIL(ft_string_new("nan"), !NAN_);
 	tmp = ft_ulltoa(f.mantissa);
-	res = ft_bignum_s(tmp);
+	res = ft_bignum_new_s(tmp);
 	fk_do_expo(res, &f);
 	fk_ldround(res, precision);
 	if (res->str->data[0] == '.' || res->str->data[0] == 0)

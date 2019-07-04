@@ -18,6 +18,8 @@ All the code follows the [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf
 
 > Me - The term inpend is something only the most cleaver people can understand, and those who claim "insert" is a better word are wrong
 
+> Me - `t_ull` is a typedef for `unsigned long long`
+
 **Summary**
 1. [t_array](#t_array) a dynamic array implementation
 	- [ft_array_new](#ft_array_new) instantiate an array
@@ -27,7 +29,7 @@ All the code follows the [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf
 	- [ft_array_push](#ft_array_push) push an element to an array
 	- [ft_array_remove](#ft_array_remove) remove an element from an array
 	- [ft_array_delete](#ft_array_delete) delete an element from an array
-2. [t_string](#t_string) a string implementation
+1. [t_string](#t_string) a string implementation
 	- [ft_string_new](#ft_string_new) instantiate a string
 	- [ft_string_new_s](#ft_string_new_s) instantiate a string by stealing a `char *`
 	- [ft_string_destroy](#ft_string_destroy) destroy a string
@@ -38,14 +40,45 @@ All the code follows the [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf
 	- [ft_string_to_lower](#ft_string_to_lower) lowercase a string
 	- [ft_string_to_upper](#ft_string_to_upper) uppercase a string
 	- [ft_string_padding](#ft_string_padding) add a character padding to a string
-3. [ft_printf()](#ft_printf) my implementation of printf
+1. [t_bignum](#t_bignum) an "infinite" bignum implementation*
+	- [ft_bignum_new](#ft_bignum_new) instantiate a bignum
+	- [ft_bignum_new_s](#ft_bignum_new_s) instantiate a bignum by stealing a `char *`
+	- [ft_bignum_destroy](#ft_bignum_destroy) destroy a bignum
+	- [ft_bignum_add](#ft_bignum_add) add an `int` to a bignum
+	- [ft_bignum_real_add](#ft_bignum_real_add) add two bignums
+	- [ft_bignum_mult](#ft_bignum_mult) multiply a bignum by a `t_ull`
+	- [ft_bignum_div_10pow](#ft_bignum_div_10pow) divide a bignum by 10<sup>x</sup>
+	- [ft_bignum_mult_10pow](#ft_bignum_mult_10pow) multiply a bignum by 10<sup>x</sup>
+	- [ft_bignum_set](#ft_bignum_set) change the value of a bignum
+	- [ft_bignum_set_decimal_padding](#ft_bignum_set_decimal_padding) set minimum number of decimal places for a bignum
+	- [ft_bignum_set_whole_padding](#ft_bignum_set_whole_padding) set minimum number of digits in the whole part of a bignum
+1. [ft_printf()](#ft_printf) my implementation of printf
 
+---
 ### t_array
 > Me - I'll do this soon...
 
+---
 ### t_string
 > Me - I'll do this soon...
 
+---
+### t_bignum
+> *Implementing bignum operations is somewhat complicated and I haven't had the time to do it properly so operations may have flaws
+
+> Me - I'll do this soon...
+
+#### ft_bignum_set_decimal_padding()
+**note**: does not decrease the number of decimal places
+
+> Me - I'll do this soon...
+
+#### ft_bignum_set_whole_padding()
+**note**: does not decrease the number of digits in the whole part
+
+> Me - I'll do this soon...
+
+---
 ### ft_printf
 > Moulinette - Final grade: 100
 > Intra - Final Mark: 108

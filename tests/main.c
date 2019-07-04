@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 22:43:17 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 11:41:28 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(void)
 	}
 	// Test t_bignum ===========================================================
 	{
-		t_bignum *bn = ft_bignum("3.14159265359");
+		t_bignum *bn = ft_bignum_new("3.14159265359");
 		ft_printf("Pi = %s\n", bn->str->data);
 		ft_bignum_mult(bn, 999999);
 		ft_printf("Pi * 999999 = %s\n", bn->str->data);

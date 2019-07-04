@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 15:02:44 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:32:02 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 11:41:28 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_bignum		*ft_bignum_mult(t_bignum *self, t_ull n)
 	size_t		i;
 
 	i = 0;
-	a1 = ft_bignum("0");
-	a2 = ft_bignum(self->str->data);
+	a1 = ft_bignum_new("0");
+	a2 = ft_bignum_new(self->str->data);
 	while (n > 0)
 	{
 		if (n % 10 != 0)

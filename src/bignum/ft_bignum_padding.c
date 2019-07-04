@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:56:40 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:50:43 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 13:17:26 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /*
 ** Quick reminder this function does not decrease decimal places as that could
-** cut part of the number. Also the second if doesn't need to change self->point
+** cut part of the number.
+** The second statement if doesn't need to change self->point
 ** as it only adds zeros to the end, self->point's index remains intact.
 */
 

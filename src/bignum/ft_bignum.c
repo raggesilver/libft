@@ -6,13 +6,13 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 16:24:14 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:28:24 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 11:44:25 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-t_bignum		*ft_bignum(const char *str)
+t_bignum		*ft_bignum_new(const char *str)
 {
 	t_bignum	*res;
 	char		*aux;
@@ -26,7 +26,7 @@ t_bignum		*ft_bignum(const char *str)
 	return (res);
 }
 
-t_bignum		*ft_bignum_s(const char *str)
+t_bignum		*ft_bignum_new_s(const char *str)
 {
 	t_bignum	*res;
 	char		*tmp;
