@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 16:58:45 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 22:03:02 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 22:25:03 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,21 @@ void			ft_hashtable_grow(t_hashtable *self)
 {
 	t_ht_item	**values;
 	ssize_t		i;
+	ssize_t		old_size;
 
-	i = self->size;
+	old_size = self->size;
 	if (HASHTABLE_DOUBLE)
 		self->size *= 2;
 	else
 		self->size += HASHTABLE_SIZE;
 	values = malloc(sizeof(*values) * self->size);
+	i = self->size;
 	while (--i >= 0)
-	{
+		values[i] = NULL;
+	i = old_size;
+	while (--i >= 0)
 		if (self->values[i])
-		{
 			values[ft_hash(self->values[i]->key, self->size)] = self->values[i];
-		}
-	}
-	ft_memdel((void **)&self->values);
+	ft_memdel((void **)&(self->values));
 	self->values = values;
 }
