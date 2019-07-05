@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 15:21:11 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 19:58:27 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 21:59:14 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void			ft_hashtable_destroy(t_hashtable **self)
 			ft_ht_item_destroy(&(*self)->values[i]);
 		++i;
 	}
+	ft_memdel((void **)&(*self)->values);
 	ft_memdel((void **)self);
 }
 
@@ -69,5 +70,6 @@ void			ft_hashtable_terminate(t_hashtable **self)
 			ft_ht_item_terminate(&(*self)->values[i]);
 		++i;
 	}
+	ft_memdel((void **)&(*self)->values);
 	ft_memdel((void **)self);
 }
