@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 15:14:31 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 16:35:35 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 21:32:05 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 */
 
 # ifndef HASHTABLE_SIZE
-#  define HASHTABLE_SIZE 50
+#  define HASHTABLE_SIZE 1000
 # endif
 
 /*
@@ -33,15 +33,26 @@
 #  define HASHTABLE_DOUBLE 0
 # endif
 
+typedef struct	s_ht_item
+{
+	char		*key;
+	void		*val;
+}				t_ht_item;
+
 typedef struct	s_hashtable
 {
 	size_t		size;
 	size_t		length;
-	void		**values;
+	t_ht_item	**values;
 }				t_hashtable;
 
 size_t			ft_hash(const char *key, const size_t size);
+size_t			ft_hashtable_insert(
+					t_hashtable *self, const char *key, void *value);
 t_hashtable		*ft_hashtable_new();
+void			*ft_hashtable_get(t_hashtable *self, const char *key);
+void			*ft_hashtable_remove(t_hashtable *self, const char *key);
+void			ft_hashtable_delete(t_hashtable *self, const char *key);
 void			ft_hashtable_destroy(t_hashtable **self);
 void			ft_hashtable_terminate(t_hashtable **self);
 

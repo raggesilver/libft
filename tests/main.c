@@ -6,13 +6,14 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 16:21:47 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 21:36:12 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "hashtable/ft_hashtable.h"
 #include "ft_printf/ft_printf.h"
+#include "../src/hashtable/ft_hashtable_priv.h"
 
 #include <float.h>
 
@@ -20,27 +21,26 @@ int	main(void)
 {
 	// Test t_hashtable ========================================================
 	{
-		char *s = "batata";
-		size_t sz = 3000;
-		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
-		s = "abroba";
-		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
-		s = "sopa";
-		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
-		s = "mangenkyo sharingan";
-		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
-		s = "disney";
-		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
-		s = "la batata";
-		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
-		s = "abcd";
-		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
-		s = "dcba";
-		ft_printf("index for %s: %lu\n", s, ft_hash(s, sz));
-
 		t_hashtable *ht = ft_hashtable_new();
-		ft_hashtable_destroy(&ht);
-		return (0);
+
+		ft_printf("Hashtable size: %lu\nGrow hashtable\n", ht->size);
+		ft_hashtable_grow(ht);
+		ft_printf("Hashtable size: %lu\n", ht->size);
+
+		ft_hashtable_insert(ht, "batata", ft_strdup("is good"));
+		ft_hashtable_insert(ht, "bb", AUTOPTR(42));
+
+		ft_printf("Val for %s => %d\n", "bb", *((int *)ft_hashtable_get(ht, "bb")));
+		ft_printf("Val for %s => %s\n", "batata", (char *)ft_hashtable_get(ht, "batata"));
+
+		ft_hashtable_delete(ht, "bb");
+		char *s = ft_hashtable_remove(ht, "batata");
+		ft_printf("Removed %s => %s\n", "batata", s);
+		ft_strdel(&s);
+
+		ft_printf("Hashtable length should be 0, it is: %lu\n", ht->length);
+
+		ft_hashtable_terminate(&ht);
 	}
 	// Test ft_printf ==========================================================
 	ft_printf("Hello world!\n");

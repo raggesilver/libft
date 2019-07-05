@@ -6,26 +6,18 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 15:21:11 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 16:54:22 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 19:58:27 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_hashtable.h"
 #include "../libft.h"
+#include "ft_hashtable.h"
+#include "ft_hashtable_priv.h"
 
-// static t_ull	fk_upow(t_ull base, size_t expo)
-// {
-// 	t_ull		res;
-
-// 	if (expo == 0)
-// 		return (1);
-// 	if (expo == 1 || base == 1)
-// 		return (base);
-// 	res = base;
-// 	while (expo-- > 1)
-// 		res *= base;
-// 	return (res);
-// }
+/*
+** sdbm hashing function. Adapted from:
+** http://www.cse.yorku.ca/~oz/hash.html - 2019/07/04 17:46:20 GMT-0700
+*/
 
 size_t			ft_hash(const char *key, const size_t size)
 {
@@ -40,31 +32,42 @@ size_t			ft_hash(const char *key, const size_t size)
 t_hashtable		*ft_hashtable_new()
 {
 	t_hashtable	*self;
+	size_t		i;
 
 	self = malloc(sizeof(*self));
 	self->size = HASHTABLE_SIZE;
 	self->length = 0;
 	self->values = malloc(sizeof(*self->values) * self->size);
+	i = 0;
+	while (i < self->size)
+		self->values[i++] = NULL;
 	return (self);
 }
 
 void			ft_hashtable_destroy(t_hashtable **self)
 {
-	if ((*self)->values)
-		free((*self)->values);
-	free(*self);
-	*self = NULL;
-}
-
-void			ft_hashtable_terminate(t_hashtable **self)
-{
-	size_t		i;
+	size_t i;
 
 	i = 0;
 	while (i < (*self)->size)
 	{
-		ft_memdel(&(*self)->values[i]);
+		if ((*self)->values[i])
+			ft_ht_item_destroy(&(*self)->values[i]);
 		++i;
 	}
-	ft_hashtable_destroy(self);
+	ft_memdel((void **)self);
+}
+
+void			ft_hashtable_terminate(t_hashtable **self)
+{
+	size_t i;
+
+	i = 0;
+	while (i < (*self)->size)
+	{
+		if ((*self)->values[i])
+			ft_ht_item_terminate(&(*self)->values[i]);
+		++i;
+	}
+	ft_memdel((void **)self);
 }
