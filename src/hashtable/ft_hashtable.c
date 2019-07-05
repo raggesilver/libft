@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 15:21:11 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 21:59:14 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/04 23:30:00 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t			ft_hash(const char *key, const size_t size)
 	return (hash % size);
 }
 
-t_hashtable		*ft_hashtable_new()
+t_hashtable		*ft_hashtable_new(void)
 {
 	t_hashtable	*self;
 	size_t		i;
