@@ -6,11 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 14:10:53 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/25 22:49:10 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/05 16:06:35 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_priv.h"
 
 void			fk_fhash(t_string *s)
 {

@@ -6,11 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 19:36:18 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/11 16:05:18 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/05 16:06:26 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_priv.h"
 
 /*
 ** '-' is the only flag that works with %c

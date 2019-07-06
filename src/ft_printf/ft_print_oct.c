@@ -6,11 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 22:27:41 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/23 14:09:32 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/05 16:06:45 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_priv.h"
 
 /*
 ** Returns 1 if precision must be fixed

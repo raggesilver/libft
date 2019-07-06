@@ -6,11 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 22:29:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/26 13:03:45 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/05 16:06:38 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_priv.h"
 
 static int		ftpf_int_edge(t_pinfo *i, t_string *s)
 {

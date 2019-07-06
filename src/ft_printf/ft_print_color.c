@@ -6,11 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 15:30:03 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/22 16:59:22 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/05 16:06:32 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_priv.h"
 
 const char	*g_colors[] = {
 	"red", "\033[0;31m",

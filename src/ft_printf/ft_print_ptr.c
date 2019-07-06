@@ -6,11 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 22:27:09 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/26 13:03:12 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/05 16:06:51 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "ft_printf_priv.h"
 
 void		ftpf_print_ptr(t_pinfo *i, va_list *ap)
 {
