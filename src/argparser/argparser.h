@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 12:50:07 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/08 16:06:36 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/08 16:52:37 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include "../libft.h"
 # include <stdint.h>
 
-typedef struct s_arg_parser	t_arg_parser;
+typedef struct s_argparser	t_argparser;
 typedef struct s_arg		t_arg;
 
-typedef	void				(*t_argparser_callback)(t_arg_parser *self);
+typedef	void				(*t_argparser_callback)(t_argparser *self);
 
-struct						s_arg_parser
+struct						s_argparser
 {
 	uint32_t				flags;
 	t_arg					**args;
@@ -37,6 +37,6 @@ struct						s_arg
 	t_argparser_callback	on_error;
 };
 
-uint32_t					ft_parse_args(t_arg_parser *self);
+uint32_t					ft_parse_args(t_argparser *self);
 
 #endif

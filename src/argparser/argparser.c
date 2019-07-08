@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 14:09:37 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/08 16:24:21 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/08 16:52:19 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_arg	*fk_get_arg(t_arg **args, const char *str)
 	return (NULL);
 }
 
-uint32_t		ft_parse_args(t_arg_parser *self)
+uint32_t		ft_parse_args(t_argparser *self)
 {
 	t_arg		*arg;
 
