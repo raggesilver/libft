@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 21:36:12 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/09 00:11:48 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,26 @@ int	main(void)
 		ft_hashtable_terminate(&ht);
 	}
 	// Test ft_printf ==========================================================
-	ft_printf("Hello world!\n");
-	ft_printf("'%d'\n", 42);
-	ft_printf("'%x'\n", 42);
-	ft_printf("'%X'\n", 42);
-	ft_printf("'%o'\n", 42);
-	ft_printf("'%i'\n", 42);
-	ft_printf("'%f'\n", 42.42f);
-	ft_printf("'%Lf'\n", LDBL_MAX);
+	{
+		ft_printf("Hello world!\n");
+		ft_printf("'%d'\n", 42);
+		ft_printf("'%x'\n", 42);
+		ft_printf("'%X'\n", 42);
+		ft_printf("'%o'\n", 42);
+		ft_printf("'%i'\n", 42);
+		ft_printf("'%f'\n", 42.42f);
+		ft_printf("LDBL_MAX: '%Lf'\n", LDBL_MAX);
+	}
 	// Test t_file =============================================================
 	{
-		t_file *f = ft_fopen("main.c", O_RDONLY);
+		t_file f = ft_fopen("main.c", O_RDONLY);
 		t_string *s = ft_fread(f);
-		ft_printf("Read contents from `main.c`\n%s\n", s->data);
+		if (!s)
+			ft_printf("Could not read file\n");
+		else
+			ft_printf("Read content from `main.c`\n%s", s->data);
 		ft_string_destroy(&s);
 		ft_fclose(f);
-		ft_fdestroy(f);
 	}
 	// Test t_string ===========================================================
 	{

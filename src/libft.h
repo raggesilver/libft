@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 14:26:33 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/09 00:03:47 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,13 +231,10 @@ typedef struct		s_file
 	int				mode;
 }					t_file;
 
-# define T_FILE(x) ((t_file *)x)
-
-int					ft_fwrite(t_file *self, t_string *s);
-t_file				*ft_fopen(const char *path, int mode);
-t_string			*ft_fread(t_file *self);
-void				ft_fclose(t_file *f);
-void				ft_fdestroy(t_file *f);
+ssize_t				ft_fwrite(t_file file, t_string *str);
+t_file				ft_fopen(const char *path, int mode);
+t_string			*ft_fread(t_file file);
+void				ft_fclose(t_file file);
 
 /*
 ** This is get_next_line under a different name.
