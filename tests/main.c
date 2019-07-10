@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/10 01:20:26 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/10 13:56:56 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 int	main(void)
 {
+#ifdef T_STRING_STRESS_TEST
 	// t_string stress test ====================================================
 	{
 		for (size_t i = 0; i < 5000; i++)
@@ -49,6 +50,7 @@ int	main(void)
 			ft_string_destroy(&s);
 		}
 	}
+#endif
 	// Test t_hashtable ========================================================
 	{
 		t_hashtable *ht = ft_hashtable_new();
