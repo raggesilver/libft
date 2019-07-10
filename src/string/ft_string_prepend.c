@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 15:03:49 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/05 23:25:59 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/10 01:10:30 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,23 @@
 
 void			ft_string_prepend(t_string *self, const char *s)
 {
-	ssize_t tmp;
-	char	*old;
+	size_t		len;
+	ssize_t		i;
 
-	if (self->data == NULL)
-		self->length = ft_strdupsz(&self->data, s);
-	else
-	{
-		tmp = ft_strlen(s);
-		old = self->data;
-		self->data = malloc(self->length + tmp + 1);
-		self->data[0] = 0;
-		ft_strcat(self->data, s);
-		ft_strcat(self->data, old);
-		self->length += tmp;
-		self->data[self->length] = 0;
-		ft_strdel(&old);
-	}
+	len = ft_strlen(s);
+	if (self->length + len >= self->size)
+		ft_string_grow(self, len);
+	i = self->length;
+	while (--i >= 0)
+		self->data[i + len] = self->data[i];
+	i = -1;
+	while (++i < (ssize_t)len)
+		self->data[i] = s[i];
+	self->length += len;
+	self->data[self->length] = 0;
 }
 
-void			ft_string_prepend_s(t_string *self, const char *s)
+inline void		ft_string_prepend_s(t_string *self, const char *s)
 {
 	ft_string_prepend(self, s);
 	ft_strdel((char **)&s);

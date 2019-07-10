@@ -6,14 +6,14 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 16:58:45 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 22:25:03 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/10 01:22:49 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hashtable.h"
 #include "ft_hashtable_priv.h"
 
-t_ht_item	*ft_ht_item_new(const char *key, void *val)
+t_ht_item		*ft_ht_item_new(const char *key, void *val)
 {
 	t_ht_item	*self;
 

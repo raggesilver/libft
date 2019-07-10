@@ -6,20 +6,22 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 20:33:31 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/11 20:57:36 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/10 01:10:17 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include "ft_string_priv.h"
 
 /*
-** The use of the word inpend must give credit to fprevela
+** The term "inpend" was brilliantly created by fprevela. For those deprived of
+** a decent IQ, inpend is what mere mortals call "insert".
 */
 
 void	ft_string_inpend(t_string *self, size_t index, const char *str)
 {
-	char	*tmp;
 	size_t	len;
+	ssize_t	i;
 
 	if (index >= self->length)
 		ft_string_append(self, str);
@@ -27,13 +29,16 @@ void	ft_string_inpend(t_string *self, size_t index, const char *str)
 		ft_string_prepend(self, str);
 	else
 	{
-		tmp = self->data;
 		len = ft_strlen(str);
-		self->data = ft_strnew(self->length + len);
-		ft_memcpy(self->data, tmp, index);
-		ft_memcpy(self->data + index, str, len);
-		ft_strcat(self->data + len + index, tmp + index);
+		if (self->length + len >= self->size)
+			ft_string_grow(self, len);
+		i = self->length;
+		while (--i >= (ssize_t)index)
+			self->data[i + len] = self->data[i];
+		i = -1;
+		while (++i < (ssize_t)len)
+			self->data[index + i] = str[i];
 		self->length += len;
-		ft_strdel(&tmp);
+		self->data[self->length] = 0;
 	}
 }

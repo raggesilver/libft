@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:23:05 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 14:25:14 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/10 01:23:15 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 void	*ft_array_pop(t_array *self)
 {
-    if (self->length == 0)
-        return (NULL);
-    else
-        return (ft_array_remove(self, self->length - 1));
+	if (self->length == 0)
+		return (NULL);
+	else
+		return (ft_array_remove(self, self->length - 1));
 }
