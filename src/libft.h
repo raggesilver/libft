@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/09 00:03:47 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/09 01:55:09 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <netinet/in.h>
 # include <sys/socket.h>
+
+# include "string/ft_string.h"
 
 # define _IW2(x)			(x == '\r' || x == '\v' || x == '\f')
 # define IS_WHITESPACE(x)	(x == ' ' || x == '\t' || x == '\n' || _IW2(x))
@@ -37,12 +39,6 @@
 # define _ULL unsigned long long
 
 typedef _ULL		t_ull;
-
-# define _SSTR struct s_string
-
-typedef _SSTR		t_string;
-
-# undef _SSTR
 
 /*
 ** Conversion =====
@@ -190,35 +186,6 @@ void				ft_lstappend(t_list *head, void *content, size_t s);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void(*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-
-/*
-** String type =================================================================
-*/
-
-struct				s_string
-{
-	char			*data;
-	size_t			length;
-	void			(*append)(struct s_string *self, const char *s);
-	void			(*destroy)(struct s_string **self);
-};
-
-# define T_STRING(x) ((t_string *)x)
-
-t_string			*ft_string_new_s(char **str);
-t_string			*ft_string_new(const char *s);
-t_string			*ft_string_padding(t_string *self, size_t i, size_t s,
-										char c);
-void				ft_string_append(t_string *self, const char *s);
-void				ft_string_appendn(t_string *self, const char *s, size_t n);
-void				ft_string_destroy(t_string **self);
-void				ft_string_inpend(t_string *self, size_t index,
-										const char *str);
-void				ft_string_prepend_s(t_string *self, const char *s);
-void				ft_string_prepend(t_string *self, const char *s);
-void				ft_string_real_append(t_string *self, t_string *s);
-void				ft_string_to_lower(t_string *self);
-void				ft_string_to_upper(t_string *self);
 
 /*
 ** File type ===================================================================
