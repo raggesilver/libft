@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 23:50:05 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/10 13:53:21 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/12 14:09:05 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ t_string	*ft_fread(t_file file)
 	{
 		tmp[r] = 0;
 		ft_string_appendn(res, tmp, r);
+	}
+	if (res->length == 0 && r == -1)
+	{
+		ft_string_destroy(&res);
+		return (NULL);
 	}
 	return (res);
 }
