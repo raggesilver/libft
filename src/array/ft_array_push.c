@@ -6,11 +6,13 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:01:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/08 23:44:51 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/12 17:38:04 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_array.h"
+
+#define		_FAA_ATTR __attribute__((alias("ft_array_push")))
 
 static void	ft_array_grow(t_array *self)
 {
@@ -21,7 +23,12 @@ static void	ft_array_grow(t_array *self)
 
 void		ft_array_push(t_array *self, void *value)
 {
-	if (self->length + 1 > self->size)
+	if (self->length + 1 >= self->size)
 		ft_array_grow(self);
 	self->data[self->length++] = value;
+	self->data[self->length] = NULL;
 }
+
+void		ft_array_append(t_array *self, void *value) _FAA_ATTR;
+
+#undef		_FAA_ATTR

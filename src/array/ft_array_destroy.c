@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array_pop.c                                     :+:      :+:    :+:   */
+/*   ft_array_destroy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/04 14:23:05 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/12 17:27:33 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/05/08 21:17:58 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/07/12 17:29:53 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_array.h"
 
-/*
-** Remove and return the last element from the array. Does not free.
-*/
-
-void	*ft_array_pop(t_array *self)
+void	ft_array_destroy(t_array **self)
 {
-	if (self->length == 0)
-		return (NULL);
-	else
-		return (ft_array_remove(self, self->length - 1));
+	if ((*self)->data)
+		free((*self)->data);
+	free(*self);
+	*self = NULL;
+}
+
+void	ft_array_terminate(t_array **self)
+{
+	size_t i;
+
+	i = 0;
+	while (i < (*self)->length)
+		ft_memdel((*self)->data + i++);
+	ft_array_destroy(self);
 }

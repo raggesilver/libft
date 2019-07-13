@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/09 01:55:09 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/12 17:44:14 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/socket.h>
 
 # include "string/ft_string.h"
+# include "array/ft_array.h"
 
 # define _IW2(x)			(x == '\r' || x == '\v' || x == '\f')
 # define IS_WHITESPACE(x)	(x == ' ' || x == '\t' || x == '\n' || _IW2(x))
@@ -101,7 +102,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memset(void *s, int c, size_t n);
-void				*ft_realloc(void *ptr, size_t len);
+void				*ft_realloc(void *ptr, size_t len) __attribute__((deprecated));
 void				*ft_reallocsz(void *ptr, size_t len, size_t new_len);
 void				ft_bzero(void *s, size_t n);
 void				ft_memdel(void **ap);
@@ -208,78 +209,6 @@ void				ft_fclose(t_file file);
 */
 
 int					ft_readln(const int fd, char **line);
-
-/*
-** Array type ==================================================================
-*/
-
-# define ARRAY_GROW_SIZE 10
-
-typedef struct		s_array
-{
-	size_t			length;
-	size_t			size;
-	void			**data;
-}					t_array;
-
-# define T_ARRAY(x) ((t_array *)x)
-
-t_array				*ft_array_new(void);
-
-/*
-** Push a value `void *value` to `t_array *self`
-*/
-
-void				ft_array_push(t_array *self, void *value);
-
-/*
-** AUTOPTR(x) is a macro that takes in any value, allocates a pointer
-** that points to that value and returns the pointer. It is supposed to
-** make life easier when adding simple datatypes like integers and floats
-** to an array. This pointer can be freed manually or using `ft_array_terminate`
-*/
-
-# define _AUTOMAL(x)	({ typeof(x) *pp_f = malloc(sizeof(x)); pp_f; })
-# define AUTOPTR(x)		({ typeof(x) *pp_f = _AUTOMAL(x); *pp_f = x; pp_f; })
-
-/*
-** This function initializes the array with values from a NULL terminated
-** array of void pointers `void **values`.
-*/
-
-t_array				*ft_array_new_with_values(void **values);
-
-/*
-** This function frees the `self->data` array. The values themselves aren't
-** freed.
-*/
-
-void				ft_array_destroy(t_array **self);
-
-/*
-** This function does everything `ft_array_destroy` does plus it frees all
-** values in the array.
-**
-** Beware if you use the array to store structs calling this function will
-** not free those structs' members, only their reference.
-*/
-
-void				ft_array_terminate(t_array **self);
-
-/*
-** Remove an index from the array and shift all following values, RETURN it's
-** pointer or NULL if the indexdoesn't exist.
-*/
-
-void				*ft_array_remove(t_array *self, size_t index);
-void				*ft_array_pop(t_array *self);
-
-/*
-** Delete (free) an index from the array if it exists and shift all following
-** values to the left.
-*/
-
-void				ft_array_delete(t_array *self, size_t index);
 
 /*
 ** Socket type =================================================================

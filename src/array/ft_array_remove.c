@@ -6,11 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:42:18 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:16:42 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/12 17:27:40 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_array.h"
 
 static void	ft_array_shrink(t_array *self)
 {
@@ -21,7 +21,7 @@ static void	ft_array_shrink(t_array *self)
 
 static void	ft_array_maybe_shrink(t_array *self)
 {
-	if (self->length < self->size - ARRAY_GROW_SIZE)
+	if (self->length + 1 < self->size - ARRAY_GROW_SIZE)
 		ft_array_shrink(self);
 }
 
@@ -44,6 +44,7 @@ void		*ft_array_remove(t_array *self, size_t index)
 	ft_array_shift(self, index);
 	self->length--;
 	ft_array_maybe_shrink(self);
+	self->data[self->length] = NULL;
 	return (res);
 }
 
