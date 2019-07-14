@@ -16,7 +16,7 @@ All the code follows the [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf
 
 > Me - `*_new` malloc's stuff, `*_destroy` free's stuff (for struct pointers of course)
 
-> Me - The term inpend is something only the most cleaver people can understand, and those who claim "insert" is a better word are wrong
+> Me - The term inpend is something only the most clever people can understand, and those who claim "insert" is a better word are wrong
 
 > Me - `t_ull` is a typedef for `unsigned long long`
 
