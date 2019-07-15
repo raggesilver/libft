@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 21:47:56 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:01 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/15 00:08:50 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 long long	ft_atoll(const char *str)
 {
-	char				*p;
-	int					mult;
-	unsigned long long	res;
+	char		*p;
+	t_int8		mult;
+	t_ullong	res;
 
 	mult = 0;
 	res = 0;
 	p = (char *)str;
 	while (IS_WHITESPACE(*p))
 		p++;
-	mult = (*p == '-' && (p++ || 1)) ? -1 : mult;
-	mult = ((*p == '+' && !mult && (p++ || 1)) || !mult) ? 1 : mult;
-	while (*p >= '0' && *p <= '9' && res <= 9223372036854775807)
+	if (*p == '-' && (p++ || 1))
+		mult = -1;
+	else if ((*p == '+' && (p++ || 1)) || 1)
+		mult = 1;
+	while (*p >= '0' && *p <= '9' && res <= LONG_LONG_MAX)
 		res = (res * 10) + (*p++ - '0');
-	if (res > 9223372036854775807)
+	if (res > LONG_LONG_MAX)
 		return ((mult == -1) ? 0 : -1);
 	return (res * mult);
 }
