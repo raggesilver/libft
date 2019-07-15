@@ -29,7 +29,7 @@ All the code follows the [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf
 	- [ft_array_push](#ft_array_push) push an element to an array
 	- [ft_array_remove](#ft_array_remove) remove an element from an array
 	- [ft_array_delete](#ft_array_delete) delete an element from an array
-1. [t_string](src/string/README.md) a string implementation
+1. [t_string](src/string/) a string implementation
 1. [t_bignum](#t_bignum) an "infinite" bignum implementation*
 	- [ft_bignum_new](#ft_bignum_new) instantiate a bignum
 	- [ft_bignum_new_s](#ft_bignum_new_s) instantiate a bignum by stealing a `char *`
