@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 15:30:03 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/05 16:06:32 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 22:57:10 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ const int	g_color_sizes[] = {
 	-1
 };
 
-static int	check_color(const char *str)
+static int	fk_check_color(const char *str)
 {
 	char	*aux;
 	int		i;
@@ -58,13 +58,13 @@ static int	check_color(const char *str)
 	return (-1);
 }
 
-int			ftpf_print_color(const char **str, size_t *res)
+int			ftpf_print_color(t_string *buf, const char **str)
 {
 	int c;
 
-	if ((c = check_color(*str + 1)) < 0)
+	if ((c = fk_check_color(*str + 1)) < 0)
 		return (0);
 	*str += ft_strlen(g_colors[c]) + 2;
-	*res += write(1, g_colors[c + 1], g_color_sizes[c + 1]);
+	ft_string_appendn(buf, g_colors[c + 1], g_color_sizes[c + 1]);
 	return (1);
 }

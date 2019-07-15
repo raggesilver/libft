@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 14:10:53 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/05 16:06:35 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 22:33:40 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			fk_fix_flt_width(t_pinfo *i, t_string *s)
 	}
 }
 
-void			ftpf_print_flt(t_pinfo *i, va_list *ap)
+void			ftpf_print_flt(t_string *buf, t_pinfo *i, va_list *ap)
 {
 	long double	f;
 	t_string	*s;
@@ -56,6 +56,6 @@ void			ftpf_print_flt(t_pinfo *i, va_list *ap)
 		fk_fhash(s);
 	ftpf_plus(i, s);
 	fk_fix_flt_width(i, s);
-	i->res = write(1, s->data, s->length);
+	ft_string_appendn(buf, s->data, s->length);
 	ft_string_destroy(&s);
 }

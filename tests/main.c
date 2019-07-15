@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/10 14:40:46 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 23:26:34 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,15 @@ int	main(void)
 		ft_printf("'%i'\n", 42);
 		ft_printf("'%f'\n", 42.42f);
 		ft_printf("LDBL_MAX: '%Lf'\n", LDBL_MAX);
+		t_string *s = ft_sprintf("42 + 0.42 = %.2f", 42.42);
+		if (!ft_strequ(s->data, "42 + 0.42 = 42.42"))
+		{
+			ft_string_destroy(&s);
+			ft_dprintf(2, "Error, ft_sprintf returned some doideira\n");
+			return (1);
+		}
+		ft_printf("%s\n", s->data);
+		ft_string_destroy(&s);
 	}
 	// Test t_file =============================================================
 	{

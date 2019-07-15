@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 22:29:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/05 16:06:38 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 22:34:52 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char		*get_int_string(t_pinfo *i, va_list *ap)
 	return (tmp);
 }
 
-void			ftpf_print_hex(t_pinfo *i, va_list *ap)
+void			ftpf_print_hex(t_string *buf, t_pinfo *i, va_list *ap)
 {
 	t_string	*str;
 	char		*tmp;
@@ -63,7 +63,7 @@ void			ftpf_print_hex(t_pinfo *i, va_list *ap)
 	if (ftpf_int_edge(i, str))
 		ftpf_fix_precision(i, str);
 	ftpf_fix_width(i, str);
-	i->res = write(1, str->data, str->length);
+	ft_string_appendn(buf, str->data, str->length);
 	ft_strdel(&tmp);
 	ft_string_destroy(&str);
 }

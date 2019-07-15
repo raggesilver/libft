@@ -1,10 +1,19 @@
 # Changelog
 
+**Quick summary of keywords**
+- **Added**: new feature
+- **Removed**: removed feature
+- **Updated**: updated feature, API (prototype and return) unchanged
+- **Incompatible**: updated feature, API (prototype and/or return) changed
+- **Deprecated**: still in code but should not be used anymore. Most likely a `__attribute__((deprecated))` was added to the code and it's use will generate compiler warnings
+
 ## Unreleased - 2019-07-14
 
 ### Added
 - Most likely added bugs to fix later
 - `ft_int.h` is a header that contains some important integer typedefs (for most cases `stdint.h` is not necessary anymore)
+- `ft_dprintf`, `ft_sprintf`, `ft_vsprintf` and `ft_vdprintf` were added.
+> **Important note**: my implementation of `ft_sprintf` and `ft_vsprintf` return a `t_string *`.
 
 ### Updated
 - A couple of functions received `__attribute__((pure))` which according to GCC's documentation **could make them faster** (these functions include `ft_strlen` and `ft_strcmp`)

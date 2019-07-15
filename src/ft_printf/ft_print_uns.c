@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 22:06:18 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/05 16:06:56 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 22:37:31 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		ftpf_uns_edge(t_pinfo *i, t_string *s)
 ** l, ll, h, hh sizes can be specified
 */
 
-void			ftpf_print_uns(t_pinfo *i, va_list *ap)
+void			ftpf_print_uns(t_string *buf, t_pinfo *i, va_list *ap)
 {
 	t_string	*str;
 	char		*tmp;
@@ -58,7 +58,7 @@ void			ftpf_print_uns(t_pinfo *i, va_list *ap)
 	if (ftpf_uns_edge(i, str))
 		ftpf_fix_precision(i, str);
 	ftpf_fix_width(i, str);
-	i->res = write(1, str->data, str->length);
+	ft_string_appendn(buf, str->data, str->length);
 	ft_strdel(&tmp);
 	ft_string_destroy(&str);
 }

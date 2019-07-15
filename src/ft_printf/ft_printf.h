@@ -6,14 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 11:11:37 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/05 16:05:14 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 23:16:55 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# define _PF format(printf, 1, 2)
 
 # include "../libft.h"
 # include <stdarg.h>
@@ -42,6 +40,16 @@ typedef struct	s_pinfo
 	size_t		res;
 }				t_pinfo;
 
-int				ft_printf(const char *s, ...) __attribute__((_PF));
+int				ft_printf(const char *s,
+					...) __attribute__((format(printf,1,2)));
+int				ft_dprintf(int fd, const char *s,
+					...) __attribute__((format(printf,2,0)));
+t_string		*ft_sprintf(const char *s,
+					...) __attribute__((format(printf,1,2)));
+
+int				ft_vdprintf(int fd, const char *s,
+					va_list ap) __attribute__((format(printf,2,0)));
+t_string		*ft_vsprintf(const char *s,
+					va_list ap) __attribute__((format(printf,1,0)));
 
 #endif
