@@ -29,17 +29,7 @@ All the code follows the [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf
 	- [ft_array_push](#ft_array_push) push an element to an array
 	- [ft_array_remove](#ft_array_remove) remove an element from an array
 	- [ft_array_delete](#ft_array_delete) delete an element from an array
-1. [t_string](#t_string) a string implementation
-	- [ft_string_new](#ft_string_new) instantiate a string
-	- [ft_string_new_s](#ft_string_new_s) instantiate a string by stealing a `char *`
-	- [ft_string_destroy](#ft_string_destroy) destroy a string
-	- [ft_string_append](#ft_string_append) append text to a string
-	- [ft_string_prepend](#ft_string_prepend) prepend text to a string
-	- [ft_string_inpend](#ft_string_inpend) inpend text to a string
-	- [ft_string_remove](#ft_string_remove) remove text from a string
-	- [ft_string_to_lower](#ft_string_to_lower) lowercase a string
-	- [ft_string_to_upper](#ft_string_to_upper) uppercase a string
-	- [ft_string_padding](#ft_string_padding) add a character padding to a string
+1. [t_string](src/string/README.md) a string implementation
 1. [t_bignum](#t_bignum) an "infinite" bignum implementation*
 	- [ft_bignum_new](#ft_bignum_new) instantiate a bignum
 	- [ft_bignum_new_s](#ft_bignum_new_s) instantiate a bignum by stealing a `char *`
@@ -56,10 +46,6 @@ All the code follows the [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf
 
 ---
 ### t_array
-> Me - I'll do this soon...
-
----
-### t_string
 > Me - I'll do this soon...
 
 ---
