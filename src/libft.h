@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/12 17:44:14 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 22:09:03 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # include "string/ft_string.h"
 # include "array/ft_array.h"
+# include "ft_int.h"
 
 # define _IW2(x)			(x == '\r' || x == '\v' || x == '\f')
 # define IS_WHITESPACE(x)	(x == ' ' || x == '\t' || x == '\n' || _IW2(x))
@@ -34,12 +35,6 @@
 # define MOD(x)		((x < 0) ? -x : x)
 
 # define BUFF_SIZE	32
-# define INT_MAX	2147483647
-# define INT_MIN	-2147483648
-
-# define _ULL unsigned long long
-
-typedef _ULL		t_ull;
 
 /*
 ** Conversion =====
@@ -95,14 +90,17 @@ int					ft_toupper(int c);
 ** Memory =====
 */
 
-int					ft_memcmp(const void *s1, const void *s2, size_t n);
+int					ft_memcmp(const void *s1,
+						const void *s2, size_t n) __attribute__((pure));
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
-void				*ft_memchr(const void *s, int c, size_t n);
+void				*ft_memchr(const void *s,
+						int c, size_t n) __attribute__((pure));
 void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memset(void *s, int c, size_t n);
-void				*ft_realloc(void *ptr, size_t len) __attribute__((deprecated));
+void				*ft_realloc(
+						void *ptr, size_t len) __attribute__((deprecated));
 void				*ft_reallocsz(void *ptr, size_t len, size_t new_len);
 void				ft_bzero(void *s, size_t n);
 void				ft_memdel(void **ap);
@@ -126,7 +124,7 @@ void				ft_putstr(char const *s);
 
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strcat(char *dest, const char *src);
-char				*ft_strchr(const char *s, int c);
+char				*ft_strchr(const char *s, int c) __attribute__((pure));
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strdup(const char *s);
 char				*ft_strdupchr(const char *str, char c);
@@ -144,13 +142,17 @@ char				*ft_strrev(char *str);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
-int					ft_strcmp(const char *s1, const char *s2);
-int					ft_strequ(char const *s1, char const *s2);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_strnequ(char const *s1, char const *s2, size_t n);
-size_t				ft_strchrcnt(const char *s, char c);
+int					ft_strcmp(
+						const char *s1, const char *s2) __attribute__((pure));
+int					ft_strequ(
+						char const *s1, char const *s2) __attribute__((pure));
+int					ft_strncmp(const char *s1,
+						const char *s2, size_t n) __attribute__((pure));
+int					ft_strnequ(char const *s1,
+						char const *s2, size_t n) __attribute__((pure));
+size_t				ft_strchrcnt(const char *s, char c) __attribute__((pure));
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
-size_t				ft_strlen(const char *s);
+size_t				ft_strlen(const char *s) __attribute__((pure));
 void				ft_strclr(char *s);
 void				ft_strdel(char **as);
 void				ft_striter(char *s, void (*f)(char *));
@@ -245,7 +247,7 @@ typedef struct		s_bignum
 
 t_bignum			*ft_bignum_div_10pow(t_bignum *self, size_t n);
 t_bignum			*ft_bignum_mult_10pow(t_bignum *self, size_t n);
-t_bignum			*ft_bignum_mult(t_bignum *self, t_ull n);
+t_bignum			*ft_bignum_mult(t_bignum *self, t_ullong n);
 t_bignum			*ft_bignum_new_s(const char *str);
 t_bignum			*ft_bignum_new(const char *str);
 t_bignum			*ft_bignum_real_add(t_bignum *self, t_bignum *num);

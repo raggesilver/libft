@@ -12,3 +12,4 @@ build/
 ._*
 *.dSYM
 .disabled
+vgcore.*

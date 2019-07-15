@@ -1,6 +1,0 @@
-libft/
-*
-!*.*
-!.gitignore
-!Makefile
-test.txt

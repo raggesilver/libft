@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 14:59:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/09 19:10:59 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 21:17:36 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ const t_string_cfg		g_str_cfg = {
 
 size_t					ft_strdupsz(char **dest, const char *s)
 {
-	size_t	res;
+	size_t	len;
 	char	*p;
 
-	res = ft_strlen(s);
-	*dest = malloc(sizeof(**dest) * (res + 1));
+	len = ft_strlen(s);
+	*dest = malloc(sizeof(**dest) * (len + 1));
 	p = *dest;
 	while ((*p++ = *s++))
 		;
-	return (res);
+	return (len);
 }
 
 static inline size_t	fk_get_high_bit(size_t num)
@@ -97,7 +97,7 @@ void					ft_string_grow(t_string *self, size_t add_len)
 		else
 			self->size += STRING_GROW_SIZE;
 	}
-	tmp = malloc(self->size);
+	tmp = ft_memalloc(self->size);
 	ft_memcpy(tmp, self->data, self->length + 1);
 	ft_strdel(&self->data);
 	self->data = tmp;

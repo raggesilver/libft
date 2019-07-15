@@ -6,12 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 17:27:18 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/12 17:29:35 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 21:26:27 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_array.h"
-
 
 t_array	*ft_array_new(void)
 {

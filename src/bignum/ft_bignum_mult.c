@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 15:02:44 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/10 01:11:49 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 17:31:09 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void		fk_bn_mult(t_bignum *s, int n)
 	}
 }
 
-t_bignum		*ft_bignum_mult(t_bignum *self, t_ull n)
+t_bignum		*ft_bignum_mult(t_bignum *self, t_ullong n)
 {
 	t_bignum	*a1;
 	t_bignum	*a2;

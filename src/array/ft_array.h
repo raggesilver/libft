@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 17:24:39 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/12 17:36:24 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/14 21:25:24 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ t_array				*ft_array_new(void);
 */
 
 void				ft_array_push(t_array *self, void *value);
-
-/*
-** Alias to ft_array_push
-*/
-
-void				ft_array_append(t_array *self, void *value);
 
 /*
 ** Instantiate a `t_array *` from an array of void pointers and a length `n`. If
