@@ -8,5 +8,6 @@ leak check:
   script:
     - make ci -j
   except:
-    - "*.md"
-    - ".gitattributes"
+    changes:
+      - "*.md"
+      - ".gitattributes"
