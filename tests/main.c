@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/15 22:43:12 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/15 23:38:33 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,11 @@ int	main(void)
 					i, (int)i, arr->data[i]);
 				goto error;
 			}
+		ARRAYT_REMOVE(arr, 200);
+		ARRAYT_REMOVE(arr, 30000);
+		ARRAYT_REMOVE(arr, 3);
+		for (size_t i = 0; i < arr->length; i++)
+			ft_printf("arr[%lu] = %d\n", i, arr->data[i]);
 	error:
 		ARRAYT_DESTROY(arr);
 	}

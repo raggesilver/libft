@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 22:18:04 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/15 22:38:01 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/15 23:36:33 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,15 @@ void	arrayt_destroy(void **self, void **data);
 
 # define _A_DTR(arr) ({ arrayt_destroy((void **)&arr, (void **)&arr->data); })
 # define ARRAYT_DESTROY(arr) ({ _A_DTR(arr); })
+
+/*
+** ArrayT remove
+*/
+
+void	arrayt_remove(char *data, size_t dsize, size_t *len, size_t i);
+
+# define _A_RMV_1 (char *)arr->data, sizeof(*arr->data), &arr->length
+# define _A_RMV(arr, in)		({ arrayt_remove(_A_RMV_1, in); })
+# define ARRAYT_REMOVE(arr, in)	({ _A_RMV(arr, in); })
 
 #endif
