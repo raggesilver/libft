@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/15 23:38:33 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/16 00:15:24 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,9 +156,14 @@ int	main(void)
 	// Test arrayt =============================================================
 	{
 		#include "arrayt/arrayt.h"
-		ARRAY_T(int) *arr;
+
+		ARRAYT(int) *arr;
 
 		ARRAYT_INIT(arr);
+		ARRAYT_PUSH(arr, 0);
+		ARRAYT_PUSH(arr, 2);
+		ARRAYT_PUSH(arr, 3);
+		ARRAYT_INSERT(arr, 1, 1);
 		for (size_t i = 0; i < 293; i++)
 			ARRAYT_PUSH(arr, 0 + i);
 		ft_printf("arr len = %lu, should be 293\n", arr->length);

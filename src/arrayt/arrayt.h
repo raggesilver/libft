@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 22:18:04 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/15 23:36:33 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/16 00:16:39 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	arrayt_grow(void **data, size_t dsize, size_t *size);
 void	arrayt_destroy(void **self, void **data);
 
-# define ARRAY_T(T)			struct { T *data; size_t length; size_t size; }
+# define ARRAYT(T)			struct { T *data; size_t length; size_t size; }
 # define ARRAYT_INIT(arr)	({ arr = ft_memalloc(sizeof(*arr)); })
 
 /*
@@ -50,13 +50,39 @@ void	arrayt_destroy(void **self, void **data);
 # define ARRAYT_DESTROY(arr) ({ _A_DTR(arr); })
 
 /*
+** Helper macro to unpack ArrayT members to function params
+*/
+
+# define _A_UPK (char *)arr->data, sizeof(*arr->data), &arr->length
+
+/*
 ** ArrayT remove
 */
 
 void	arrayt_remove(char *data, size_t dsize, size_t *len, size_t i);
 
-# define _A_RMV_1 (char *)arr->data, sizeof(*arr->data), &arr->length
-# define _A_RMV(arr, in)		({ arrayt_remove(_A_RMV_1, in); })
-# define ARRAYT_REMOVE(arr, in)	({ _A_RMV(arr, in); })
+# define ARRAYT_REMOVE(arr, i)	({ arrayt_remove(_A_UPK, i); })
+
+/*
+** ArrayT insert
+*/
+
+void	arrayt_make_room(char *data, size_t dsize, size_t *len, size_t i);
+
+# define _A_INS_3				arr->data[i] = val; arr->length++;
+# define _A_INS_2(arr, i, val)	({ arrayt_make_room(_A_UPK, i); _A_INS_3; })
+# define _A_INS_1(arr, i, val)	({ _ARRAYT_MGROW(arr); _A_INS_2(arr, i, val); })
+
+# define _A_INS_IF				if (i <= arr->length) _A_INS_1(arr, i, val);
+# define _A_INS_ELSE			else ARRAYT_PUSH(arr, val);
+
+# define _A_INS(arr, i, val)		({ _A_INS_IF _A_INS_ELSE })
+# define ARRAYT_INSERT(arr, i, val)	({ _A_INS(arr, i, val) })
+
+/*
+** ArrayT prepend
+*/
+
+# define ARRAYT_PREPEND(arr, val)	ARRAYT_INSERT(arr, 0, val)
 
 #endif
