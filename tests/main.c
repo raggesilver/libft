@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 23:26:34 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/16 11:24:11 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,46 @@ int	main(void)
 			++i;
 		}
 		ft_array_terminate(&arr);
+	}
+	// Test arrayt =============================================================
+	{
+		#include "arrayt/arrayt.h"
+
+		ARRAYT(int) *arr;
+
+		ARRAYT_INIT(arr);
+		for (size_t i = 0; i < 293; i++)
+			ARRAYT_PUSH(arr, 0 + i);
+		ft_printf("arr len = %lu, should be 293\n", arr->length);
+		for (size_t i = 0; i < 293; i++)
+			if (arr->data[i] != (int)i)
+			{
+				ft_dprintf(2, "Error: arr->data[%lu] should be %d, got %d\n",
+					i, (int)i, arr->data[i]);
+				goto error;
+			}
+		ARRAYT_REMOVE(arr, 200);
+		ARRAYT_REMOVE(arr, 30000);
+		ARRAYT_REMOVE(arr, 3);
+		for (size_t i = 0; i < arr->length; i++)
+			ft_printf("arr[%lu] = %d\n", i, arr->data[i]);
+		while (arr->length)
+			ARRAYT_REMOVE(arr, 0);
+		ARRAYT_PUSH(arr, 0);
+		ARRAYT_PUSH(arr, 1);
+		ARRAYT_PUSH(arr, 2);
+		ARRAYT_PUSH(arr, 3);
+		ARRAYT_PUSH(arr, 4);
+		ARRAYT_PUSH(arr, 5);
+		ARRAYT_PUSH(arr, 7);
+		ARRAYT_PUSH(arr, 8);
+		ARRAYT_PUSH(arr, 9);
+		ARRAYT_PUSH(arr, 10);
+		ARRAYT_INSERT(arr, 6, 6);
+		for (size_t i = 0; i < arr->length; i++)
+			ft_printf("arr[%lu] = %d\n", i, arr->data[i]);
+	error:
+		ARRAYT_DESTROY(arr);
 	}
 	return (0);
 }
