@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 23:26:34 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/15 22:43:12 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,25 @@ int	main(void)
 			++i;
 		}
 		ft_array_terminate(&arr);
+	}
+	// Test arrayt =============================================================
+	{
+		#include "arrayt/arrayt.h"
+		ARRAY_T(int) *arr;
+
+		ARRAYT_INIT(arr);
+		for (size_t i = 0; i < 293; i++)
+			ARRAYT_PUSH(arr, 0 + i);
+		ft_printf("arr len = %lu, should be 293\n", arr->length);
+		for (size_t i = 0; i < 293; i++)
+			if (arr->data[i] != (int)i)
+			{
+				ft_dprintf(2, "Error: arr->data[%lu] should be %d, got %d\n",
+					i, (int)i, arr->data[i]);
+				goto error;
+			}
+	error:
+		ARRAYT_DESTROY(arr);
 	}
 	return (0);
 }
