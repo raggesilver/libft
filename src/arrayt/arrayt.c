@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 22:32:12 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/16 00:13:48 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/16 11:22:40 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,14 @@ void	arrayt_remove(char *data, size_t dsize, size_t *len, size_t i)
 
 void	arrayt_make_room(char *data, size_t dsize, size_t *len, size_t i)
 {
+	ssize_t	j;
+
 	if (i >= *len)
 		return ;
-	ft_memmove((void *)(data + (i * dsize)), data + (dsize * (i + 1)),
-		dsize * (*len - i - 1));
+	j = *len;
+	while (j > (ssize_t)i)
+	{
+		ft_memmove((data + ((j) * dsize)), (data + ((j - 1) * dsize)), dsize);
+		--j;
+	}
 }

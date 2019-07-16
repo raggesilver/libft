@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 22:18:04 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/16 00:16:39 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/07/16 11:25:23 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,13 @@ void	arrayt_remove(char *data, size_t dsize, size_t *len, size_t i);
 
 void	arrayt_make_room(char *data, size_t dsize, size_t *len, size_t i);
 
-# define _A_INS_3				arr->data[i] = val; arr->length++;
-# define _A_INS_2(arr, i, val)	({ arrayt_make_room(_A_UPK, i); _A_INS_3; })
+# define _A_MKR arrayt_make_room
+# define _A_INS_3(arr, i, val)	arr->data[i] = val; arr->length++;
+# define _A_INS_2(arr, i, val)	_A_MKR(_A_UPK, i); _A_INS_3(arr, i, val);
 # define _A_INS_1(arr, i, val)	({ _ARRAYT_MGROW(arr); _A_INS_2(arr, i, val); })
+# define _A_INS(arr, i, val) ({ if (i < arr->length) _A_INS_1(arr, i, val); })
 
-# define _A_INS_IF				if (i <= arr->length) _A_INS_1(arr, i, val);
-# define _A_INS_ELSE			else ARRAYT_PUSH(arr, val);
-
-# define _A_INS(arr, i, val)		({ _A_INS_IF _A_INS_ELSE })
-# define ARRAYT_INSERT(arr, i, val)	({ _A_INS(arr, i, val) })
+# define ARRAYT_INSERT(arr, i, val)	({ _A_INS(arr, i, val); })
 
 /*
 ** ArrayT prepend
