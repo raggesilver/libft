@@ -61,7 +61,7 @@ static t_pinfo	*parse_width(const char **s, t_pinfo *i, va_list *ap)
 		if (*(++(*s)) == '*' && ((*s)++ || 1))
 		{
 			i->precision = va_arg(*ap, int);
-			i->precision = MIN(-1, i->precision);
+			i->precision = MAX(-1, i->precision);
 		}
 		else
 		{
