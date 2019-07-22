@@ -7,8 +7,3 @@ leak check:
   image: etews/gcc-expect-valgrind
   script:
     - make ci -j
-  except:
-    changes:
-      - "*.md"
-      - "**/*.md"
-      - ".gitattributes"
