@@ -31,7 +31,9 @@ Create a new `t_string *` from a given string `s` with default `t_string_cfg`. I
 ```C
 t_string	*ft_string_new_s(char **s)
 ```
-Create a new `t_string *` from a given string pointer `s` with default `t_string_cfg`. `s` cannot be `NULL`. The new implementation doesn't allow the same pointer to be used. So this function creates the `t_string *` and calls `ft_strdel` on `s`.
+Create a new `t_string *` from a given string pointer `s` with default `t_string_cfg`. `s` cannot be `NULL`. The new implementation uses the pointer `*s` as the `(t_string *)->data`.
+
+**Important note**: If the given string was allocated with leading zeroes the field `size` in the resulting `t_string *` will be wrong as it will use the result of `ft_strlen` as it's initial value.
 
 ### ft_string_new_with_config
 ```C

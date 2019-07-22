@@ -7,6 +7,11 @@
 - **Incompatible**: updated feature, API (prototype and/or return) changed
 - **Deprecated**: still in code but should not be used anymore. Most likely a `__attribute__((deprecated))` was added to the code and it's use will generate compiler warnings
 
+## Unreleased - 2019-07-22
+
+### Updated
+- `ft_string_new_s` now uses the same pointer given to the function
+
 ## Unreleased - 2019-07-14
 
 ### Added
