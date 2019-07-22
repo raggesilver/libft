@@ -1,12 +1,13 @@
 # t_string
 
-This is my implementation of a "string class" in c.
+This is my implementation of a "string class" in c. The `t_string` type was designed to reduce the need to make many `ft_strlen` calls as the struct holds the string length itself. It also reduces the need to `realloc` data every time the string grows/shrinks (this is achieved by allocating larger amounts of memory than necessary). There are also a few useful functions to modify the string allowing insertion and removal of text at any index.
 
 ## Summary
 
 - [ft_string_new](#ft_string_new)
 - [ft_string_new_s](#ft_string_new_s)
 - [ft_string_new_with_config](#ft_string_new_with_config)
+- [ft_string_clone](#ft_string_clone)
 - [ft_string_append](#ft_string_append)
 - [ft_string_appendn](#ft_string_appendn)
 - [ft_string_real_append](#ft_string_real_append)
@@ -37,6 +38,14 @@ Create a new `t_string *` from a given string pointer `s` with default `t_string
 t_string	*ft_string_new_with_config(const char *s, t_string_cfg cfg)
 ```
 Create a new `t_string *` from a given string `s` with `cfg` as config. If `s` is `NULL` the default space will still be allocated.
+
+### ft_string_clone
+```C
+t_string	*ft_string_clone(const t_string *s)
+```
+Create a new `t_string *` by copying another `t_string *s`.
+
+**Note**: the copy will have the same `t_string_cfg` as the original.
 
 ### ft_string_append
 ```C
