@@ -9,5 +9,5 @@ leak check:
     - make ci -j
   except:
     changes:
-      - "*.md"
-      - ".gitattributes"
+      - *.md
+      - .gitattributes
