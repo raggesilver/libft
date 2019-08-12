@@ -13,9 +13,15 @@
 #include "libft.h"
 #include "hashtable/ft_hashtable.h"
 #include "ft_printf/ft_printf.h"
+#include "arrayt/arrayt.h"
 #include "../src/hashtable/ft_hashtable_priv.h"
 
 #include <float.h>
+
+void arr_dest_func(void *el)
+{
+	ft_string_destroy((t_string **)el);
+}
 
 int	main(void)
 {
@@ -152,11 +158,9 @@ int	main(void)
 			++i;
 		}
 		ft_array_terminate(&arr);
-	}
+	}	
 	// Test arrayt =============================================================
 	{
-		#include "arrayt/arrayt.h"
-
 		ARRAYT(int) *arr;
 
 		ARRAYT_INIT(arr);
@@ -192,6 +196,23 @@ int	main(void)
 			ft_printf("arr[%lu] = %d\n", i, arr->data[i]);
 	error:
 		ARRAYT_DESTROY(arr);
+	}
+	// Test arrayt with destroy func ===========================================
+	{
+		ARRAYT(t_string *) *arr;
+
+		ARRAYT_INIT(arr);
+
+		ARRAYT_PUSH(arr, ft_string_new("Batata 0"));
+		ARRAYT_PUSH(arr, ft_string_new("Batata 1"));
+		ARRAYT_PUSH(arr, ft_string_new("Batata 2"));
+		ARRAYT_PUSH(arr, ft_string_new("Batata 3"));
+		ARRAYT_PUSH(arr, ft_string_new("Batata 4"));
+
+		for (size_t i = 0; i < arr->length; i++)
+			ft_printf("arr[%lu] = '%s'\n", i, arr->data[i]->data);
+		
+		ARRAYT_DESTROY_WITH_FUNC(arr, arr_dest_func);
 	}
 	return (0);
 }
