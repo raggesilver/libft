@@ -2,7 +2,7 @@
 
 A non-malloc'ed structure that holds a pointer (**not a copy**) to a `path`, a file descriptor `fd`, and an integer `mode` containing the mode used to open the file (e.g O_RDWR).
 
-```C
+```c
 typedef struct  s_file
 {
     char        *path;
@@ -20,7 +20,7 @@ typedef struct  s_file
 ## Functions
 
 ### ft_fopen
-```C
+```c
 t_file				ft_fopen(const char *path, int mode);
 ```
 
@@ -29,7 +29,7 @@ Return a `t_file` resulted from opening `path` in mode `mode`.
 > `ft_fopen` uses `open`
 
 ### ft_fread
-```C
+```c
 t_string			*ft_fread(t_file file);
 ```
 
@@ -38,7 +38,7 @@ Return a `t_string *` containing the contents of the file `file`.
 > `ft_fread` uses `read`
 
 ### ft_write
-```C
+```c
 ssize_t				ft_fwrite(t_file file, t_string *str);
 ```
 
@@ -47,7 +47,7 @@ Write the contents of `str` to the file `file`.
 > `ft_fwrite` uses `write`
 
 ### ft_close
-```C
+```c
 void				ft_fclose(t_file file);
 ```
 

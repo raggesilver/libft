@@ -68,11 +68,11 @@ All the code follows the [Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf
 ### ft_printf
 > Moulinette - Final grade: 100
 > Intra - Final Mark: 108
-```C
+```c
 size_t	ft_printf(const char *format, ...)
 ```
 Does most of what prinft does when it is compiled with `-Wall -Werror -Wextra`. Has the bonus of colors which can be used as follows:
-```C
+```c
 ft_printf("{red}This is red, {bold}this is red and bold, {eoc}this is regular boring text\n");
 ```
 Flags: + - 0 # * and space

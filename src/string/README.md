@@ -22,13 +22,13 @@ This is my implementation of a "string class" in c. The `t_string` type was desi
 ## Functions
 
 ### ft_string_new
-```C
+```c
 t_string	*ft_string_new(const char *s)
 ```
 Create a new `t_string *` from a given string `s` with default `t_string_cfg`. If `s` is `NULL` the default space will still be allocated.
 
 ### ft_string_new_s
-```C
+```c
 t_string	*ft_string_new_s(char **s)
 ```
 Create a new `t_string *` from a given string pointer `s` with default `t_string_cfg`. `s` cannot be `NULL`. The new implementation uses the pointer `*s` as the `(t_string *)->data`.
@@ -36,13 +36,13 @@ Create a new `t_string *` from a given string pointer `s` with default `t_string
 **Important note**: If the given string was allocated with leading zeroes the field `size` in the resulting `t_string *` will be wrong as it will use the result of `ft_strlen` as it's initial value.
 
 ### ft_string_new_with_config
-```C
+```c
 t_string	*ft_string_new_with_config(const char *s, t_string_cfg cfg)
 ```
 Create a new `t_string *` from a given string `s` with `cfg` as config. If `s` is `NULL` the default space will still be allocated.
 
 ### ft_string_clone
-```C
+```c
 t_string	*ft_string_clone(const t_string *s)
 ```
 Create a new `t_string *` by copying another `t_string *s`.
@@ -50,31 +50,31 @@ Create a new `t_string *` by copying another `t_string *s`.
 **Note**: the copy will have the same `t_string_cfg` as the original.
 
 ### ft_string_append
-```C
+```c
 t_string	*ft_string_append(t_string *self, const char *s)
 ```
 Append a null-terminated string `s` to `self`.
 
 ### ft_string_appendn
-```C
+```c
 t_string	*ft_string_appendn(t_string *self, const char *s, size_t n)
 ```
 Append `n` bytes of a string `s` to `self`. If `s` doesn't have `n` bytes the behavior is undefined.
 
 ### ft_string_real_append
-```C
+```c
 t_string	*ft_string_real_append(t_string *self, t_string *s)
 ```
 Append `s->length` bytes to `self`.
 
 ### ft_string_prepend
-```C
+```c
 void		ft_string_prepend(t_string *self, const char *s)
 ```
 Prepend `self` with a null-terminated string `s`.
 
 ### ft_string_inpend
-```C
+```c
 void		ft_string_inpend(t_string *self, size_t index, const char *str)
 ```
 Inpend (insert) a null-terminated string `str` into `self` at index `index`.
@@ -82,33 +82,33 @@ Inpend (insert) a null-terminated string `str` into `self` at index `index`.
 If `index` is zero, the function will call `ft_string_prepend` and if `index` is greater than `self->length` it will call `ft_string_append`.
 
 ### ft_string_padding
-```C
+```c
 t_string	*ft_string_padding(t_string *self, size_t i, size_t s, char c)
 ```
 Inpend `s` characters `c` to `self` at index `i`.
 
 e.g.
 
-```C
+```c
 t_string *s = ft_string_new("blah");
 ft_string_padding(s, 0, 10, 'J');
 // s->data = "JJJJJJJJJJblah"
 ```
 
 ### ft_string_to_lower
-```C
+```c
 void		ft_string_to_lower(t_string *self)
 ```
 Lowercase `self`.
 
 ### ft_string_to_upper
-```C
+```c
 void		ft_string_to_upper(t_string *self)
 ```
 Upercase `self`.
 
 ### ft_string_remove
-```C
+```c
 t_string	*ft_string_remove(t_string *self, size_t index, size_t len)
 ```
 Remove `len` bytes from `self` starting at index `index`.
@@ -116,7 +116,7 @@ Remove `len` bytes from `self` starting at index `index`.
 `index`es longer than `self->length` are safely handled.
 
 ### ft_string_destroy
-```C
+```c
 void		ft_string_destroy(t_string **self)
 ```
 Destroy (`free`) `*self` and point `self` to `NULL`.

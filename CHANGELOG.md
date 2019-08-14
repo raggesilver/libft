@@ -40,7 +40,7 @@
 ### Incompatible
 - `ft_array_new_with_values` now takes two parameters and it's new prototype is:
 
-```C
+```c
 t_array *ft_array_new_with_values(void **values, ssize_t n);
 // If `n` is -1 `values` has to be null-terminated
 ```
