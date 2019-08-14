@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 01:41:52 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/22 14:42:47 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/08/14 15:57:25 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ t_string				*ft_string_new_with_config(
 							const char *s, t_string_cfg cfg);
 t_string				*ft_string_padding(
 							t_string *self, size_t i, size_t s, char c);
+t_string				*ft_string_remove(t_string *self, size_t index,
+							size_t len);
 void					ft_string_append(t_string *self, const char *s);
 void					ft_string_appendn(
 							t_string *self, const char *s, size_t n);
 void					ft_string_destroy(t_string **self);
 void					ft_string_inpend(t_string *self, size_t index,
 										const char *s);
-void					ft_string_prepend_s(t_string *self, const char *s);
+void					ft_string_prepend_s(t_string *self, char **s);
 void					ft_string_prepend(t_string *self, const char *s);
 void					ft_string_real_append(t_string *self, t_string *s);
 void					ft_string_to_lower(t_string *self);

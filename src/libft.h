@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/08/14 12:37:38 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/08/14 15:44:13 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,7 +259,6 @@ t_bignum			*ft_bignum_set_decimal_padding(t_bignum *self, size_t s);
 t_bignum			*ft_bignum_set_whole_padding(t_bignum *self, size_t s);
 t_bignum			*ft_bignum_set(t_bignum *self, const char *s);
 t_string			*ft_bignum_add(t_string *self, int n);
-t_string			*ft_string_remove(t_string *self, size_t index, size_t len);
 void				ft_bignum_destroy(t_bignum **self);
 
 #endif

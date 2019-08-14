@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 16:43:15 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/26 13:12:30 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/08/14 15:56:52 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_string			*ft_bignum_add(t_string *self, int n)
 {
 	ssize_t		i;
 	int			carry;
+	char		*aux;
 
 	i = self->length;
 	carry = 0;
@@ -36,7 +37,11 @@ t_string			*ft_bignum_add(t_string *self, int n)
 		}
 		n /= 10;
 	}
-	(n > 0) ? ft_string_prepend_s(self, ft_itoa(n)) : 0;
+	if (n > 0)
+	{
+		aux = ft_itoa(n);
+		ft_string_prepend_s(self, &aux);
+	}
 	return (self);
 }
 
