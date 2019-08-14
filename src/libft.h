@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 22:09:03 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/08/14 12:37:38 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@
 # define _IW2(x)			(x == '\r' || x == '\v' || x == '\f')
 # define IS_WHITESPACE(x)	(x == ' ' || x == '\t' || x == '\n' || _IW2(x))
 
-# define CONTINUE_IF_FAIL(x)		({ if (!x) continue ; })
-# define RETURN_IF_FAIL(x)			({ if (!x) return ; })
-# define RETURN_VAL_IF_FAIL(x, y)	({ if (!y) return (x); })
+# define CONTINUE_IF(cond)				({ if (cond) continue ; })
+# define RETURN_IF(cond)				({ if (cond) return ; })
+# define RETURN_VAL_IF(val, cond)		({ if (cond) return (val); })
+
+# define CONTINUE_IF_FAIL(cond)			({ if (!cond) continue ; })
+# define RETURN_IF_FAIL(cond)			({ if (!cond) return ; })
+# define RETURN_VAL_IF_FAIL(val, cond)	({ if (!cond) return (val); })
 
 # define MIN(x, y)	((x > y) ? y : x)
 # define MAX(x, y)	((x > y) ? x : y)
