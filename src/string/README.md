@@ -5,6 +5,7 @@ This is my implementation of a "string class" in c. The `t_string` type was desi
 ## Summary
 
 - [ft_string_new](#ft_string_new)
+- [ft_string_new_n](#ft_string_new_n)
 - [ft_string_new_s](#ft_string_new_s)
 - [ft_string_new_with_config](#ft_string_new_with_config)
 - [ft_string_clone](#ft_string_clone)
@@ -27,13 +28,19 @@ t_string	*ft_string_new(const char *s)
 ```
 Create a new `t_string *` from a given string `s` with default `t_string_cfg`. If `s` is `NULL` the default space will still be allocated.
 
+### ft_string_new_n
+```c
+t_string	*ft_string_new_n(const char *s, size_t size)
+```
+Create a new `t_string *` from a given string `s` with default `t_string_cfg`. This function uses `size_t size` to allocate the space for the string faster.
+
 ### ft_string_new_s
 ```c
 t_string	*ft_string_new_s(char **s)
 ```
 Create a new `t_string *` from a given string pointer `s` with default `t_string_cfg`. `s` cannot be `NULL`. The new implementation uses the pointer `*s` as the `(t_string *)->data`.
 
-**Important note**: If the given string was allocated with leading zeroes the field `size` in the resulting `t_string *` will be wrong as it will use the result of `ft_strlen` as it's initial value.
+**Important note**: If the given string was allocated with leading zeroes the field `size` in the resulting `t_string *` will be wrong as this function uses the result of `ft_strlen` as it's initial value.
 
 ### ft_string_new_with_config
 ```c
