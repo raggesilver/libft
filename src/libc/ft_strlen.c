@@ -6,11 +6,19 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 21:44:41 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/08/20 19:31:54 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/09/15 12:36:28 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+
+/*
+** The following function is a derivative work of the code from glibc's strlen
+** https://sourceware.org/git/?p=glibc.git which is licensed under the
+** GNU Lesser General Public License as published by the Free Software
+** Foundation; either version 2.1 of the License, or (at your option) any later
+** version.
+*/
 
 size_t	ft_strlen(const char *s)
 {
