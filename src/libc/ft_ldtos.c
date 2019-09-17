@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 16:35:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 19:00:27 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/09/16 17:19:41 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 #define INF				(f.exponent == MAX_EXPONENT && f.mantissa == EMPTY)
 #define NAN_			(f.exponent == MAX_EXPONENT && f.mantissa != EMPTY)
+#define FAST_FLOAT		(n >= INT_MIN && n <= INT_MAX && precision < 9)
 
 const t_ullong	g_2pow_arr[] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
 	2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576,
@@ -112,8 +113,9 @@ t_string		*ft_ldtos(long double n, int precision)
 	char		*tmp;
 
 	f = ft_float_new(n);
-	RETURN_VAL_IF_FAIL(ft_string_new(f.sign ? "-inf" : "inf"), !INF);
-	RETURN_VAL_IF_FAIL(ft_string_new("nan"), !NAN_);
+	RETURN_VAL_IF(ft_string_new(f.sign ? "-inf" : "inf"), INF);
+	RETURN_VAL_IF(ft_string_new("nan"), NAN_);
+	RETURN_VAL_IF(ft_ftos((float)n, precision), FAST_FLOAT);
 	tmp = ft_ulltoa(f.mantissa);
 	res = ft_bignum_new_s(tmp);
 	fk_do_expo(res, &f);

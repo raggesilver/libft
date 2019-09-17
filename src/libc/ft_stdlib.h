@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 12:37:23 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/09/15 13:10:59 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/09/16 17:15:05 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char				*ft_ultoa_base(unsigned long n, int base);
 char				*ft_ultoa(unsigned long n);
 char				*ft_utoa_base(unsigned n, int base);
 char				*ft_utoa(unsigned n);
+t_string			*ft_ftos(float n, int precision);
 t_string			*ft_ldtos(long double n, int precision);
 
 /*
