@@ -13,3 +13,5 @@ build/
 *.dSYM
 .disabled
 vgcore.*
+*.not_c
+.DS_Store
