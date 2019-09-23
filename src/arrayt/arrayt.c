@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 22:32:12 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/16 11:22:40 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/09/23 12:15:05 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@ void	arrayt_grow(void **data, size_t dsize, size_t *size)
 	else
 		*data = ft_reallocsz(*data, (*size) * dsize, ((*size) + 10) * dsize);
 	*size += 10;
+}
+
+void	arrayt_destroy_with_func(void *self, void (*fn)(void **))
+{
+	ARRAYT(char *)	*arr;
+	size_t			i;
+
+	arr = self;
+	i = 0;
+	while (i < arr->length)
+		fn((void **)&arr->data[i++]);
+	free(arr->data);
+	free(arr);
 }
 
 void	arrayt_destroy(void **self, void **data)

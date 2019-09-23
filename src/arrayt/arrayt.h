@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 22:18:04 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/16 11:25:23 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/09/23 12:25:39 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	arrayt_grow(void **data, size_t dsize, size_t *size);
 void	arrayt_destroy(void **self, void **data);
 void	arrayt_remove(char *data, size_t dsize, size_t *len, size_t i);
 void	arrayt_make_room(char *data, size_t dsize, size_t *len, size_t i);
+void	arrayt_destroy_with_func(void *self, void (*fn)(void **));
 
 /*
 ** ArrayT type
@@ -40,8 +41,8 @@ void	arrayt_make_room(char *data, size_t dsize, size_t *len, size_t i);
 ** ArrayT grow
 */
 
-# define _A_GRW_1			(void **)&arr->data, sizeof(*arr->data), &arr->size
-# define _A_GRW(arr)		({ arrayt_grow(_A_GRW_1); })
+# define _A_GRW_1(arr)		(void **)&arr->data, sizeof(*arr->data), &arr->size
+# define _A_GRW(arr)		({ arrayt_grow(_A_GRW_1(arr)); })
 
 /*
 ** ArrayT maybe grow
@@ -53,8 +54,8 @@ void	arrayt_make_room(char *data, size_t dsize, size_t *len, size_t i);
 ** ArrayT push
 */
 
-# define _A_PSH_1(val)		({ arr->data[arr->length++] = val; })
-# define _A_PSH(arr, val)	({ _ARRAYT_MGROW(arr); _A_PSH_1(val); })
+# define _A_PSH_1(arr, val)	({ arr->data[arr->length++] = val; })
+# define _A_PSH(arr, val)	({ _ARRAYT_MGROW(arr); _A_PSH_1(arr, val); })
 # define ARRAYT_PUSH(arr, val) _A_PSH(arr, val)
 
 /*
@@ -64,8 +65,9 @@ void	arrayt_make_room(char *data, size_t dsize, size_t *len, size_t i);
 # define _A_DTR(arr) ({ arrayt_destroy((void **)&arr, (void **)&arr->data); })
 # define ARRAYT_DESTROY(arr) ({ _A_DTR(arr); })
 
-# define _A_DTR_FN1 size_t i = 0; while (i < arr->length)
-# define _A_DTR_FN(arr, fn) ({ _A_DTR_FN1 fn(&arr->data[i++]); _A_DTR(arr); })
+# define _A_DEST_FN			(void (*)(void **))
+# define _A_DTR_FN1			arrayt_destroy_with_func
+# define _A_DTR_FN(arr, fn)	({ _A_DTR_FN1((arr), _A_DEST_FN(fn)); })
 
 /*
 ** Call func on each array element passing a pointer to the element.
@@ -77,17 +79,17 @@ void	arrayt_make_room(char *data, size_t dsize, size_t *len, size_t i);
 ** Helper macro to unpack ArrayT members to function params
 */
 
-# define _A_UPK (char *)arr->data, sizeof(*arr->data), &arr->length
+# define _A_UPK(arr) (char *)arr->data, sizeof(*arr->data), &arr->length
 
 /*
 ** ArrayT remove
 */
 
-# define ARRAYT_REMOVE(arr, i)	({ arrayt_remove(_A_UPK, i); })
+# define ARRAYT_REMOVE(arr, i)	({ arrayt_remove(_A_UPK(arr), i); })
 
 # define _A_MKR arrayt_make_room
 # define _A_INS_3(arr, i, val)	arr->data[i] = val; arr->length++;
-# define _A_INS_2(arr, i, val)	_A_MKR(_A_UPK, i); _A_INS_3(arr, i, val);
+# define _A_INS_2(arr, i, val)	_A_MKR(_A_UPK(arr), i); _A_INS_3(arr, i, val);
 # define _A_INS_1(arr, i, val)	({ _ARRAYT_MGROW(arr); _A_INS_2(arr, i, val); })
 # define _A_INS(arr, i, val) ({ if (i < arr->length) _A_INS_1(arr, i, val); })
 

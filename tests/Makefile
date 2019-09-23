@@ -62,8 +62,8 @@ re: fclean
 	@$(MAKE) all
 
 debug: fclean
-	@$(MAKE) all CFLAGS="$(CFLAGS) -g"
+	@$(MAKE) all CFLAGS="$(CFLAGS) -g -O0"
 
 ci: MAKECMDGOALS=
 ci: all
-	valgrind --error-exitcode=1 --leak-check=full ./$(NAME)
+	valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
