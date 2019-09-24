@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 22:18:04 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/09/23 12:25:39 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/09/23 16:05:28 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	arrayt_destroy_with_func(void *self, void (*fn)(void **));
 */
 
 # define _A_DTR(arr) ({ arrayt_destroy((void **)&arr, (void **)&arr->data); })
-# define ARRAYT_DESTROY(arr) ({ _A_DTR(arr); })
+# define ARRAYT_DESTROY(arr) ({ typeof(arr) __a = arr;  _A_DTR(__a); })
 
 # define _A_DEST_FN			(void (*)(void **))
 # define _A_DTR_FN1			arrayt_destroy_with_func
