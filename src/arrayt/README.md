@@ -107,6 +107,8 @@ Free the array.
 
 ### ARRAYT_DESTROY_WITH_FUNC
 ```c
+// arr: ArrayT
+// func: void (*func)(void **element)
 ARRAYT_DESTROY_WITH_FUNC(arr, func)
 ```
-Call the function `func` for each element in the array, passing a void pointer to it, then free the array as in [ARRAYT_DESTROY](#arrayt_destroy)
+Call the function `func` for each element in the array, passing a void pointer to the element, then free the array as in [ARRAYT_DESTROY](#arrayt_destroy)
