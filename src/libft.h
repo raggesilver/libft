@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/09/16 18:06:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/10/01 21:23:50 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_float				ft_float_new(long double n);
 int					ft_atoi(const char *str);
 long				ft_atol(const char *str);
 long long			ft_atoll(const char *str);
+
+int					ft_atoi_base(const char *str, int base);
 
 char				*ft_itoa_base(int n, int base);
 char				*ft_itoa(int n);
