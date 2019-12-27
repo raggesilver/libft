@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 23:59:02 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/27 02:09:48 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,15 @@ int	main(void)
 		ft_array_push(arr, ft_strdup("ccc"));
 		ft_array_push(arr, ft_strdup("bbb"));
 		ft_array_push(arr, ft_strdup("aaa"));
+
+		ft_array_prepend(arr, ft_strdup("fff"));
+		ft_array_insert(arr, 1, ft_strdup("eee"));
+		ft_array_insert(arr, 2, ft_strdup("ddd"));
+
+		ft_array_push(arr, ft_strdup("123"));
+
+		for (size_t i = 0; i < arr->length; i++)
+			ft_printf("Unsorted array[%lu] = '%s'\n", i, (char *)arr->data[i]);
 
 		ft_array_sort(arr, (int (*)(void *, void *))&ft_strcmp);
 
