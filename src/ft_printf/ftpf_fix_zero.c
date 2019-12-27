@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 17:06:05 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:35:53 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:45:52 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void			ftpf_fix_zero(t_pinfo *i, t_string *s)
 	char	*aux;
 	char	fchars[4];
 
-	RETURN_IF_FAIL((i->flags & ZERO || i->precision > 1));
+	if (!(i->flags & ZERO || i->precision > 1))
+		return ;
 	ft_strcpy(fchars, "-+ ");
 	ii = 0;
 	while (++ii < s->length)

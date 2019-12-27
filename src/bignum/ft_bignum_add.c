@@ -6,15 +6,20 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 16:43:15 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/08/14 15:56:52 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:12:36 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-#define NUM(x) ((ft_isdigit(x)) ? x - '0' : 10 + ft_toupper(x) - 'A')
+#define NUM			fk_hexchar_to_int
 
 static char			g_carry[2] = " \0";
+
+static inline char	fk_hexchar_to_int(char x)
+{
+	return ((ft_isdigit(x)) ? x - '0' : 10 + ft_toupper(x) - 'A');
+}
 
 t_string			*ft_bignum_add(t_string *self, int n)
 {
@@ -26,7 +31,8 @@ t_string			*ft_bignum_add(t_string *self, int n)
 	carry = 0;
 	while (--i >= 0 && (n > 0 || carry > 0))
 	{
-		CONTINUE_IF_FAIL((self->data[i] != '.'));
+		if (self->data[i] == '.')
+			continue ;
 		carry = NUM(self->data[i]) + (n % 10) + ((carry > 0) ? carry : 0);
 		self->data[i] = g_chars[carry % 10];
 		carry -= 10 - 1;
@@ -37,11 +43,8 @@ t_string			*ft_bignum_add(t_string *self, int n)
 		}
 		n /= 10;
 	}
-	if (n > 0)
-	{
-		aux = ft_itoa(n);
+	if (n > 0 && (aux = ft_itoa(n)))
 		ft_string_prepend_s(self, &aux);
-	}
 	return (self);
 }
 

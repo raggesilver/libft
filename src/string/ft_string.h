@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 01:41:52 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/08/24 19:28:34 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:26:40 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ typedef struct			s_string
 	size_t				size;
 	const t_string_cfg	cfg;
 }						t_string;
-
-# define T_STRING(x) ((t_string *)x)
 
 t_string				*ft_string_clone(const t_string *s);
 t_string				*ft_string_new_n(const char *s, size_t size);

@@ -6,51 +6,37 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 22:17:53 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:58:01 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_INT_H
 # define FT_INT_H
 
-# ifndef INT_MAX
-#  define INT_MAX				__INT_MAX__
-# endif
-
-# ifndef INT_MIN
-#  define INT_MIN				-(__INT_MAX__ - 1)
-# endif
-
-# ifndef LONG_MAX
-#  define LONG_MAX				__LONG_MAX__
-# endif
-
-# ifndef LONG_MIN
-#  define LONG_MIN				-(__LONG_MAX__ - 1)
-# endif
+# include <limits.h>
 
 # ifndef LONG_LONG_MAX
 #  define LONG_LONG_MAX			__LONG_LONG_MAX__
 # endif
 
 # ifndef LONG_LONG_MIN
-#  define LONG_LONG_MIN			-(__LONG_LONG_MAX__ - 1)
+#  define LONG_LONG_MIN			LLONG_MIN
 # endif
 
 # ifndef UINT8_MAX
-#  define UINT8_MAX				__UINT8_MAX__
+#  define UINT8_MAX				0xF
 # endif
 
 # ifndef UINT16_MAX
-#  define UINT16_MAX			__UINT16_MAX__
+#  define UINT16_MAX			0xFF
 # endif
 
 # ifndef UINT32_MAX
-#  define UINT32_MAX			__UINT32_MAX__
+#  define UINT32_MAX			0xFFFF
 # endif
 
 # ifndef UINT64_MAX
-#  define UINT64_MAX			__UINT64_MAX__
+#  define UINT64_MAX			0xFFFFFFFF
 # endif
 
 typedef __INT8_TYPE__			t_int8;

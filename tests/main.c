@@ -6,14 +6,13 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/09/23 12:23:22 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 16:04:18 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "hashtable/ft_hashtable.h"
 #include "ft_printf/ft_printf.h"
-#include "arrayt/arrayt.h"
 #include "../src/hashtable/ft_hashtable_priv.h"
 
 #include <float.h>
@@ -65,7 +64,9 @@ int	main(void)
 		ft_printf("Hashtable size: %lu\n", ht->size);
 
 		ft_hashtable_insert(ht, "batata", ft_strdup("is good"));
-		ft_hashtable_insert(ht, "bb", AUTOPTR(42));
+		int *v = malloc(sizeof(*v));
+		*v = 42;
+		ft_hashtable_insert(ht, "bb", v);
 
 		ft_printf("Val for %s => %d\n", "bb", *((int *)ft_hashtable_get(ht, "bb")));
 		ft_printf("Val for %s => %s\n", "batata", (char *)ft_hashtable_get(ht, "batata"));
@@ -158,61 +159,6 @@ int	main(void)
 			++i;
 		}
 		ft_array_terminate(&arr);
-	}
-	// Test arrayt =============================================================
-	{
-		ARRAYT(int) *array;
-
-		ARRAYT_INIT(array);
-		for (size_t i = 0; i < 293; i++)
-			ARRAYT_PUSH(array, 0 + i);
-		ft_printf("arr len = %lu, should be 293\n", array->length);
-		for (size_t i = 0; i < 293; i++)
-			if (array->data[i] != (int)i)
-			{
-				ft_dprintf(2, "Error: arr->data[%lu] should be %d, got %d\n",
-					i, (int)i, array->data[i]);
-				goto error;
-			}
-		ARRAYT_REMOVE(array, 200);
-		ARRAYT_REMOVE(array, 30000);
-		ARRAYT_REMOVE(array, 3);
-		for (size_t i = 0; i < array->length; i++)
-			ft_printf("arr[%lu] = %d\n", i, array->data[i]);
-		while (array->length)
-			ARRAYT_REMOVE(array, 0);
-		ARRAYT_PUSH(array, 0);
-		ARRAYT_PUSH(array, 1);
-		ARRAYT_PUSH(array, 2);
-		ARRAYT_PUSH(array, 3);
-		ARRAYT_PUSH(array, 4);
-		ARRAYT_PUSH(array, 5);
-		ARRAYT_PUSH(array, 7);
-		ARRAYT_PUSH(array, 8);
-		ARRAYT_PUSH(array, 9);
-		ARRAYT_PUSH(array, 10);
-		ARRAYT_INSERT(array, 6, 6);
-		for (size_t i = 0; i < array->length; i++)
-			ft_printf("arr[%lu] = %d\n", i, array->data[i]);
-	error:
-		ARRAYT_DESTROY(array);
-	}
-	// Test arrayt with destroy func ===========================================
-	{
-		ARRAYT(t_string *) *array;
-
-		ARRAYT_INIT(array);
-
-		ARRAYT_PUSH(array, ft_string_new("Batata 0"));
-		ARRAYT_PUSH(array, ft_string_new("Batata 1"));
-		ARRAYT_PUSH(array, ft_string_new("Batata 2"));
-		ARRAYT_PUSH(array, ft_string_new("Batata 3"));
-		ARRAYT_PUSH(array, ft_string_new("Batata 4"));
-
-		for (size_t i = 0; i < array->length; i++)
-			ft_printf("arr[%lu] = '%s'\n", i, array->data[i]->data);
-
-		ARRAYT_DESTROY_WITH_FUNC(array, &ft_string_destroy);
 	}
 	return (0);
 }

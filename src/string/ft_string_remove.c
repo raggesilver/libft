@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 23:08:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/10 01:10:46 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:26:32 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_string	*ft_string_remove(t_string *self, size_t index, size_t len)
 {
 	ssize_t	i;
 
-	RETURN_VAL_IF_FAIL(self, (index < self->length && len > 0));
+	if (index >= self->length || len == 0)
+		return (self);
 	if (len + index > self->length)
 	{
 		self->data[index] = 0;

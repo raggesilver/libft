@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:32:46 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/12 16:08:55 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:16:46 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ char			**ft_strsplit(const char *s, char c)
 	size_t	i;
 
 	res = malloc(sizeof(*res) * (fk_get_words(s, c) + 1));
-	RETURN_VAL_IF_FAIL(NULL, res);
+	if (!res)
+		return (NULL);
 	i = 0;
 	while (*s)
 	{

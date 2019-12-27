@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 18:22:03 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:01 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:39:52 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ft_lst_set_head_index(t_list **alst, size_t index)
 		prev = cur;
 		cur = cur->next;
 	}
-	RETURN_IF_FAIL(cur);
+	if (!cur)
+		return ;
 	prev->next = cur->next;
 	cur->next = *alst;
 	*alst = cur;

@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_priv.h                                   :+:      :+:    :+:   */
+/*   ft_iswhitespace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/05 14:58:27 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 15:24:41 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/12/26 14:48:58 by pqueiroz          #+#    #+#             */
+/*   Updated: 2019/12/26 15:49:43 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRING_PRIV_H
-# define FT_STRING_PRIV_H
+#include "../libft.h"
 
-# include "ft_string.h"
-
-# ifndef STRING_GROW_SIZE
-#  define STRING_GROW_SIZE 100
-# endif
-
-size_t						ft_strdupsz(char **dest, const char *s);
-void						ft_string_grow(t_string *self, size_t add_len);
-size_t						ft_string_min_size(
-								size_t mode, size_t size, size_t min_len);
-
-extern const t_string_cfg	g_str_cfg;
-
-#endif
+inline int	ft_iswhitespace(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v' ||
+		c == '\f');
+}

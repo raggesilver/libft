@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:15:23 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:57:32 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strdupchr(const char *str, char c)
 	char *res;
 	char *tmp;
 
-	RETURN_VAL_IF_FAIL(NULL, str);
+	if (!str)
+		return (NULL);
 	if (!(tmp = ft_strchr(str, c)))
 		return (ft_strdup(str));
 	res = ft_strndup(str, tmp - str);

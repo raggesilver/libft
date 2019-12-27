@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 14:45:33 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:17:35 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,24 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*tok;
-	char	*ned;
-	size_t	l;
+	size_t	pos;
+	size_t	i;
 
-	RETURN_VAL_IF_FAIL(((char *)haystack), ft_strcmp(needle, ""));
-	ned = (char *)needle;
-	while (*haystack && len > 0)
+	if (*needle == 0)
+		return ((char *)haystack);
+	pos = 0;
+	while (haystack[pos] && pos < len)
 	{
-		if (*haystack == *needle)
+		if (haystack[pos] == *needle)
 		{
-			tok = (char *)haystack;
-			l = len;
-			while (*tok == *ned && *tok && *ned && l > 0)
-			{
-				tok++;
-				ned++;
-				l--;
-			}
-			RETURN_VAL_IF_FAIL(((char *)haystack), *ned);
-			ned = (char *)needle;
+			i = 1;
+			while (haystack[pos + i] && haystack[pos + i] == needle[i]
+				&& (pos + i) < len)
+				++i;
+			if (needle[i] == 0)
+				return ((char *)(haystack + pos));
 		}
-		haystack++;
-		len--;
+		++pos;
 	}
 	return (NULL);
 }

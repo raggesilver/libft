@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 16:20:43 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:02:23 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ char	*ft_strndup(const char *s, size_t len)
 	char	*res;
 	size_t	i;
 
-	RETURN_VAL_IF_FAIL(NULL, (res = ft_memalloc(len + 1)));
+	if (!(res = ft_memalloc(len + 1)))
+		return (NULL);
 	i = 0;
 	while (s[i] && i < len)
 	{

@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 21:11:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:57:17 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_strdup(const char *s)
 	size_t	l;
 
 	l = ft_strlen(s);
-	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(l)));
+	if (!(res = ft_strnew(l)))
+		return (NULL);
 	p = res;
 	while ((*p++ = *s++))
 		;

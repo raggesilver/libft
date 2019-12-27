@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 17:24:39 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 21:25:24 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 13:48:32 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,12 @@
 # include "../libft.h"
 
 /*
-** AUTOPTR(x) is a macro that takes in any value, allocates a pointer
-** that points to that value and returns the pointer. It is supposed to
-** make life easier when adding simple datatypes like integers and floats
-** to an array. This pointer can be freed manually or using `ft_array_terminate`
+** You can specify ARRAY_GROW_SIZE at compilation with -DARRAY_GROW_SIZE=x
 */
 
-# define _AUTOMAL(x)	({ typeof(x) *pp_f = malloc(sizeof(x)); pp_f; })
-# define AUTOPTR(x)		({ typeof(x) *pp_f = _AUTOMAL(x); *pp_f = x; pp_f; })
-
-# define ARRAY_GROW_SIZE 10
+# ifndef ARRAY_GROW_SIZE
+#  define ARRAY_GROW_SIZE 10
+# endif
 
 typedef struct		s_array
 {
@@ -33,8 +29,6 @@ typedef struct		s_array
 	size_t			size;
 	void			**data;
 }					t_array;
-
-# define T_ARRAY(x) ((t_array *)x)
 
 /*
 ** Instantiate an empty `t_array *`

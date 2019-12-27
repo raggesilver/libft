@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 19:09:49 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:55:11 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_memdel(void **ap)
 {
-	RETURN_IF_FAIL(ap && *ap);
+	if (!(ap && *ap))
+		return ;
 	free(*ap);
 	*ap = NULL;
 }

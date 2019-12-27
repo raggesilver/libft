@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 23:59:32 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/09 00:02:38 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:48:04 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ssize_t		ft_fwrite(t_file file, t_string *str)
 {
-	RETURN_VAL_IF_FAIL(0, ((file.mode & O_WRONLY) || (file.mode & O_RDWR)));
+	if (!((file.mode & O_WRONLY) || (file.mode & O_RDWR)))
+		return (0);
 	return (write(file.fd, str->data, str->length));
 }

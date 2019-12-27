@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 18:04:33 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:01 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:41:06 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstnew(const void *content, size_t content_size)
 {
 	t_list *res;
 
-	RETURN_VAL_IF_FAIL(NULL, (res = (t_list *)malloc(sizeof(*res))));
+	if (!(res = (t_list *)malloc(sizeof(*res))))
+		return (NULL);
 	if (content)
 	{
 		res->content = malloc(content_size);

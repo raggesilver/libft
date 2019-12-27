@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 23:50:05 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/12 14:09:05 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:47:46 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_string	*ft_fread(t_file file)
 	char		tmp[BUFF_SIZE + 1];
 	ssize_t		r;
 
-	RETURN_VAL_IF_FAIL(NULL,
-		((file.mode & O_RDONLY) == O_RDONLY || (file.mode & O_RDWR) == O_RDWR));
+	if (!((file.mode & O_RDONLY) == O_RDONLY || (file.mode & O_RDWR) == O_RDWR))
+		return (NULL);
 	res = ft_string_new_with_config(NULL, (t_string_cfg){
 		.growmode=T_STRING_GROWMODE_QUADRATIC,
 		.extra=100

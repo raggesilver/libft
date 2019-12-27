@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 22:38:33 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 23:29:46 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:45:16 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_pinfo	*parse_width(const char **s, t_pinfo *i, va_list *ap)
 		if (*(++(*s)) == '*' && ((*s)++ || 1))
 		{
 			i->precision = va_arg(*ap, int);
-			i->precision = MAX(-1, i->precision);
+			i->precision = (-1 > i->precision) ? -1 : i->precision;
 		}
 		else
 		{

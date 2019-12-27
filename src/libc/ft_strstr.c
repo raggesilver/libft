@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 14:24:33 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/08/14 12:50:27 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:17:22 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	char *tok;
 	char *ned;
 
-	RETURN_VAL_IF((char *)haystack, (*needle == 0));
+	if (*needle == 0)
+		return ((char *)haystack);
 	ned = (char *)needle;
 	while (*haystack)
 	{

@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/10/01 21:23:50 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 16:00:14 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,8 @@
 # include "array/ft_array.h"
 # include "ft_int.h"
 
-# define _IW2(x)			(x == '\r' || x == '\v' || x == '\f')
-# define IS_WHITESPACE(x)	(x == ' ' || x == '\t' || x == '\n' || _IW2(x))
-
-# define CONTINUE_IF(cond)				({ if (cond) continue ; })
-# define RETURN_IF(cond)				({ if (cond) return ; })
-# define RETURN_VAL_IF(val, cond)		({ if (cond) return (val); })
-
-# define CONTINUE_IF_FAIL(cond)			({ if (!cond) continue ; })
-# define RETURN_IF_FAIL(cond)			({ if (!cond) return ; })
-# define RETURN_VAL_IF_FAIL(val, cond)	({ if (!cond) return (val); })
-
-# define MIN(x, y)	((x > y) ? y : x)
-# define MAX(x, y)	((x > y) ? x : y)
-# define MOD(x)		((x < 0) ? -x : x)
-
-# define BUFF_SIZE	32
+# define IS_WHITESPACE	ft_iswhitespace
+# define BUFF_SIZE		32
 
 /*
 ** Function typedefs ===========================================================
@@ -97,6 +83,7 @@ int					ft_isdigit(int c);
 int					ft_isprint(int c);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+int					ft_iswhitespace(char c);
 
 /*
 ** Memory ======================================================================
@@ -230,9 +217,7 @@ int					ft_readln(const int fd, char **line);
 ** Socket type =================================================================
 */
 
-# define _S_SADDRIN struct sockaddr_in
-
-typedef _S_SADDRIN	t_addr;
+typedef struct sockaddr_in	t_addr;
 
 typedef struct		s_socket
 {

@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 15:30:03 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 22:57:10 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:41:59 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static int	fk_check_color(const char *str)
 	char	*aux;
 	int		i;
 
-	RETURN_VAL_IF_FAIL(-1, (aux = ft_strchr(str, '}')));
+	if (!(aux = ft_strchr(str, '}')))
+		return (-1);
 	i = -1;
 	while (g_colors[++i])
 	{

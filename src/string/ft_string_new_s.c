@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:47:51 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/22 16:21:53 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:23:29 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_string		*ft_string_new_s(char **s)
 {
 	t_string	*self;
 
-	RETURN_VAL_IF_FAIL(NULL, (s && *s));
+	if (!(s && *s))
+		return (NULL);
 	self = malloc(sizeof(*self));
 	*((t_string_cfg *)(&self->cfg)) = g_str_cfg;
 	self->length = ft_strlen(*s);

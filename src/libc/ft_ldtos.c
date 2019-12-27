@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 16:35:59 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/09/16 18:10:56 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:31:32 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 #define BIAS			16383
 #define MANT_SIZE		63
 #define _15BITS			32767
-#define MAX_EXPONENT	(32767 - BIAS - MANT_SIZE)
-#define EMPTY			9223372036854775808u
 
-#define INF				(f.exponent == MAX_EXPONENT && f.mantissa == EMPTY)
-#define NAN_			(f.exponent == MAX_EXPONENT && f.mantissa != EMPTY)
-#define FAST_FLOAT		(n >= INT_MIN && n <= INT_MAX && precision < 9)
+/*
+** MAX_EXPONENT is (_15BITS - BIAS - MANT_SIZE). FU new constant macro rule
+*/
+
+#define MAX_EXPONENT	16321
+#define EMPTY			9223372036854775808u
 
 const t_ullong	g_2pow_arr[] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
 	2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576,
@@ -80,28 +81,26 @@ static void		fk_ldround(t_bignum *s, int precision)
 	}
 }
 
-/*
-** VIT stands for Valid Incomplete Ternary and is used because norminette does
-** not like `(a) ?: b` which translates to `(a) ? a : b`
-*/
-
-#define VIT(a, b) ((a) ? (a) : (b))
-
 static void		fk_do_expo(t_bignum *n, t_float *f)
 {
-	RETURN_IF_FAIL((f->mantissa != 0));
+	int aux;
+
+	if (f->mantissa == 0)
+		return ;
 	if (f->exponent > 0)
 		while (f->exponent > 0)
 		{
-			ft_bignum_mult(n, g_2pow_arr[VIT((f->exponent % 62), 62)]);
-			f->exponent -= VIT((f->exponent % 62), 62);
+			aux = (f->exponent % 62) ? (f->exponent % 62) : 62;
+			ft_bignum_mult(n, g_2pow_arr[aux]);
+			f->exponent -= aux;
 		}
 	else
 		while (f->exponent < 0)
 		{
-			ft_bignum_mult(n, g_5pow_arr[VIT((MOD(f->exponent) % 27), 27)]);
-			ft_bignum_div_10pow(n, VIT((MOD(f->exponent) % 27), 27));
-			f->exponent += VIT((MOD(f->exponent) % 27), 27);
+			aux = (-f->exponent % 27) ? (-f->exponent % 27) : 27;
+			ft_bignum_mult(n, g_5pow_arr[aux]);
+			ft_bignum_div_10pow(n, aux);
+			f->exponent += aux;
 		}
 }
 
@@ -113,8 +112,10 @@ t_string		*ft_ldtos(long double n, int precision)
 	char		*tmp;
 
 	f = ft_float_new(n);
-	RETURN_VAL_IF(ft_string_new(f.sign ? "-inf" : "inf"), INF);
-	RETURN_VAL_IF(ft_string_new("nan"), NAN_);
+	if (f.exponent == MAX_EXPONENT && f.mantissa == EMPTY)
+		return (ft_string_new(f.sign ? "-inf" : "inf"));
+	if (f.exponent == MAX_EXPONENT && f.mantissa != EMPTY)
+		return (ft_string_new("nan"));
 	tmp = ft_ulltoa(f.mantissa);
 	res = ft_bignum_new_s(tmp);
 	fk_do_expo(res, &f);

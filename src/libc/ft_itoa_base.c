@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 16:45:57 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:01 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:53:54 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ char		*ft_itoa_base(int val, int base)
 
 	ex = (val < 0) ? 1 : 0;
 	len = ft_int_len_base(val, base);
-	RETURN_VAL_IF_FAIL(NULL, (res = ft_strnew(len)));
+	if (!(res = ft_strnew(len)))
+		return (NULL);
 	i = len;
 	while (--i >= 0 + ex)
 	{

@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 12:52:46 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 14:56:22 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	*ft_reallocsz(void *ptr, size_t len, size_t new_len)
 {
 	void *res;
 
-	RETURN_VAL_IF_FAIL(ptr, (len != new_len));
+	if (len == new_len)
+		return (ptr);
 	if (!new_len)
 	{
 		if (ptr)

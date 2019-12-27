@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 14:59:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 21:17:36 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 15:25:01 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static inline size_t	fk_get_high_bit(size_t num)
 	return (res);
 }
 
-inline size_t			fk_min_size(size_t mode, size_t size, size_t min_len)
+inline size_t			ft_string_min_size(size_t mode, size_t size,
+											size_t min_len)
 {
 	size_t	res;
 
@@ -82,7 +83,7 @@ void					ft_string_grow(t_string *self, size_t add_len)
 
 	if (add_len > 0)
 	{
-		self->size = fk_min_size(
+		self->size = ft_string_min_size(
 			self->cfg.growmode, self->size, self->length + add_len);
 	}
 	else
