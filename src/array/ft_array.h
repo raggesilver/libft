@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 17:24:39 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 13:48:32 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/26 23:56:59 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ void				*ft_array_pop(t_array *self);
 */
 
 void				ft_array_delete(t_array *self, size_t index);
+
+void				ft_array_sort(t_array *self, int (*fn)(void *, void *));
 
 #endif

@@ -16,6 +16,10 @@ Because of that ArrayT is retired and will most likely never come back.
 
 - All `ArrayT` related functions
 
+### Added
+
+- `ft_array_sort`
+
 ## Unreleased - 2019-07-22
 
 ### Updated
