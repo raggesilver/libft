@@ -44,6 +44,7 @@ All the code (including my additions) follow the
 > Me - `t_ull` is a typedef for `unsigned long long`
 
 **Summary**
+1. [t_array](src/array/) a pointer array implementation
 1. [t_string](src/string/) a string implementation
 1. [t_bignum](src/bignum) an "infinite" bignum implementation
 1. [ft_printf()](src/ft_printf) my implementation of printf
