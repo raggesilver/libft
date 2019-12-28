@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 23:59:02 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2019/12/27 16:04:21 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,29 @@ int	main(void)
 			ft_printf("Sorted array[%lu] = '%s'\n", i, (char *)arr->data[i]);
 
 		ft_array_terminate(&arr);
+	}
+	{
+		#include "io/util.h"
+
+		char	**p = (char*[]){
+			"/",
+			"/home",
+			"/home/",
+			"/home/hacker",
+			"/home/hacker/test.c",
+			"/home/hacker/test/test",
+			"/home/hacker/test/",
+			0
+		};
+		char	*tmp;
+
+		while (*p)
+		{
+			tmp = ft_basename(*p);
+			ft_printf("Basename for '%s' is '%s'\n", *p, tmp);
+			ft_strdel(&tmp);
+			p++;
+		}
 	}
 	return (0);
 }
