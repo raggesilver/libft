@@ -31,6 +31,7 @@
 */
 
 typedef void		(*t_destroy_func)(void *obj);
+typedef int			(*t_compare_func)(void *a, void *b);
 
 /*
 ** Conversion ==================================================================
