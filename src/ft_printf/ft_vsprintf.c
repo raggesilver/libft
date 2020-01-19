@@ -6,16 +6,16 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 22:38:33 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 14:45:16 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/18 23:55:32 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "ft_printf_priv.h"
 
-const char		*g_flags = "#0-+ ";
+static const char	*g_flags = "#0-+ ";
 
-static t_pinfo	*parse_flags(const char **s)
+static t_pinfo		*parse_flags(const char **s)
 {
 	t_pinfo		*res;
 
@@ -44,7 +44,7 @@ static t_pinfo	*parse_flags(const char **s)
 	return (res);
 }
 
-static t_pinfo	*parse_width(const char **s, t_pinfo *i, va_list *ap)
+static t_pinfo		*parse_width(const char **s, t_pinfo *i, va_list *ap)
 {
 	i->min_width = 0;
 	i->res = 0;
@@ -73,7 +73,7 @@ static t_pinfo	*parse_width(const char **s, t_pinfo *i, va_list *ap)
 	return (i);
 }
 
-static t_pinfo	*parse_length(const char **s, t_pinfo *i)
+static t_pinfo		*parse_length(const char **s, t_pinfo *i)
 {
 	if (ft_strncmp(*s, "hh", 2) == 0 && (((*s) += 2) || 1))
 		i->flags |= HH;
@@ -88,7 +88,7 @@ static t_pinfo	*parse_length(const char **s, t_pinfo *i)
 	return (i);
 }
 
-static void		ftpf_dispatch(t_string *buf, t_pinfo *i, va_list *ap)
+static void			ftpf_dispatch(t_string *buf, t_pinfo *i, va_list *ap)
 {
 	if (i->conv == 'c')
 		ftpf_print_chr(buf, i, ap);
@@ -110,7 +110,7 @@ static void		ftpf_dispatch(t_string *buf, t_pinfo *i, va_list *ap)
 		ftpf_print_pct(buf, i);
 }
 
-t_string		*ft_vsprintf(const char *s, va_list ap)
+t_string			*ft_vsprintf(const char *s, va_list ap)
 {
 	t_pinfo		*i;
 	t_string	*buf;
