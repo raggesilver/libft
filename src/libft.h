@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 16:00:14 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/19 14:41:00 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 
 # define IS_WHITESPACE	ft_iswhitespace
 # define BUFF_SIZE		32
+
+# undef FALSE
+# define FALSE 0
+
+# undef TRUE
+# define TRUE 1
 
 /*
 ** Function typedefs ===========================================================
@@ -182,15 +188,17 @@ typedef struct		s_list
 size_t				ft_lstcnt(t_list *head);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(const void *content, size_t content_size);
+void				ft_lst_safe_append(
+						t_list **head, void *content, size_t size);
 void				ft_lst_set_head_index(t_list **alst, size_t index);
-void				ft_lst_sort(t_list **alst, int (*cmp)(void *, void *));
+void				ft_lst_sort_full(
+						t_list **alst, t_compare_func cmp, int reverse);
+void				ft_lst_sort(t_list **alst, t_compare_func cmp);
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstappend(t_list *head, void *content, size_t s);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void(*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-void				ft_lst_safe_append(
-						t_list **head, void *content, size_t size);
 
 /*
 ** File type ===================================================================
