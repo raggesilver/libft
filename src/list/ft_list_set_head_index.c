@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_list_set_head_index.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 18:16:53 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:01 by pqueiroz         ###   ########.fr       */
+/*   Created: 2020/01/20 18:22:02 by pqueiroz          #+#    #+#             */
+/*   Updated: 2020/01/20 18:22:59 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void	ft_list_set_head_index(t_list **self, size_t index)
 {
+	t_list *prev;
 	t_list *cur;
-	t_list *nxt;
 
-	if (alst && *alst)
+	if (!self || !index || index >= ft_list_length(*self))
+		return ;
+	prev = NULL;
+	cur = *self;
+	while (index-- > 0 && cur)
 	{
-		cur = *alst;
-		while (cur)
-		{
-			del(cur->content, cur->content_size);
-			nxt = cur->next;
-			free(cur);
-			cur = nxt;
-		}
-		*alst = NULL;
+		prev = cur;
+		cur = cur->next;
 	}
+	if (!cur)
+		return ;
+	prev->next = cur->next;
+	cur->next = *self;
+	*self = cur;
 }

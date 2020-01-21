@@ -7,6 +7,44 @@
 - **Incompatible**: updated feature, API (prototype and/or return) changed
 - **Deprecated**: still in code but should not be used anymore. Most likely a `__attribute__((deprecated))` was added to the code and it's use will generate compiler warnings
 
+## Unreleased - 2020-01-20
+
+Introduced decent and usable list. Removed standard libft `t_list` functions.
+
+### Removed
+- All `ft_lst*` functions
+
+### Added
+- `ft_list_new`
+- `ft_list_new_s`
+- `ft_list_destroy`
+- `ft_list_terminate`
+- `ft_list_destroy_with_func`
+- `ft_list_length`
+- `ft_list_map`
+- `ft_list_foreach`
+- `ft_list_append`
+- `ft_list_prepend`
+- `ft_list_insert`
+- `ft_list_get_index`
+- `ft_list_get_last`
+- `ft_list_get_item`
+- `ft_list_get_last_item`
+- `ft_list_remove`
+- `ft_list_delete`
+- `ft_list_delete_with_func`
+- `ft_list_set_head_index`
+- `ft_list_sort`
+- `ft_list_rsort`
+
+### Updated/Incompatible
+
+The `t_list` struct has changed, it no longer has the `size_t content_size` field.
+`t_list`s are also handled differently now. The original one from the PDF required
+us to copy `content_size` bytes from `content`, which meant we were creating a hard
+copy of the content. The current approach simply uses the given pointer (and does not
+copy the contents).
+
 ## Unreleased - 2019-12-26
 
 Freaking new norminette rule forbids macros with arguments and non-constant values.

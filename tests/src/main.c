@@ -6,16 +6,24 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/27 16:08:08 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:47:45 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <float.h>
 
 #include "libft.h"
 #include "hashtable/ft_hashtable.h"
 #include "ft_printf/ft_printf.h"
 #include "../src/hashtable/ft_hashtable_priv.h"
+#include "list/list.test.h"
 
-#include <float.h>
+typedef void (*test_function)();
+
+static test_function *test_functions = (test_function[]){
+	&list_test,
+	NULL
+};
 
 void arr_dest_func(void *el)
 {
@@ -205,6 +213,10 @@ int	main(void)
 			ft_strdel(&tmp);
 			p++;
 		}
+	}
+	{
+		for (size_t i = 0; test_functions[i]; i++)
+			test_functions[i]();
 	}
 	return (0);
 }

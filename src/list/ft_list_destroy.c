@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_list_destroy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 18:25:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 14:40:43 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/02/20 18:16:53 by pqueiroz          #+#    #+#             */
+/*   Updated: 2020/01/20 18:55:54 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+void	ft_list_destroy(t_list **self)
 {
-	t_list *res;
-	t_list *res_last;
+	ft_list_destroy_with_func(self, NULL);
+}
 
-	if (!lst)
-		return (NULL);
-	res = NULL;
-	res_last = res;
-	while (lst)
-	{
-		if (res)
+void	ft_list_destroy_with_func(t_list **self, t_destroy_func fn)
+{
+		t_list *it;
+		t_list *next;
+
+		it = *self;
+		while (it)
 		{
-			res_last->next = f(lst);
-			res_last = res_last->next;
+			if (it->content && fn)
+				fn(it->content);
+			next = it->next;
+			free(it);
+			it = next;
 		}
-		else
-		{
-			res = f(lst);
-			res_last = res;
-		}
-		lst = lst->next;
-	}
-	return (res);
+		*self = NULL;
+}
+
+void	ft_list_terminate(t_list **self)
+{
+	ft_list_destroy_with_func(self, &free);
 }

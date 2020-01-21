@@ -5,7 +5,7 @@ NAME := test
 CFLAGS := -Wall -Werror -Wextra -Ofast
 
 OBJDIR := build
-SRCDIR := .
+SRCDIR := src
 HEADIR := includes
 
 SRCS := $(shell find $(SRCDIR) -type f -name "*.c")

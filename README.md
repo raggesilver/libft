@@ -43,6 +43,9 @@ All the code (including my additions) follow the
 
 > Me - `t_ull` is a typedef for `unsigned long long`
 
+> Me - src/list is where all my `t_list` functions are. Those are, however not the
+> same as the required functions for the 42 Libft project. Those were removed on 2020-01-20.
+
 **Summary**
 1. [t_array](src/array/) a pointer array implementation
 1. [t_string](src/string/) a string implementation
