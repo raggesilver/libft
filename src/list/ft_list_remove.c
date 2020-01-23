@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:03:30 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/20 18:15:34 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:11:01 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	*ft_list_remove(t_list **self, size_t index)
 		--index;
 	}
 	return (NULL);
-
 }
 
 /*

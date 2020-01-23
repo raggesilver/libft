@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/20 19:20:09 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:58:58 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,6 @@ void				ft_list_set_head_index(t_list **self, size_t index);
 
 void				ft_list_sort(t_list **self, t_compare_func fn);
 void				ft_list_rsort(t_list **self, t_compare_func fn);
-
 
 /*
 ** File type ===================================================================
