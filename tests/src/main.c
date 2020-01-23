@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/20 18:47:45 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:35:13 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	main(void)
 	}
 	// Test t_file =============================================================
 	{
-		t_file f = ft_fopen("main.c", O_RDONLY);
+		t_file f = ft_fopen("src/main.c", O_RDONLY);
 		t_string *s = ft_fread(f);
 		if (!s)
 			ft_printf("Could not read file\n");
@@ -202,15 +202,17 @@ int	main(void)
 			"/home/hacker/test.c",
 			"/home/hacker/test/test",
 			"/home/hacker/test/",
-			0
+			".",
+			"..",
+			"../../something.c",
+			"./Makefile",
+			"batata.c",
+			NULL
 		};
-		char	*tmp;
 
 		while (*p)
 		{
-			tmp = ft_basename(*p);
-			ft_printf("Basename for '%s' is '%s'\n", *p, tmp);
-			ft_strdel(&tmp);
+			ft_printf("Basename for '%s' is '%s'\n", *p, ft_basename(*p));
 			p++;
 		}
 	}
