@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:01:02 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 21:16:03 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 21:20:07 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef union		u_ldbl
 typedef struct		s_float
 {
 	short			exponent;
-	uint64_t		mantissa;
+	t_uint64		mantissa;
 	t_ldbl			dbl;
 	unsigned		sign : 1;
 }					t_float;
