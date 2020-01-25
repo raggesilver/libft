@@ -2,9 +2,8 @@
 // Tests for io/util
 
 #include "io.util.test.h"
-#include "io/util.h"
+#include "util/util.h"
 #include "libft.h"
-#include "ft_printf/ft_printf.h"
 #include <assert.h>
 
 void io_util_test()

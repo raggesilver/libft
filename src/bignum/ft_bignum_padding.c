@@ -6,11 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:56:40 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/04 13:17:26 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:56:42 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_bignum.h"
 
 /*
 ** Quick reminder this function does not decrease decimal places as that could

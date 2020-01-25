@@ -6,11 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 23:50:05 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 14:47:46 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:59:20 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "ft_file.h"
 
 t_string	*ft_fread(t_file file)
 {

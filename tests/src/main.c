@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 17:58:58 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 21:04:33 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 #include "libft.h"
 #include "hashtable/ft_hashtable.h"
-#include "ft_printf/ft_printf.h"
 #include "../src/hashtable/ft_hashtable_priv.h"
+#include "io/io.h"
+
 #include "list/list.test.h"
 #include "io_util/io.util.test.h"
 
@@ -194,8 +195,6 @@ int	main(void)
 		ft_array_terminate(&arr);
 	}
 	{
-		#include "io/util.h"
-
 		char	**p = (char*[]){
 			"/",
 			"/home",

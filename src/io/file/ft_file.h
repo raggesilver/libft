@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 13:18:56 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/09/15 13:19:32 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:58:56 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_FILE_H
 
 # include <stdlib.h>
-# include "../../string/ft_string.h"
+# include "../../libft.h"
 
 /*
 ** File type ===================================================================

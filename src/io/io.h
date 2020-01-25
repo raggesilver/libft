@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.h                                             :+:      :+:    :+:   */
+/*   io.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/27 15:13:58 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 18:06:59 by pqueiroz         ###   ########.fr       */
+/*   Created: 2020/01/24 19:16:57 by pqueiroz          #+#    #+#             */
+/*   Updated: 2020/01/24 19:18:13 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+/*
+** This file is used to include all libft's io headers at once
+*/
 
-# if defined(_WIN32) || defined(_WIN64)
-#  define FT_DIR_SEP '\\'
-#  define FT_DIR_SEP_S "\\"
-# else
-#  define FT_DIR_SEP '/'
-#  define FT_DIR_SEP_S "/"
-# endif
+#ifndef IO_H
+# define IO_H
 
-char	*ft_basename(const char *path);
-char	*ft_path_join(const char *first, ...);
+# include "ft_socket.h"
+# include "file/ft_file.h"
 
 #endif

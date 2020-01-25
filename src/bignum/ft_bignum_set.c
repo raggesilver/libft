@@ -6,12 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 15:18:45 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/10 01:11:57 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:57:16 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-#include "../string/ft_string_priv.h"
+#include "ft_bignum.h"
 
 t_bignum		*ft_bignum_set(t_bignum *self, const char *s)
 {
