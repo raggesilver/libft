@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:01:02 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 20:54:31 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 21:16:03 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 ** few extra and a few missing.
 */
 
-# include <stdlib.h>
-# include "../string/ft_string.h"
+# include "../libft.h"
 
 /*
 ** Char ========================================================================
