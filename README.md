@@ -49,8 +49,8 @@ All the code (including my additions) follow the
 **Summary**
 1. [t_array](src/array/) a pointer array implementation
 1. [t_string](src/string/) a string implementation
-1. [t_bignum](src/bignum) an "infinite" bignum implementation
-1. [ft_printf()](src/ft_printf) my implementation of printf
+1. [t_bignum](src/bignum/) an "infinite" bignum implementation
+1. [ft_printf()](src/ft_printf/) my implementation of printf
 
 ## Compile
 
@@ -68,7 +68,13 @@ All rules (re, fclean, clean) support the flag `-j`.
 
 ## Use
 
-> Making produces `./libft.a` and the folder `./includes`
+Making produces
+```
+.
+├── build/    # Conatins object files and make rules for every object
+├── includes/ # Contains all public headers
+└── libft.a
+```
 
 If you're at 42 you probably shouldn't use someone else's libft, if you're not,
 this is the way I add libft to my projects:

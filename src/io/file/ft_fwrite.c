@@ -6,11 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 23:59:32 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 14:48:04 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:59:23 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "ft_file.h"
 
 ssize_t		ft_fwrite(t_file file, t_string *str)
 {

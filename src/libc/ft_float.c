@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 12:44:37 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:00 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 21:20:07 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ t_float		ft_float_new(long double n)
 	res.sign = (n < 0);
 	res.dbl.val = n;
 	res.exponent = (*(short *)&res.dbl.bytes[8] & _15BITS) - BIAS - MANT_SIZE;
-	res.mantissa = *(uint64_t *)res.dbl.bytes;
+	res.mantissa = *(t_uint64 *)res.dbl.bytes;
 	return (res);
 }

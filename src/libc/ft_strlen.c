@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 21:44:41 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/09/15 12:36:28 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 21:24:51 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	uint32_t	*p;
+	t_uint32	*p;
 	char		*ptr;
 
-	p = (uint32_t *)s;
+	p = (t_uint32 *)s;
 	while (1)
 	{
 		if (((*p) - 0x01010101UL) & ~(*p) & 0x80808080UL)

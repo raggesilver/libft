@@ -6,11 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 15:39:05 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/06/07 19:31:13 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:56:38 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_bignum.h"
 
 /*
 ** self * (10^n)
