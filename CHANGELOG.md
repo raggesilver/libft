@@ -7,6 +7,21 @@
 - **Incompatible**: updated feature, API (prototype and/or return) changed
 - **Deprecated**: still in code but should not be used anymore. Most likely a `__attribute__((deprecated))` was added to the code and it's use will generate compiler warnings
 
+## Unreleased - 2020-01-24
+
+### Added
+- `ft_path_join`
+
+### Updated/Incompatible
+A lot of changes were made to libft's headers, now most of what one would expect
+is available just by including `libft.h`.
+
+- `ft_printf.h` is now included in libft.h
+- `ft_delegates.h` is now included in libft.h
+- `io/util.{c,h}` were moved to `util/util.{c,h}`
+- `util/util.{c,h}` are now included in libft.h
+- `<stdarg.h>` is now included in libft.h
+
 ## Unreleased - 2020-01-20
 
 Introduced decent and usable list. Removed standard libft `t_list` functions.

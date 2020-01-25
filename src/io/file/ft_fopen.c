@@ -6,11 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 23:44:46 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/09 00:02:38 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:59:17 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "ft_file.h"
 
 t_file		ft_fopen(const char *path, int mode)
 {

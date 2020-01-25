@@ -6,11 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:05:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/03 21:48:01 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 19:15:59 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include "ft_socket.h"
 
 t_socket			*ft_socket_new_with_port(int port)
 {

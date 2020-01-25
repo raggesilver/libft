@@ -3,7 +3,6 @@
 #include "list.test.h"
 
 #include "libft.h"
-#include "ft_printf/ft_printf.h"
 #include <assert.h>
 
 static int int_cmp(int *_a, int *_b)

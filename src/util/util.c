@@ -6,13 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 15:11:03 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 18:03:47 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 19:19:43 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include "util.h"
-#include <stdarg.h>
 
 /*
 ** This is a slightly modified ft_strrchr that does not catch the last occurence

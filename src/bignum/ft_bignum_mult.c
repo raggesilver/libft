@@ -6,11 +6,11 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 15:02:44 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/07/14 17:31:09 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:56:40 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_bignum.h"
 
 static char		g_carry[2] = " \0";
 

@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_delegates.h                                     :+:      :+:    :+:   */
+/*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 13:21:24 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 18:54:17 by pqueiroz         ###   ########.fr       */
+/*   Created: 2019/12/27 15:13:58 by pqueiroz          #+#    #+#             */
+/*   Updated: 2020/01/24 19:19:24 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DELEGATES_H
-# define FT_DELEGATES_H
+#ifndef UTIL_H
+# define UTIL_H
 
 /*
-** Function typedefs ===========================================================
+** This is a collection of useful functions. At the moment they're mostly about
+** files and paths.
 */
 
-typedef void		(*t_destroy_func)(void *obj);
-typedef int			(*t_compare_func)(void *a, void *b);
-typedef void		(*t_foreach_func)(void *el);
-typedef void		*(*t_map_func)(void *el);
+# if defined(_WIN32) || defined(_WIN64)
+#  define FT_DIR_SEP '\\'
+#  define FT_DIR_SEP_S "\\"
+# else
+#  define FT_DIR_SEP '/'
+#  define FT_DIR_SEP_S "/"
+# endif
+
+char	*ft_basename(const char *path);
+char	*ft_path_join(const char *first, ...);
 
 #endif
