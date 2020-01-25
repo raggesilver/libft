@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/22 17:35:13 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 17:58:58 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 #include "ft_printf/ft_printf.h"
 #include "../src/hashtable/ft_hashtable_priv.h"
 #include "list/list.test.h"
+#include "io_util/io.util.test.h"
 
 typedef void (*test_function)();
 
 static test_function *test_functions = (test_function[]){
 	&list_test,
+	&io_util_test,
 	NULL
 };
 

@@ -6,12 +6,13 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 15:11:03 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/22 17:30:17 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/01/24 18:03:47 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include "util.h"
+#include <stdarg.h>
 
 /*
 ** This is a slightly modified ft_strrchr that does not catch the last occurence
@@ -69,4 +70,24 @@ char		*ft_basename(const char *path)
 	else
 		ft_strcpy(buff, path);
 	return (buff);
+}
+
+char		*ft_path_join(const char *first, ...)
+{
+	va_list		ap;
+	char		*p;
+	t_string	*s;
+
+	s = ft_string_new(first);
+	va_start(ap, first);
+	while ((p = va_arg(ap, char *)))
+	{
+		ft_string_append(s, FT_DIR_SEP_S);
+		ft_string_append(s, p);
+	}
+	va_end(ap);
+	p = s->data;
+	s->data = NULL;
+	ft_string_destroy(&s);
+	return (p);
 }
