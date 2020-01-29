@@ -1,6 +1,6 @@
 <div align="center">
     <h1>
-        <img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/10815567/44144bf53e0bffe5a337cb115afc2b0d.png" width="64" />
+        <img src="https://imgur.com/wDuy8yC.png" width="128" /> Libft
     </h1>
     <h4>Essential C library</h4>
     <p>
