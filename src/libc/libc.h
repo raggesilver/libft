@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:01:02 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/02/01 02:11:21 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/02/01 02:17:44 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,12 @@ char				*ft_strrev(char *str);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
+
 char				*ft_strvstr(char **strv, const char *str);
+ssize_t				ft_strv_index_of(char **strv, const char *str);
+int					ft_strv_get_index_of(char **strv, const char *str,
+						size_t *out);
+
 int					ft_strcmp(
 						const char *s1, const char *s2) __attribute__((pure));
 int					ft_strequ(
