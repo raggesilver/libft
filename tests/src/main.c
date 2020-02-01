@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 21:04:33 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/02/01 00:45:14 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 
 #include "list/list.test.h"
 #include "io_util/io.util.test.h"
+#include "libc/libc.test.h"
 
 typedef void (*test_function)();
 
 static test_function *test_functions = (test_function[]){
 	&list_test,
 	&io_util_test,
+	&libc_test,
 	NULL
 };
 
