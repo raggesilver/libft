@@ -5,7 +5,7 @@
 void libc_test()
 {
 	{
-		const char **strv = (const char*[]){
+		char *strv[] = {
 			"first string",
 			"second string",
 			NULL,
