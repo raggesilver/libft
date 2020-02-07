@@ -1,21 +1,13 @@
 
+MAKE := $(MAKE) --no-print-directory
 NAME := libft.a
-# CC ?= gcc
+CC ?= gcc
 
 CFLAGS := -Wall -Werror -Wextra -Ofast
 
 OBJDIR := build
 SRCDIR := src
 HEADIR := includes
-
-SPC :=
-SPC +=
-
-DISABLED := $(shell cat .disabled 2> /dev/null || printf "")
-ifneq ($(DISABLED),)
-DISABLED := $(DISABLED:%='%')
-DISABLED := -not \( -path $(subst $(SPC), -o -path ,$(DISABLED)) \)
-endif
 
 SRCS := $(shell find $(SRCDIR) -type f -name "*.c" $(DISABLED))
 OBJS := $(SRCS:%=$(OBJDIR)/%.o)
@@ -27,18 +19,14 @@ HEAD := $(subst $(SRCDIR),$(HEADIR),$(HEAD))
 LIBS :=
 LIBINCS := $(foreach lib,$(LIBS),-I$(dir $(lib))includes)
 
-# This might not be necessary
-# _INC := $(shell find $(SRCDIR) -type d)
-# INCS := $(addprefix -I,$(_INC))
-
 .PHONY: all re clean fclean debug $(LIBS) _$(NAME)
 
-all: _$(NAME)
+all: _$(NAME) Makefile
 
-_$(NAME): $(LIBS)
+_$(NAME): $(LIBS) Makefile
 	@$(MAKE) $(NAME)
 
-$(NAME): $(HEAD) $(OBJS)
+$(NAME): $(HEAD) $(OBJS) Makefile
 	ar rc $@ $(OBJS) $(LIBS)
 	ranlib $@
 
@@ -51,29 +39,29 @@ $(OBJDIR)/%.c.o: %.c Makefile
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@ $(LIBINCS)
 
-$(HEADIR)/%.h:
+$(HEADIR)/%.h: Makefile
 	@mkdir -p $(dir $@)
 	cp $(subst $(HEADIR),$(SRCDIR),$@) $@
 
-$(LIBS):
+$(LIBS): Makefile
 	@$(MAKE) -C $(dir $@) $(MAKECMDGOALS)
 
 clean:
-	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) clean)
+	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) clean;)
 	rm -f $(OBJS)
 	rm -f $(DEPS)
 	rm -rf $(OBJDIR)
 
 fclean: clean
-	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) fclean)
+	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) fclean;)
 	rm -f $(NAME)
 	rm -rf $(HEADIR)
 
 re: fclean
 	@$(MAKE) all
 
-debug: fclean
-	@$(MAKE) all CFLAGS="$(CFLAGS) -g"
+debug:
+	@$(MAKE) all CFLAGS="$(filter-out -Ofast,$(CFLAGS)) -g -O0"
 
 ci:
 	@$(MAKE) -C tests ci
