@@ -4,12 +4,8 @@ NAME := libft.a
 CC ?= gcc
 
 CFLAGS := -Wall -Werror -Wextra -Ofast
-FINAL_FLAGS :=
 
 include config/config.mk
-
-SHARED_NAME := $(NAME:%.a=%.so)
-SHARED_VNAME := $(NAME:%.a=%).$(VERSION).so
 
 OBJDIR := build
 SRCDIR := src
@@ -25,7 +21,7 @@ HEAD := $(subst $(SRCDIR),$(HEADIR),$(HEAD))
 LIBS :=
 LIBINCS := $(foreach lib,$(LIBS),-I$(dir $(lib))includes)
 
-.PHONY: all re clean fclean debug $(LIBS) _$(NAME) shared
+.PHONY: all re clean fclean debug $(LIBS) _$(NAME)
 
 all: _$(NAME) Makefile
 
@@ -35,18 +31,6 @@ _$(NAME): $(LIBS) Makefile
 $(NAME): $(HEAD) $(OBJS) Makefile
 	@ar rc $@ $(OBJS) $(LIBS)
 	@ranlib $@
-	@echo "Compiled $(@) version $(VERSION)"
-
-# General rule for libft.so and libft.VERSION.so
-shared: $(LIBS) Makefile
-	@$(MAKE) $(NAME:%.a=%.so) CFLAGS="$(CFLAGS) -fPIC"
-
-# Rule for libft.so and libft.VERSION.so
-$(NAME:%.a=%.so): $(HEAD) $(OBJS) Makefile
-	@$(CC) $(CFLAGS) $(FINAL_FLAGS) $(OBJS) $(LIBS) -shared -o _$@
-	@mv _$@ $(@:%.so=%).$(VERSION).so
-	@rm -f $@
-	@ln -s $(@:%.so=%).$(VERSION).so $@
 	@echo "Compiled $(@) version $(VERSION)"
 
 $(OBJDIR) $(HEADIR):
@@ -74,8 +58,6 @@ clean:
 fclean: clean
 	@$(foreach dep, $(LIBS), $(MAKE) -C $(dir $(dep)) fclean;)
 	rm -f $(NAME)
-	rm -f $(NAME:%.a=%.so)
-	rm -f $(NAME:%.a=%).$(VERSION).so
 	rm -rf $(HEADIR)
 
 re: fclean
@@ -83,20 +65,6 @@ re: fclean
 
 debug:
 	@$(MAKE) all CFLAGS="$(filter-out -Ofast,$(CFLAGS)) -g -O0"
-
-install:
-	@$(MAKE) shared
-	cp -r $(HEADIR) $(PREFIX)/include/$(basename $(NAME))
-	cp $(SHARED_VNAME) $(PREFIX)/lib
-	cd $(PREFIX)/lib && ln -s $(SHARED_VNAME) $(SHARED_NAME)
-	ldconfig
-	@echo "$(basename $(NAME)) installed"
-
-uninstall:
-	rm -f $(PREFIX)/lib/$(SHARED_VNAME)
-	rm -f $(PREFIX)/lib/$(SHARED_NAME)
-	rm -rf $(PREFIX)/include/$(basename $(NAME))
-	ldconfig
 
 ci:
 	@$(MAKE) -C tests ci
