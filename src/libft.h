@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 11:11:22 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 21:03:06 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:12:11 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@
 # define BUFF_SIZE		512
 
 # undef FALSE
-# define FALSE 0
+# define FALSE			0
 
 # undef TRUE
-# define TRUE 1
+# define TRUE			1
 
 /*
-** Libft types and macros ======================================================
+** =============================================================================
 */
 
 # include "ft_delegates.h"
@@ -45,5 +45,27 @@
 # include "libc/libc.h"
 # include "bignum/ft_bignum.h"
 # include "util/util.h"
+
+# ifndef LIBFT_VERSION
+#  define LIBFT_VERSION	"0.1.0"
+# endif
+
+# ifndef LIBFT_VERSION_MAJOR
+#  define LIBFT_VERSION_MAJOR	0
+# endif
+
+# ifndef LIBFT_VERSION_MINOR
+#  define LIBFT_VERSION_MINOR	1
+# endif
+
+# ifndef LIBFT_VERSION_PATCH
+#  define LIBFT_VERSION_PATCH	0
+# endif
+
+# define FT_VERSION_CMP		ft_version_cmp
+# define FT_VERSION_CMPS	ft_version_cmps
+
+int		ft_version_cmp(int major, int minor, int patch);
+int		ft_version_cmps(char *version);
 
 #endif

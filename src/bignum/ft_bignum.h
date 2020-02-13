@@ -6,12 +6,12 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 20:51:21 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/01/24 20:55:41 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:36:40 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BIGNUM_H
-# define BIGNUM_H
+#ifndef FT_BIGNUM_H
+# define FT_BIGNUM_H
 
 # include <stdlib.h>
 # include "../libft.h"
