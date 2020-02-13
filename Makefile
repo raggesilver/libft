@@ -5,6 +5,8 @@ CC ?= gcc
 
 CFLAGS := -Wall -Werror -Wextra -Ofast
 
+include config/config.mk
+
 OBJDIR := build
 SRCDIR := src
 HEADIR := includes
@@ -27,8 +29,9 @@ _$(NAME): $(LIBS) Makefile
 	@$(MAKE) $(NAME)
 
 $(NAME): $(HEAD) $(OBJS) Makefile
-	ar rc $@ $(OBJS) $(LIBS)
-	ranlib $@
+	@ar rc $@ $(OBJS) $(LIBS)
+	@ranlib $@
+	@echo "Compiled $(@) version $(VERSION)"
 
 $(OBJDIR) $(HEADIR):
 	@mkdir -p $@
