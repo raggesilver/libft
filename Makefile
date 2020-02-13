@@ -39,7 +39,7 @@ $(NAME): $(HEAD) $(OBJS) Makefile
 
 # General rule for libft.so and libft.VERSION.so
 shared: $(LIBS) Makefile
-	@$(MAKE) $(NAME:%.a=%.so)
+	@$(MAKE) $(NAME:%.a=%.so) CFLAGS="$(CFLAGS) -fPIC"
 
 # Rule for libft.so and libft.VERSION.so
 $(NAME:%.a=%.so): $(HEAD) $(OBJS) Makefile
@@ -89,7 +89,14 @@ install:
 	cp -r $(HEADIR) $(PREFIX)/include/$(basename $(NAME))
 	cp $(SHARED_VNAME) $(PREFIX)/lib
 	cd $(PREFIX)/lib && ln -s $(SHARED_VNAME) $(SHARED_NAME)
+	ldconfig
 	@echo "$(basename $(NAME)) installed"
+
+uninstall:
+	rm -f $(PREFIX)/lib/$(SHARED_VNAME)
+	rm -f $(PREFIX)/lib/$(SHARED_NAME)
+	rm -rf $(PREFIX)/include/$(basename $(NAME))
+	ldconfig
 
 ci:
 	@$(MAKE) -C tests ci
