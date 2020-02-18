@@ -10,6 +10,11 @@
 ## Unreleased - 2020-01-24
 
 ### Added
+- `ft_strlcpy`
+
+## Unreleased - 2020-01-24
+
+### Added
 - `ft_path_join`
 
 ### Updated/Incompatible

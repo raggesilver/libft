@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 19:01:02 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/02/01 02:17:44 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/02/17 23:26:33 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int					ft_strnequ(char const *s1,
 						char const *s2, size_t n) __attribute__((pure));
 size_t				ft_strchrcnt(const char *s, char c) __attribute__((pure));
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
+size_t				ft_strlcpy(char *dest, const char *src, size_t len);
 size_t				ft_strlen(const char *s) __attribute__((pure));
 void				ft_strclr(char *s);
 void				ft_strdel(char **as);
