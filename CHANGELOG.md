@@ -7,6 +7,30 @@
 - **Incompatible**: updated feature, API (prototype and/or return) changed
 - **Deprecated**: still in code but should not be used anymore. Most likely a `__attribute__((deprecated))` was added to the code and it's use will generate compiler warnings
 
+## Unreleased - 2020-04-20
+
+### Added
+- Vala bindings for:
+	- `ft_put*()`
+	- `ft_strlen()`
+	- `ft_strdup()`
+	- `ft_strdupchr()`
+	- `ft_strchr()`
+	- `ft_strjoin()`
+	- `ft_strcmp()`
+	- `ft_strequ()`
+	- `ft_strncmp()`
+	- `ft_strnequ()`
+	- `ft_printf()`
+	- `ft_sprintf()`
+	- `ft_dprintf()`
+	- `T_STRING_GROWMODE_*`
+	- `t_string_cfg`
+	- `t_string` with **most** of it's functions
+
+Vala bindings are under the namespace `Libft` and follow the Vala naming
+coventions. Functions don't have the `ft_` prefix.
+
 ## Unreleased - 2020-01-24
 
 ### Added

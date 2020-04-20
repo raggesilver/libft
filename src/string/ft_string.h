@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 01:41:52 by pqueiroz          #+#    #+#             */
-/*   Updated: 2019/12/26 15:26:40 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/04/19 16:52:35 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void					ft_string_append(t_string *self, const char *s);
 void					ft_string_appendn(
 							t_string *self, const char *s, size_t n);
 void					ft_string_destroy(t_string **self);
+void					ft_string_free(t_string *self);
 void					ft_string_inpend(t_string *self, size_t index,
 										const char *s);
 void					ft_string_prepend_s(t_string *self, char **s);
