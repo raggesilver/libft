@@ -3,7 +3,15 @@ stages:
 
 leak check:
   stage: test
-  allow_failure: false
   image: etews/gcc-expect-valgrind
   script:
     - make ci -j
+
+norm:
+  stage: test
+  image: ruby:latest
+  before_script:
+    - git clone https://github.com/42sp/norminette-client.git .norminette
+    - cd .norminette && bundle
+  script:
+    - .norminette/norminette.rb src/

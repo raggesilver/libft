@@ -12,51 +12,54 @@
 
 #include "../libft.h"
 
-static int	limit_line(const int fd, char **line, char **str)
+static int	fk_limit_line(const int fd, char **line, char **ss, char *nln)
 {
 	char	*aux;
+	size_t	len;
 
-	if (ft_strchr(str[fd], '\n'))
+	if (nln)
 	{
-		*line = ft_strdupchr(str[fd], '\n');
-		aux = ft_strdup(str[fd] + ft_strlen(*line) + 1);
-		ft_strdel(&str[fd]);
-		if (ft_strlen(aux) > 0)
-			str[fd] = aux;
+		*line = ft_strdupchr(ss[fd], '\n');
+		len = ft_strlen(*line);
+		if (*(ss[fd] + len) && *(ss[fd] + len + 1))
+		{
+			aux = ft_strdup(ss[fd] + len + 1);
+			ft_strdel(&ss[fd]);
+			ss[fd] = aux;
+		}
 		else
-			ft_strdel(&aux);
+			ft_strdel(&ss[fd]);
 	}
-	else if (str[fd])
+	else
 	{
-		*line = ft_strdup(str[fd]);
-		ft_strdel(&str[fd]);
+		*line = ft_strdup(ss[fd]);
+		ft_strdel(&ss[fd]);
 	}
 	return (1);
 }
 
 int			ft_readln(const int fd, char **line)
 {
-	static char	*str[4864];
+	static char *ss[4864];
 	char		*aux;
-	char		ln[BUFF_SIZE + 1];
-	int			res;
+	char		buff[BUFF_SIZE + 1];
+	int			red;
 
 	if (fd < 0 || fd > 4864 || !line)
 		return (-1);
-	while ((res = read(fd, ln, BUFF_SIZE)) > 0)
+	aux = NULL;
+	while ((red = read(fd, buff, BUFF_SIZE)) > 0)
 	{
-		ln[res] = '\0';
-		if (!str[fd])
-			str[fd] = ft_strnew(0);
-		aux = ft_strjoin(str[fd], ln);
-		ft_strdel(&str[fd]);
-		str[fd] = aux;
-		if (ft_strchr(ln, '\n'))
+		buff[red] = 0;
+		aux = ft_strjoin(ss[fd], buff);
+		ft_strdel(&ss[fd]);
+		ss[fd] = aux;
+		if ((aux = ft_strchr(buff, '\n')))
 			break ;
 	}
-	if (res < 0)
+	if (red < 0)
 		return (-1);
-	if (!res && !str[fd])
+	if (red == 0 && !ss[fd])
 		return (0);
-	return (limit_line(fd, line, str));
+	return (fk_limit_line(fd, line, ss, aux));
 }
