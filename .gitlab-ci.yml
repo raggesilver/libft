@@ -11,7 +11,7 @@ norm:
   stage: test
   image: ruby:latest
   before_script:
-    - git clone https://github.com/42sp/norminette-client.git .norminette
-    - cd .norminette && bundle
+    - git clone https://github.com/42sp/norminette-client.git ~/.norminette
+    - cd ~/.norminette && bundle
   script:
-    - .norminette/norminette.rb src/
+    - ~/.norminette/norminette.rb src/
