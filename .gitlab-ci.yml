@@ -12,7 +12,7 @@ norm:
   image: ruby:latest
   before_script:
     - git clone https://github.com/42sp/norminette-client.git ~/.norminette
-    - cd ~/.norminette && bundle
+    - builddir=$(pwd); cd ~/.norminette && bundle; cd $builddir
   script:
     - ls
     - ~/.norminette/norminette.rb src/
