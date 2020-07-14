@@ -47,7 +47,7 @@ int			ft_readln(const int fd, char **line)
 	{
 		ln[res] = '\0';
 		if (!str[fd])
-			str[fd] = ft_strnew(1);
+			str[fd] = ft_strnew(0);
 		aux = ft_strjoin(str[fd], ln);
 		ft_strdel(&str[fd]);
 		str[fd] = aux;
