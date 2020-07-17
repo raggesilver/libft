@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 14:52:19 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/02/12 16:35:03 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/07/17 11:36:37 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int
 ** #define LFTVMN LIBFT_VERSION_MINOR
 ** #define LFTVPT LIBFT_VERSION_PATCH
 **
-** #if (LFTVMJ < 1 || LFTVMN < 1 || LFTVPT < 1) && FALSE
+** #if (LFTVMJ < 1 || LFTVMN < 1 || LFTVPT < 1)
 ** # error Libft version 1.1.1+ is required
 ** #endif
 **

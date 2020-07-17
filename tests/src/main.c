@@ -6,7 +6,7 @@
 /*   By: pqueiroz <pqueiroz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:56:48 by pqueiroz          #+#    #+#             */
-/*   Updated: 2020/02/01 00:45:14 by pqueiroz         ###   ########.fr       */
+/*   Updated: 2020/07/17 11:38:57 by pqueiroz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,5 +223,6 @@ int	main(void)
 		for (size_t i = 0; test_functions[i]; i++)
 			test_functions[i]();
 	}
+	ft_printf("Ran tests on Libft v%s!\n", LIBFT_VERSION);
 	return (0);
 }
