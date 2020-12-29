@@ -30,7 +30,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 			if (!*ned)
 				return ((char *)haystack);
 			ned = (char *)needle;
-			haystack += tok - haystack;
+			haystack += tok - haystack - 1;
 		}
 		haystack++;
 	}

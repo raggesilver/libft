@@ -219,6 +219,37 @@ int	main(void)
 			p++;
 		}
 	}
+	// Test ft_strstr ==========================================================
+	{
+		const char *stacks[] = {
+			"2022020", // 3
+			"", // -1
+			"222200000202000000", // 9
+			"00000000000000200002000002020", // 26
+			"202", // -1
+			"0202", // -1
+			NULL,
+		};
+
+		int res[] = {
+			3, -1, 9, 25, -1, -1,
+		};
+
+		for (size_t i = 0; stacks[i] != NULL; i++) {
+			const char *ptr = ft_strstr(stacks[i], "2020");
+			const int	ires = (ptr) ? ptr - stacks[i] : -1;
+
+			if (ires != res[i]) {
+				ft_dprintf(
+					STDERR_FILENO,
+					"error ft_strstr: expected %d got %d for haystack '%s' and"
+					"needle '2020'\n",
+					res[i], ires, stacks[i]
+				);
+				return (1);
+			}
+		}
+	}
 	{
 		for (size_t i = 0; test_functions[i]; i++)
 			test_functions[i]();
